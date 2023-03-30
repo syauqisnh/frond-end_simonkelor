@@ -247,6 +247,24 @@ const User_page = () => {
                     />
                 </CTableDataCell>
               </CTableRow>
+              
+              <CTableRow>
+                <CTableDataCell> Nurafiif Almas Azhari </CTableDataCell>
+                <CTableDataCell> V3921024 </CTableDataCell>
+                <CTableDataCell> Universitas Sebelas Maret </CTableDataCell>
+                <CTableDataCell> nurafiifalmasazhr@gmail.com </CTableDataCell>
+                <CTableDataCell> Super Admin </CTableDataCell>
+                <CTableDataCell> 
+                    <AiIcons.AiOutlineUser
+                    />
+                    <BsIcons.BsPencilSquare/>
+                    <AiIcons.AiFillDelete
+                        // onClick={() => {
+                        //   HandleDelete(item.user_id);
+                        // }}
+                    />
+                </CTableDataCell>
+              </CTableRow>
           </CTableBody>
         </CTable>
           </CCardBody>
