@@ -4,12 +4,14 @@ import { Reports, ReportsOne, ReportsTwo, ReportsThree } from './pages/Reports';
 import User_page from './pages/user';
 import UserInvalid_page from './pages/user_invalid';
 import Forum from './pages/Forum';
+import ForumComment from './pages/ForumComments';
 import Signin from './pages/Signin';
 import Signup from './pages/Signup';
 import Profile from './pages/Profile';
 import Realtime from './pages/realtime';
 import Dokumentation from './pages/Dokumentation';
 import Dataoperasi from './pages/Dataoperasi';
+import C_langgambebanharian from './components/C_langgambebanharian';
 
 function App() {
   return (
@@ -26,9 +28,13 @@ function App() {
         <Route path='/dataoperasi' exact component={Dataoperasi} />
         <Route path='/dokumentation' exact component={Dokumentation} />
         <Route path='/forum' exact component={Forum} />
+        <Route path='/forumcomment' exact component={ForumComment} />
         <Route path='/signin' exact component={Signin} />
         <Route path='/signup' exact component={Signup} />
         <Route path='/profile' exact component={Profile} />
+        <Route path='/dokumentation' exact component={Dokumentation} />
+        <Route path='/dataoperasi' exact component={Dataoperasi} />
+        <Route path='/C_langgambebanharian' exact component={C_langgambebanharian} />
       </Switch>
     </Router>
   );

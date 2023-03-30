@@ -1,15 +1,15 @@
 import React from 'react';
-import Sidebar from '../components/Sidebar';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import C_Dokumentation from "../components/C_Dokumentation"
 
-export const Dokumentation = () => {
-  return (
-    <>
-    <Sidebar />
-    <div className='reports'>
-      <h1>Halaman Dokumentation</h1>
-    </div>
-    </>
-  );
-};
+function Dokumentation() {
+    return (
+        <div className="App">
+            <div className='C_Dokumentation'>
+                <C_Dokumentation />
+            </div>
+        </div>
+    );
+}
 
 export default Dokumentation;

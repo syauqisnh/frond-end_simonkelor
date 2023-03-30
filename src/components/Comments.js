@@ -1,221 +1,80 @@
-// import React, { useState } from "react";
-// import Comment from "./Comment";
-// import { debounce } from "./utils";
-
-// export default function Comments() {
-//   let [commentInput, setCommentInput] = useState("");
-//   let [comments, setComments] = useState([
-//     {
-//       id: 1,
-//       display: "c1",
-//       children: [
-//         {
-//           id: 2,
-//           display: "c11",
-//           children: []
-//         },
-//         {
-//           id: 3,
-//           display: "c12",
-//           children: []
-//         }
-//       ]
-//     }
-//   ]);
-
-//   function addReply(commentId, replyText) {
-//     let commentsWithNewReply = [...comments];
-//     insertComment(commentsWithNewReply, commentId, replyText);
-//     setComments(commentsWithNewReply);
-//   }
-
-//   function newComment(text) {
-//     return {
-//       id: new Date().getTime(),
-//       display: text,
-//       children: []
-//     };
-//   }
-
-//   function insertComment(comments, parentId, text) {
-//     for (let i = 0; i < comments.length; i++) {
-//       let comment = comments[i];
-//       if (comment.id === parentId) {
-//         comment.children.unshift(newComment(text));
-//       }
-//     }
-
-//     for (let i = 0; i < comments.length; i++) {
-//       let comment = comments[i];
-//       insertComment(comment.children, parentId, text);
-//     }
-//   }
-
-//   return (
-//     <>
-//       <div className="comment-input-box">
-//         <textarea
-//           rows="4"
-//           cols="50"
-//           value={commentInput}
-//           onChange={(e) => {
-//             debounce(setCommentInput(e.target.value));
-//           }}
-//         />
-//         <br />
-//         <button
-//           onClick={() => {
-//             setComments([newComment(commentInput), ...comments]);
-//             setCommentInput("");
-//           }}
-//         >
-//           Submit
-//         </button>
-//       </div>
-//       <ul>
-//         {comments.map((comment) => (
-//           <Comment key={comment.id} comment={comment} addReply={addReply} />
-//         ))}
-//       </ul>
-//     </>
-//   );
-// }
-
 import React from "react";
-import {
-  MDBCard,
-  MDBCardBody,
-  MDBCardImage,
-  MDBCol,
-  MDBContainer,
-  MDBIcon,
-  MDBInput,
-  MDBRow,
-} from "mdb-react-ui-kit";
+import { Button, Row, Col, Form } from "react-bootstrap";
 
 export default function Basic() {
-  return (
-    <MDBContainer className="mt-5" style={{ maxWidth: "1000px" }}>
-      <MDBRow className="justify-content-center">
-        <MDBCol md="8" lg="6">
-          <MDBCard
-            className="shadow-0 border"
-            style={{ backgroundColor: "#f0f2f5" }}
-          >
-            <MDBCardBody>
-              <MDBInput wrapperClass="mb-4" placeholder="Type comment..." label="+ Add a note" />
-
-              <MDBCard className="mb-4">
-                <MDBCardBody>
-                  <p>Type your note, and hit enter to add it</p>
-
-                  <div className="d-flex justify-content-between">
-                    <div className="d-flex flex-row align-items-center">
-                      <MDBCardImage
-                        src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(4).webp"
-                        alt="avatar"
-                        width="25"
-                        height="25"
-                      />
-                      <p className="small mb-0 ms-2">Martha</p>
-                    </div>
-                    <div className="d-flex flex-row align-items-center">
-                      <p className="small text-muted mb-0">Upvote?</p>
-                      <MDBIcon
-                        far
-                        icon="thumbs-up mx-2 fa-xs text-black"
-                        style={{ marginTop: "-0.16rem" }}
-                      />
-                      <p className="small text-muted mb-0">3</p>
-                    </div>
-                  </div>
-                </MDBCardBody>
-              </MDBCard>
-
-              <MDBCard className="mb-4">
-                <MDBCardBody>
-                  <p>Type your note, and hit enter to add it</p>
-
-                  <div className="d-flex justify-content-between">
-                    <div className="d-flex flex-row align-items-center">
-                      <MDBCardImage
-                        src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp"
-                        alt="avatar"
-                        width="25"
-                        height="25"
-                      />
-                      <p className="small mb-0 ms-2">Johny</p>
-                    </div>
-                    <div className="d-flex flex-row align-items-center">
-                      <p className="small text-muted mb-0">Upvote?</p>
-                      <MDBIcon
-                        far
-                        icon="thumbs-up mx-2 fa-xs text-black"
-                        style={{ marginTop: "-0.16rem" }}
-                      />
-                      <p className="small text-muted mb-0">4</p>
-                    </div>
-                  </div>
-                </MDBCardBody>
-              </MDBCard>
-
-              <MDBCard className="mb-4">
-                <MDBCardBody>
-                  <p>Type your note, and hit enter to add it</p>
-
-                  <div className="d-flex justify-content-between">
-                    <div className="d-flex flex-row align-items-center">
-                      <MDBCardImage
-                        src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(31).webp"
-                        alt="avatar"
-                        width="25"
-                        height="25"
-                      />
-                      <p className="small mb-0 ms-2">Mary Kate</p>
-                    </div>
-                    <div className="d-flex flex-row align-items-center text-primary">
-                      <p className="small mb-0">Upvoted</p>
-                      <MDBIcon
-                        fas
-                        icon="thumbs-up mx-2 fa-xs"
-                        style={{ marginTop: "-0.16rem" }}
-                      />
-                      <p className="small mb-0">2</p>
-                    </div>
-                  </div>
-                </MDBCardBody>
-              </MDBCard>
-
-              <MDBCard className="mb-4">
-                <MDBCardBody>
-                  <p>Type your note, and hit enter to add it</p>
-
-                  <div className="d-flex justify-content-between">
-                    <div className="d-flex flex-row align-items-center">
-                      <MDBCardImage
-                        src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp"
-                        alt="avatar"
-                        width="25"
-                        height="25"
-                      />
-                      <p className="small mb-0 ms-2">Johny</p>
-                    </div>
-                    <div className="d-flex flex-row align-items-center">
-                      <p className="small text-muted mb-0">Upvote?</p>
-                      <MDBIcon
-                        far
-                        icon="thumbs-up mx-2 fa-xs text-black"
-                        style={{ marginTop: "-0.16rem" }}
-                      />
-                      <p className="small text-muted mb-0"></p>
-                    </div>
-                  </div>
-                </MDBCardBody>
-              </MDBCard>
-            </MDBCardBody>
-          </MDBCard>
-        </MDBCol>
-      </MDBRow>
-    </MDBContainer>
-  );
+    return (
+        <div className="container">
+        <div className="be-comment-block">
+          <h1 className="comments-title">Comments</h1>
+          <div className="panel-forum">
+            <div className="panel-body">
+              <textarea className="form-control" rows={2} placeholder="Type something here" defaultValue={""} />
+              <div className="mar-top">
+                <Button className="button-sub-forum" >Submit</Button>
+                <Button className="button-sub-forum" href="forum">Cancel</Button>
+              </div>
+            </div>
+          </div>
+          <div className="be-comment">
+            <div className="be-img-comment">	
+              <a href="blog-detail-2.html">
+                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" className="be-ava-comment" />
+              </a>
+            </div>
+            <div className="be-comment-content">
+              <span className="be-comment-name">
+                <h5 href="#">Pegawai-1</h5>
+              </span>
+              <span className="be-comment-time">
+                <i className="fa fa-clock-o" />
+                May 27, 2015 at 3:14am
+              </span>
+              <p className="be-comment-text">
+                Pellentesque gravida tristique ultrices. 
+                Sed blandit varius mauris, vel volutpat urna hendrerit id. 
+                Curabitur rutrum dolor gravida turpis tristique efficitur.
+              </p>
+            </div>
+          </div>
+          <div className="be-comment">
+            <div className="be-img-comment">	
+              <a href="blog-detail-2.html">
+                <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="" className="be-ava-comment" />
+              </a>
+            </div>
+            <div className="be-comment-content">
+              <span className="be-comment-name">
+                 <h5 href="#">Pegawai-2</h5>
+              </span>
+              <span className="be-comment-time">
+                <i className="fa fa-clock-o" />
+                May 27, 2015 at 3:14am
+              </span>
+              <p className="be-comment-text">
+                Nunc ornare sed dolor sed mattis. In scelerisque dui a arcu mattis, at maximus eros commodo. Cras magna nunc, cursus lobortis luctus at, sollicitudin vel neque. Duis eleifend lorem non ant. Proin ut ornare lectus, vel eleifend est. Fusce hendrerit dui in turpis tristique blandit.
+              </p>
+            </div>
+          </div>
+          <div className="be-comment">
+            <div className="be-img-comment">	
+              <a href="blog-detail-2.html">
+                <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="" className="be-ava-comment" />
+              </a>
+            </div>
+            <div className="be-comment-content">
+              <span className="be-comment-name">
+                <h5 href="#">Pegawai-3</h5>
+              </span>
+              <span className="be-comment-time">
+                <i className="fa fa-clock-o" />
+                May 27, 2015 at 3:14am
+              </span>
+              <p className="be-comment-text">
+                Cras magna nunc, cursus lobortis luctus at, sollicitudin vel neque. Duis eleifend lorem non ant
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
 }

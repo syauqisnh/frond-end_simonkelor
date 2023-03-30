@@ -1,15 +1,15 @@
 import React from 'react';
-import Sidebar from '../components/Sidebar';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import C_DataOperasi from "../components/C_DataOperasi"
 
-export const Dataoperasi = () => {
-  return (
-    <>
-    <Sidebar />
-    <div className='reports'>
-      <h1>Halaman Data Operasi</h1>
-    </div>
-    </>
-  );
-};
+function Dataoperasi() {
+    return (
+        <div className="App">
+            <div className='C_DataOperasi'>
+                <C_DataOperasi />
+            </div>
+        </div>
+    );
+}
 
 export default Dataoperasi;
