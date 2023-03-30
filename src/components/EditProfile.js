@@ -25,7 +25,7 @@ function EditProfile() {
   };
 
   return (
-    <div className="edit-profile">
+    <div className="edit-profile" >
       <form onSubmit={handleSubmit}>
         <h2>Edit Profile</h2>
         <label>
@@ -77,7 +77,7 @@ function EditProfile() {
           profilePicture={profileData.profilePicture}
           setProfileData={setProfileData}
         />
-        <button type="submit">submit</button>
+        <button type="submit" >Update</button>
       </form>
     </div>
   );
