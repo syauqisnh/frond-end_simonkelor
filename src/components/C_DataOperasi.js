@@ -1,6 +1,5 @@
 import React from "react";
 import { BsFillFolderFill } from "react-icons/bs";
-import Sidebar from "../components/Sidebar";
 import { useHistory } from "react-router-dom";
 
 const Dataoperasi = () => {
@@ -81,13 +80,6 @@ const Dataoperasi = () => {
     cursor: "pointer",
   };
 
-  const kotakStyleMobile = {
-    ...kotakStyle,
-    width: "300px",
-    margin: "30px 20px 10px 10px",
-    marginTop: "30px",
-  };
-
   const imgStyle = {
     fontSize: "6em",
     color: "#8473ED",
@@ -99,8 +91,6 @@ const Dataoperasi = () => {
     fontSize: "15pt",
   };
   return (
-    <>
-      <Sidebar />
       <div className="homes">
         <div className="wrapper d-flex flex-column">
           <div className="body flex-grow-1 px-3">
@@ -136,7 +126,6 @@ const Dataoperasi = () => {
           </div>
         </div>
       </div>
-    </>
   );
 };
 

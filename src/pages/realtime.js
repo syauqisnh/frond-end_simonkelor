@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 import React, { useState } from 'react';
 import axios from 'axios';
-=======
-import React, { useState } from "react";
->>>>>>> bfac693b025347cda2f1a37466399074376769e0
 import {
   CContainer,
   CCard,
@@ -25,7 +21,6 @@ import Sidebar from "../components/Sidebar";
 import { useEffect } from "react";
 
 const Realtime = () => {
-<<<<<<< HEAD
   const [realtimes, setRealtime] = useState([]);
   const [realtimes_pltu, setRealtimePLTU] = useState([]);
   const [realtimes_plant, setRealtimePLANT] = useState([]);
@@ -86,8 +81,8 @@ const Realtime = () => {
     <Sidebar />
     <div className='homes'>
       
-    <div className="wrapper d-flex flex-column">
-            <div className="body flex-grow-1 px-3">
+      <div className="wrapper d-flex flex-column">
+        <div className="body flex-grow-1 px-3">
     <CRow>
         <CCol xs={10}>
         
@@ -116,131 +111,6 @@ const Realtime = () => {
 })}
     </div> 
   </CCol>
-=======
-  const [realtimes_langgam, setRealtimes_langgam] = useState([]);
-  const [realtimes_pembangkit, setRealtimes_pembangkit] = useState([]);
-  const [realtimes_pembangkit_PLTU, setRealtimes_pembangkitPLTU] = useState([]);
-  const [realtimes_pembangkit_Plan, setRealtimes_pembangkitPlan] = useState([]);
-  const [realtimes_langgam_prediksi, setRealtimes_langgam_prediksi] = useState(
-    []
-  );
-
-  const data = [
-    70.0, 69.43, 68.49, 68.29, 67.4, 67.17, 66.18, 65.51, 65.96, 65.57, 64.93,
-    64.87, 63.23, 60.69, 59.98, 59.52, 59.61, 57.52, 55.49, 55.43, 55.58, 55.9,
-    55.62, 55.62, 66.18, 66.18, 55.62, 55.62,
-  ];
-
-  const data_prediksi = [
-    69.43, 68.49, 68.29, 67.4, 67.17, 66.18, 65.51, 65.96, 65.57, 64.93, 64.87,
-    63.23, 60.69, 59.98, 59.52, 59.61, 57.52, 55.49, 55.43, 55.58, 55.9, 55.62,
-    55.68, 55.39, 55.16, 55.72, 56.42, 55.87, 55.6, 55.51, 55.39, 54.16, 54.85,
-    55.25, 57.03, 60.61, 68.81, 81.01, 85.76, 84.47, 83.23, 82.42, 81.08, 79.41,
-    77.64, 75.76, 73.64, 73.09,
-  ];
-
-  const data_pembangkit = [
-    {
-      parameter: "Beban Pembangkit",
-      value: 144,
-    },
-    {
-      parameter: "Frequency",
-      value: 34.0,
-    },
-    {
-      parameter: "Losses",
-      value: 45.0,
-    },
-    {
-      parameter: "Fuelmix",
-      value: 32.0,
-    },
-  ];
-
-  const data_pembangkit2 = [
-    {
-      parameter: "PLTU BOLOK UNIT 1",
-      value: 144,
-    },
-    {
-      parameter: "PLTU BOLOK UNIT 2",
-      value: 34.0,
-    },
-    {
-      parameter: "PLTU IPP KUPANG BARU UNIT 1",
-      value: 45.0,
-    },
-    {
-      parameter: "PLTU IPP KUPANG BARU UNIT 2",
-      value: 32.0,
-    },
-  ];
-
-  const data_pembangkit3 = [
-    {
-      parameter: "PLTD COGINDO (PLANT)",
-      value: 144,
-    },
-    {
-      parameter: "PLTMG KPG PEAKER (PLANT)",
-      value: 34.0,
-    },
-    {
-      parameter: "ULPL KUPANG NIGATA (PLANT)",
-      value: 45.0,
-    },
-    {
-      parameter: "ULPL ATAMBUA SWD (PLANT)",
-      value: 32.0,
-    },
-  ];
-  // setTimeout(() => {
-  //     console.log(data);
-  //     setRealtimes_langgam(data);
-  //     setRealtimes_langgam_prediksi(data_prediksi);
-  //     setRealtimes_pembangkit(data_pembangkit);
-  //     setRealtimes_pembangkitPLTU
-  //   // })
-  // }, 1000);
-
-  useEffect(() => {
-    console.log(data);
-    setRealtimes_langgam(data);
-    setRealtimes_langgam_prediksi(data_prediksi);
-    setRealtimes_pembangkit(data_pembangkit);
-    setRealtimes_pembangkitPLTU(data_pembangkit2);
-    setRealtimes_pembangkitPlan(data_pembangkit3);
-  }, []);
-
-  return (
-    <>
-      <Sidebar />
-      <div className="homes">
-        <div className="wrapper d-flex flex-column">
-          <div className="body flex-grow-1 px-3">
-            <CRow>
-              <CCol xs={10}>
-                <div className="header">
-                  <p>Realtime</p>
-                </div>
-              </CCol>
->>>>>>> bfac693b025347cda2f1a37466399074376769e0
-
-              <CCol xs={2}>
-                <div className="py-5">
-                  <div className="card-realtime-update">
-                    <div className="card-body-realtime">
-                      <h5 className="text-title-card-realtime">
-                        UPDATE{" "}
-                        <span className="text-card-realtime">
-                          2 April 2023 pukul 19.40.22
-                        </span>{" "}
-                      </h5>
-                    </div>
-                  </div>
-                </div>
-              </CCol>
             </CRow>
           </div>
         </div>
@@ -267,7 +137,7 @@ const Realtime = () => {
                                   color="danger"
                                 >
                                   .
-                                </CBadge>{" "}
+                                </CBadge>
                                 Realisasi
                               </h6>
                             </CCol>
@@ -278,7 +148,7 @@ const Realtime = () => {
                                   color="info"
                                 >
                                   .
-                                </CBadge>{" "}
+                                </CBadge>
                                 Prediksi
                               </h6>
                             </CCol>
@@ -441,8 +311,7 @@ const Realtime = () => {
                                 <CTableBody>
                                   <CTableRow>
                                     <CTableDataCell>
-                                      {" "}
-                                      PLTU PLN BOLOK 1{" "}
+                                      PLTU PLN BOLOK 1
                                     </CTableDataCell>
                                     <CTableDataCell> Batubara </CTableDataCell>
                                     <CTableDataCell> 14.81 </CTableDataCell>
@@ -451,8 +320,7 @@ const Realtime = () => {
 
                                   <CTableRow>
                                     <CTableDataCell>
-                                      {" "}
-                                      PLTU PLN BOLOK 2{" "}
+                                      PLTU PLN BOLOK 2
                                     </CTableDataCell>
                                     <CTableDataCell> Batubara </CTableDataCell>
                                     <CTableDataCell> 14.81 </CTableDataCell>
@@ -461,8 +329,7 @@ const Realtime = () => {
 
                                   <CTableRow>
                                     <CTableDataCell>
-                                      {" "}
-                                      PLTU PLN BOLOK 1{" "}
+                                      PLTU PLN BOLOK 1
                                     </CTableDataCell>
                                     <CTableDataCell> Batubara </CTableDataCell>
                                     <CTableDataCell> 14.81 </CTableDataCell>
@@ -471,8 +338,7 @@ const Realtime = () => {
 
                                   <CTableRow>
                                     <CTableDataCell>
-                                      {" "}
-                                      PLTU PLN BOLOK 1{" "}
+                                      PLTU PLN BOLOK 1
                                     </CTableDataCell>
                                     <CTableDataCell> Batubara </CTableDataCell>
                                     <CTableDataCell> 14.81 </CTableDataCell>
@@ -481,8 +347,7 @@ const Realtime = () => {
 
                                   <CTableRow>
                                     <CTableDataCell>
-                                      {" "}
-                                      PLTU PLN BOLOK 1{" "}
+                                      PLTU PLN BOLOK 1
                                     </CTableDataCell>
                                     <CTableDataCell> Batubara </CTableDataCell>
                                     <CTableDataCell> 14.81 </CTableDataCell>
@@ -491,8 +356,7 @@ const Realtime = () => {
 
                                   <CTableRow>
                                     <CTableDataCell>
-                                      {" "}
-                                      PLTU PLN BOLOK 1{" "}
+                                      PLTU PLN BOLOK 1
                                     </CTableDataCell>
                                     <CTableDataCell> Batubara </CTableDataCell>
                                     <CTableDataCell> 14.81 </CTableDataCell>
@@ -501,8 +365,7 @@ const Realtime = () => {
 
                                   <CTableRow>
                                     <CTableDataCell>
-                                      {" "}
-                                      PLTU PLN BOLOK 1{" "}
+                                      PLTU PLN BOLOK 1
                                     </CTableDataCell>
                                     <CTableDataCell> Batubara </CTableDataCell>
                                     <CTableDataCell> 14.81 </CTableDataCell>
@@ -511,8 +374,7 @@ const Realtime = () => {
 
                                   <CTableRow>
                                     <CTableDataCell>
-                                      {" "}
-                                      PLTU PLN BOLOK 1{" "}
+                                      PLTU PLN BOLOK 1
                                     </CTableDataCell>
                                     <CTableDataCell> Batubara </CTableDataCell>
                                     <CTableDataCell> 14.81 </CTableDataCell>
@@ -521,8 +383,7 @@ const Realtime = () => {
 
                                   <CTableRow>
                                     <CTableDataCell>
-                                      {" "}
-                                      PLTU PLN BOLOK 1{" "}
+                                      PLTU PLN BOLOK 1
                                     </CTableDataCell>
                                     <CTableDataCell> Batubara </CTableDataCell>
                                     <CTableDataCell> 14.81 </CTableDataCell>
@@ -531,8 +392,7 @@ const Realtime = () => {
 
                                   <CTableRow>
                                     <CTableDataCell>
-                                      {" "}
-                                      PLTU PLN BOLOK 1{" "}
+                                      PLTU PLN BOLOK 1
                                     </CTableDataCell>
                                     <CTableDataCell> Batubara </CTableDataCell>
                                     <CTableDataCell> 14.81 </CTableDataCell>
@@ -588,77 +448,67 @@ const Realtime = () => {
                                 <CTableBody>
                                   <CTableRow>
                                     <CTableDataCell>
-                                      {" "}
-                                      Total Kapital Cost{" "}
+                                      Total Kapital Cost
                                     </CTableDataCell>
                                     <CTableDataCell> 15.37 </CTableDataCell>
                                   </CTableRow>
 
                                   <CTableRow>
                                     <CTableDataCell>
-                                      {" "}
-                                      Total Kapital Cost{" "}
+                                      Total Kapital Cost
                                     </CTableDataCell>
                                     <CTableDataCell> 15.37 </CTableDataCell>
                                   </CTableRow>
 
                                   <CTableRow>
                                     <CTableDataCell>
-                                      {" "}
-                                      Total Kapital Cost{" "}
+                                      Total Kapital Cost
                                     </CTableDataCell>
                                     <CTableDataCell> 15.37 </CTableDataCell>
                                   </CTableRow>
 
                                   <CTableRow>
                                     <CTableDataCell>
-                                      {" "}
-                                      Total Kapital Cost{" "}
+                                      Total Kapital Cost
                                     </CTableDataCell>
                                     <CTableDataCell> 15.37 </CTableDataCell>
                                   </CTableRow>
                                   <CTableRow>
                                     <CTableDataCell>
-                                      {" "}
-                                      Total Kapital Cost{" "}
-                                    </CTableDataCell>
-                                    <CTableDataCell> 15.37 </CTableDataCell>
-                                  </CTableRow>
-
-                                  <CTableRow>
-                                    <CTableDataCell>
-                                      {" "}
-                                      Total Kapital Cost{" "}
-                                    </CTableDataCell>
-                                    <CTableDataCell> 15.37 </CTableDataCell>
-                                  </CTableRow>
-                                  <CTableRow>
-                                    <CTableDataCell>
-                                      {" "}
-                                      Total Kapital Cost{" "}
+                                      Total Kapital Cost
                                     </CTableDataCell>
                                     <CTableDataCell> 15.37 </CTableDataCell>
                                   </CTableRow>
 
                                   <CTableRow>
                                     <CTableDataCell>
-                                      {" "}
-                                      Total Kapital Cost{" "}
+                                      Total Kapital Cost
                                     </CTableDataCell>
                                     <CTableDataCell> 15.37 </CTableDataCell>
                                   </CTableRow>
                                   <CTableRow>
                                     <CTableDataCell>
-                                      {" "}
-                                      Total Kapital Cost{" "}
+                                      Total Kapital Cost
                                     </CTableDataCell>
                                     <CTableDataCell> 15.37 </CTableDataCell>
                                   </CTableRow>
 
                                   <CTableRow>
                                     <CTableDataCell>
-                                      {" "}
-                                      Total Kapital Cost{" "}
+                                      Total Kapital Cost
+                                    </CTableDataCell>
+                                    <CTableDataCell> 15.37 </CTableDataCell>
+                                  </CTableRow>
+                                  <CTableRow>
+                                    <CTableDataCell>
+                                      Total Kapital const
+                                    </CTableDataCell>
+                                    <CTableDataCell> 15.37 </CTableDataCell>
+                                  </CTableRow>
+
+                                  <CTableRow>
+                                    <CTableDataCell>
+                                      Total Kapital Cost
                                     </CTableDataCell>
                                     <CTableDataCell> 15.37 </CTableDataCell>
                                   </CTableRow>
@@ -672,33 +522,6 @@ const Realtime = () => {
                   </CCol>
                 </CContainer>
               </CCol>
-
-<<<<<<< HEAD
-              <CTableRow>
-                <CTableDataCell> Total Kapital Cost </CTableDataCell>
-                <CTableDataCell> 15.37 </CTableDataCell>
-              </CTableRow>
-              <CTableRow>
-                <CTableDataCell> Total Kapital Cost </CTableDataCell>
-                <CTableDataCell> 15.37 </CTableDataCell>
-              </CTableRow>
-
-              <CTableRow>
-                <CTableDataCell> Total Kapital Cost </CTableDataCell>
-                <CTableDataCell> 15.37 </CTableDataCell>
-              </CTableRow>
-          </CTableBody>
-        </CTable>
-    </CCardBody>
-        </CCol>
-        </CRow>
-      </CCardBody>
-    </CCard>
-  </CCol>
-  
-                        </CContainer>
-                    </CCol>
-
 
   <CCol xs={2}>
           <CCol sm={12}>
@@ -750,67 +573,11 @@ const Realtime = () => {
                                 <h5 className='text-title-card-realtime'> {item.parameter} </h5>
                                 <p className='text-card-realtime'> {item.value} </p>
                             </div>
-=======
-              <CCol xs={2}>
-                <CCol sm={12}>
-                  {realtimes_pembangkit.map((item, index) => {
-                    return (
-                      <div key={index} className="py-2">
-                        <div className="card-realtime-success">
-                          <div className="card-body-realtime">
-                            <h5 className="text-title-card-realtime">
-                              {" "}
-                              {item.parameter}{" "}
-                            </h5>
-                            <p className="text-card-realtime"> {item.value} </p>
-                          </div>
->>>>>>> bfac693b025347cda2f1a37466399074376769e0
                         </div>
                       </div>
                     );
                   })}
-
-                  <div className="py-5">
-                    {realtimes_pembangkit_PLTU.map((item, index) => {
-                      return (
-                        <div key={index} className="py-2">
-                          <div className="card-realtime-primary">
-                            <div className="card-body-realtime">
-                              <h5 className="text-title-card-realtime">
-                                {" "}
-                                {item.parameter}{" "}
-                              </h5>
-                              <p className="text-card-realtime">
-                                {" "}
-                                {item.value}{" "}
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-
-                  <div className="py-1">
-                    {realtimes_pembangkit_Plan.map((item, index) => {
-                      return (
-                        <div key={index} className="py-2">
-                          <div className="card-realtime-grey">
-                            <div className="card-body-realtime">
-                              <h5 className="text-title-card-realtime">
-                                {" "}
-                                {item.parameter}{" "}
-                              </h5>
-                              <p className="text-card-realtime">
-                                {" "}
-                                {item.value}{" "}
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
+                </div>
                 </CCol>
               </CCol>
             </CRow>
