@@ -1,8 +1,8 @@
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Overview from './pages/Overview';
 import { Reports, ReportsOne, ReportsTwo, ReportsThree } from './pages/Reports';
 import User_page from './pages/user';
+import UserInvalid_page from './pages/user_invalid';
 import Forum from './pages/Forum';
 import Signin from './pages/Signin';
 import Signup from './pages/Signup';
@@ -22,6 +22,7 @@ function App() {
         <Route path='/reports/reports2' exact component={ReportsTwo} />
         <Route path='/reports/reports3' exact component={ReportsThree} />
         <Route path='/overview/users' exact component={User_page} />
+        <Route path='/overview/usersinvalid' exact component={UserInvalid_page} />
         <Route path='/dataoperasi' exact component={Dataoperasi} />
         <Route path='/dokumentation' exact component={Dokumentation} />
         <Route path='/forum' exact component={Forum} />

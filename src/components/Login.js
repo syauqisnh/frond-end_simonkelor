@@ -1,9 +1,16 @@
-import React from "react";
+import React, {useState} from "react";
+import axios from "axios";
+
+import {
+  CCardBody,
+  CCol,
+  CRow,
+  CForm,
+  CFormInput,
+  CInputGroup,
+} from '@coreui/react'
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import TextField from '@mui/material/TextField';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
@@ -45,13 +52,50 @@ const theme = createTheme({
 
 
 export default function SignInSide() {
-  const handleSubmit = (event) => {
+
+  const [validation, setValidation] = useState([]);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+  //   try {
+  //     const response = await axios.post(
+  //       "http://localhost:8000/api/login",
+  //       {
+  //         email,
+  //         password,
+  //       }
+  //     );
+  //     localStorage.setItem("token", response.data.token);
+  //     window.location.href = "/"; 
+  //   } catch (error) {
+  //     setValidation(error.response.data);
+  //   }
+
+  //   // const data = new FormData(event.currentTarget);
+  //   // console.log({
+  //   //   email: data.get('email'),
+  //   //   password: data.get('password'),
+  //   // });
+
+  // };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/api/login",
+        {
+          email,
+          password,
+        }
+      );
+      localStorage.setItem("token", response.data.token);
+      window.location.href = "/"; 
+    } catch (error) {
+      setValidation(error.response.data);
+    }
   };
 
   return (
@@ -59,13 +103,6 @@ export default function SignInSide() {
       <Grid container component="main" className="grid">
           <img alt='' src={welcomeimg}
           className="gambar"
-        //   style={{height:600, width:600,}}
-        //   sx={{
-        //   height: 233,
-        //   width: 350,
-        //   maxHeight: { xs: 233, md: 167 },
-        //   maxWidth: { xs: 350, md: 250 },
-        // }}
           />
         <Grid  className="paper" item mt={3} md={3}>
         <Paper
@@ -96,35 +133,49 @@ export default function SignInSide() {
               Welcome Back!
             </Typography>
             <h6 style={{color: '#525252'}}>Please enter your username and password</h6>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="Email"
-                name="email"
-                autoComplete="email"
-                autoFocus
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-              />
-              <FormControlLabel
-                style={{color: '#525252'}}
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-                margin="left"
-              />
+                      {
+                        validation.message && (
+                          <div className='alert alert-danger'>
+                            {validation.message}
+                          </div>
+                        )
+                      }
+                      
+                <CCardBody>
+                  <CForm onSubmit={handleSubmit}>
+                    <CInputGroup className="mb-3">
+
+                      <CFormInput 
+                      margin="normal"
+                      required
+                      fullWidth
+                      type='email' 
+                      name='email' 
+                      placeholder="Email" 
+                      autoComplete="email" 
+                      value={email} 
+                      onChange={(e) => setEmail(e.target.value)} />
+
+                    </CInputGroup>
+
+                    <CInputGroup className="mb-4">
+
+                      <CFormInput 
+                      margin="normal"
+                      required
+                      fullWidth
+                      type="password"
+                      placeholder="Password"
+                      autoComplete="current-password"
+                      value={password} 
+                      onChange={(e) => setPassword(e.target.value)}
+                      />
+
+                    </CInputGroup>
+
+                    <CRow>
+                      <CCol xs={12}>
               <Button
-                href="/"
                 type="submit"
                 fullWidth
                 variant="contained"
@@ -141,7 +192,55 @@ export default function SignInSide() {
                 </Grid>
               </Grid>
               <Copyright sx={{ mt: 2 }} />
-            </Box>
+                      </CCol>
+                      <CCol xs={6} className="text-right">
+                      </CCol>
+                    </CRow>
+                  </CForm>
+                  
+                </CCardBody>
+            {/* <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email"
+                name="email"
+                autoComplete="email"
+                value={email} 
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                value={password} 
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 2, mb: 2 }}
+                Color="primary"
+              >
+                Sign In
+              </Button>
+              <Grid container>
+                <Grid item sx={{ mb: 1}}> 
+                  <Link href="Signup" variant="body2" style={{color: '#525252'}}>
+                    {"Don't have an account? Sign Up"}
+                  </Link>
+                </Grid>
+              </Grid>
+              <Copyright sx={{ mt: 2 }} />
+            </Box> */}
            </Box>
           </Paper>
         </Grid>

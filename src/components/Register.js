@@ -1,6 +1,6 @@
-import React from "react";
+import axios from "axios";
+import React, {useState} from "react";
 import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
 import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
@@ -8,7 +8,15 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import welcomeimg from '../assets/images/register.svg';
-import MenuItem from '@mui/material/MenuItem';
+import {
+  CCardBody,
+  CForm,
+  CFormInput,
+  CFormSelect,
+  CInputGroup,
+  CInputGroupText,
+  CRow,
+} from '@coreui/react'
 
 function Copyright(props) {
   return (
@@ -60,13 +68,46 @@ const unit = [
 ];
 
 export default function SignUpSide() {
-  const handleSubmit = (event) => {
+  const [validation, setValidation] = useState([]);
+
+  const [nama_users, setNama] = useState("");
+  const [nips, setNip] = useState("");
+  const [instansis, setInstansi] = useState("");
+  const [roles, setRole] = useState("");
+  const [emails, setEmail] = useState("");
+  const [passwords, setPassword] = useState("");
+  const [password_confirmation, setPassword_confirmation] = useState("");
+
+  
+
+  const save_user = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    try {
+      await axios.post(
+        `http://localhost:8000/api/user_registrasi`,
+        {
+          nama_user: nama_users,
+          nip: nips,
+          instansi: instansis,
+          role: roles,
+          email: emails,
+          password: passwords,
+          password_confirmation: password_confirmation,
+        });
+        alert("registrasi berhasil")
+        setNama("");
+        setNip("");
+        setInstansi("");
+        setRole("");
+        setEmail("");
+        setPassword("");
+        setPassword_confirmation("");
+        
+        window.location.href = "/signin"; 
+
+    } catch (error) {
+      setValidation(error.response.data);
+    }
   };
 
   return (
@@ -101,8 +142,136 @@ export default function SignUpSide() {
             <Typography variant="h4" style={{fontWeight: 'bold', color: '#311E69'}}>
               Sign Up Here!
             </Typography>
+              <CCardBody className="p-4">
+
+                <CForm onSubmit={save_user}>
+
+                    {
+                      validation.message && (
+                        <div className='alert alert-danger'>
+                          {validation.message}
+                        </div>
+                      )
+                    }
+
+                  <CInputGroup className="mb-3">
+                    <CFormInput 
+                      margin="dense"
+                      required
+                      type='text' 
+                      name='nama_user' 
+                      placeholder="Nama Lengkap" 
+                      autoComplete="Nama Lengkap" 
+                      onChange={(e) => setNama(e.target.value)}
+                      value={nama_users} 
+                    />
+                  </CInputGroup>
+
+                  <CInputGroup className="mb-3">
+                    <CFormInput 
+                      margin="dense"
+                      required
+                      type='text' 
+                      name='nip' 
+                      placeholder="NIP" 
+                      autoComplete="NIP"
+                      onChange={(e) => setNip(e.target.value)} 
+                      value={nips} 
+                    />
+                  </CInputGroup>
+
+                  <CInputGroup className="mb-3">
+                    <CFormInput
+                      margin="dense"
+                      required
+                     type='text' 
+                     name='instansi' 
+                     placeholder="Instansi" 
+                     autoComplete="instansi"
+                     onChange={(e) => setInstansi(e.target.value)}
+                     value={instansis} 
+                    />
+                  </CInputGroup>
+
+                  <CInputGroup className="mb-3">
+                    <CFormSelect
+                      margin="dense"
+                      required
+                        type="text"
+                        name='role'
+                        onChange={(e) => setRole(e.target.value)}
+                        value={roles} 
+                    >
+                        <option className='text-secondary'>--- pilih Role ---</option>
+                        <option value="Super Admin">Super Admin</option>
+                        <option value="Admin Dispacher" >Admin Dispacher</option>
+                        <option value="Admin Pembangkit">Admin Pembangkit</option>
+                        <option value="Pegawai">Pegawai</option>
+                    </CFormSelect>
+                  </CInputGroup>
+
+                  <CInputGroup className="mb-3">
+                    <CFormInput
+                      margin="dense"
+                      required
+                      type='email'
+                      name='email'
+                      placeholder="Email" 
+                      autoComplete="email" 
+                      onChange={(e) => setEmail(e.target.value)}
+                      value={emails} 
+                    />
+                  </CInputGroup>
+
+                  <CInputGroup className="mb-3">
+                    <CFormInput
+                      margin="dense"
+                      required
+                      type="password"
+                      name='password'
+                      placeholder="Password"
+                      autoComplete="new-password"
+                      onChange={(e) => setPassword(e.target.value)}
+                      value={passwords} 
+                    />
+
+                  </CInputGroup>
+                  <CInputGroup className="mb-4">
+                    <CFormInput
+                      margin="dense"
+                      required
+                      type="password"
+                      name='password_confirmation'
+                      placeholder="Konfirmasi password"
+                      autoComplete="new-password"
+                      onChange={(e) => setPassword_confirmation(e.target.value)}
+                      value={password_confirmation} 
+                    />
+
+                  </CInputGroup>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 1, mb: 1 }}
+                color="primary"
+              >
+                Sign Up
+              </Button>
+              <Grid container>
+                <Grid item sx={{ mb: 1}}> 
+                  <Link href="Signin" variant="body2" style={{color: '#525252'}}>
+                    {"Already have an account? Sign In"}
+                  </Link>
+                </Grid>
+              </Grid>
+              <Copyright sx={{ mt: 1 }} />
+                </CForm>
+
+              </CCardBody>
             {/* <h6 style={{color: '#525252'}}>Please enter your username and password</h6> */}
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+
+            {/* <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
             <TextField
                 margin="dense"
                 required
@@ -214,7 +383,7 @@ export default function SignUpSide() {
                 </Grid>
               </Grid>
               <Copyright sx={{ mt: 1 }} />
-            </Box>
+            </Box> */}
            </Box>
           </Paper>
         </Grid>

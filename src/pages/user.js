@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import {
   CContainer,
   CCard,
@@ -6,7 +7,6 @@ import {
   CCardBody,
   CCol,
   CRow,
-  CButton,
   CTable,
   CTableBody,
   CTableDataCell,
@@ -23,6 +23,9 @@ import * as BsIcons from 'react-icons/bs';
 
 const User_page = () => {
     
+    const [data_user_admin, setDataUserAdmin] = useState([]);
+    const [data_user_pegawai, setDataUserPegawai] = useState([]);
+
     const [id, setId] = useState("");
     const [nama_users, setNama] = useState("");
     const [nips, setNip] = useState("");
@@ -32,6 +35,7 @@ const User_page = () => {
     const [passwords, setPassword] = useState("");
   
     const [show, setShow] = useState(false);
+    const [show_edit, setShow_edit] = useState(false);
     
   const handleClose = () => {
     setId("");
@@ -41,9 +45,70 @@ const User_page = () => {
     setRole("");
     setEmail("");
     setShow(false);
+    setShow_edit(false);
+  }
+
+  const SetdataUpdate = (data) => {
+    setId(data.user_id);
+    setNama(data.nama_user);
+    setNip(data.nip);
+    setInstansi(data.instansi);
+    setRole(data.role);
+    setEmail(data.email);
+
+    setShow_edit(true);
   }
 
   const handleShow = () => setShow(true);
+
+  useEffect(() => {
+    const GetUserAdmin = async () =>{
+      const get_admin = await axios.get(`
+      http://localhost:8000/api/admin/
+      `);
+      setDataUserAdmin(get_admin.data.data);
+      console.log(get_admin);
+    };
+    GetUserAdmin();
+  }, []);
+
+  useEffect(() => {
+    const GetUserPegawai = async () =>{
+      const get_pegawai = await axios.get(`
+      http://localhost:8000/api/pegawai/`
+      );
+      setDataUserPegawai(get_pegawai.data.data);
+    };
+    GetUserPegawai();
+  }, []);
+  
+  const update_user = async (event) => {
+    event.preventDefault();
+    try {
+      await axios.put(
+        `http://localhost:8000/api/update_user/${id}`,
+        {
+          nama_user: nama_users,
+          nip: nips,
+          instansi: instansis,
+          role: roles,
+          email: emails,
+
+        });
+        alert("Data Berhasil diubah")
+        setId("");
+        setNama("");
+        setNip("");
+        setInstansi("");
+        setRole("");
+        setEmail("");
+        handleClose();
+        window.location.reload();
+
+    } catch (error) {
+        alert("Data Gagal diubah")
+    }
+  };
       
   return (
     <>
@@ -78,6 +143,77 @@ const User_page = () => {
               </Button>
 
 {/* Modal */}
+{/* Modal Update */}
+
+<Modal show={show_edit} onHide={handleClose}>
+                <Modal.Header closeButton>
+                  <Modal.Title>Form Update Data</Modal.Title>
+                  </Modal.Header>
+                    <Modal.Body>
+                      <Form onSubmit={update_user}>
+                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                            </Form.Group>
+                              <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                <Form.Label>Nama User</Form.Label>
+                                <Form.Control
+                                  type="text"
+                                  autoFocus
+                                  onChange={(e) => setNama(e.target.value)}
+                                  value={nama_users}
+                                />
+                                </Form.Group>
+                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                    <Form.Label>NIP User</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        autoFocus
+                                        onChange={(e) => setNip(e.target.value)}
+                                        value={nips}
+                                    />
+                                </Form.Group>
+                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                    <Form.Label>Instansi User</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        autoFocus
+                                        onChange={(e) => setInstansi(e.target.value)}
+                                        value={instansis}
+                                    />
+                                </Form.Group>
+                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                    <Form.Label>Role User</Form.Label>
+                                    <Form.Select
+                                        type="text"
+                                        autoFocus
+                                        onChange={(e) => setRole(e.target.value)}
+                                    >
+                                    <option value={roles} selected>{roles}</option>
+                                    <option value="Super Admin">Super Admin</option>
+                                    <option value="Admin Dispacher" >Admin Dispacher</option>
+                                    <option value="Admin Pembangkit">Admin Pembangkit</option>
+                                    <option value="Pegawai">Pegawai</option>
+                                    </Form.Select>
+                                </Form.Group>
+                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                    <Form.Label>Email User</Form.Label>
+                                    <Form.Control
+                                        type="email"
+                                        autoFocus
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        value={emails}
+                                    />
+                                </Form.Group>
+                                <Button type='submit' color="primary" className="px-4">
+                                  Update
+                                </Button>
+                            </Form>
+                            </Modal.Body>
+                            <Modal.Footer>
+                                <Button variant="secondary" onClick={handleClose}>
+                                    Close
+                                </Button>
+                            </Modal.Footer>
+                        </Modal>
 {/* Modal Add */}
                         <Modal show={show} onHide={handleClose}>
                             <Modal.Header closeButton>
@@ -173,104 +309,109 @@ const User_page = () => {
                             </Modal.Footer>
                         </Modal>
                             
-<CCol xs={12}>
-    <CCard className="mt-5">
-        <CCardHeader>
-            <strong>Tabel Data User</strong>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-medium-emphasis small">
-              Tabel ini menampilkan seluruh data Pembangkit
-            </p>
-        <CTable striped>
-          <CTableHead>
-                  <CTableRow>
-                    <CTableHeaderCell scope="col">Nama</CTableHeaderCell>
-                    <CTableHeaderCell scope="col">NIP</CTableHeaderCell>
-                    <CTableHeaderCell scope="col">Instansi</CTableHeaderCell>
-                    <CTableHeaderCell scope="col">Email</CTableHeaderCell>
-                    <CTableHeaderCell scope="col">Role</CTableHeaderCell>
-                  </CTableRow>
-          </CTableHead>
-          <CTableBody>
+                            <CCol xs={12}>
+                                <CCard className="mt-5">
+                                    <CCardHeader>
+                                        <strong>Tabel Data User Admin</strong>
+                                      </CCardHeader>
+                                      <CCardBody>
+                                        <p className="text-medium-emphasis small">
+                                          Tabel ini menampilkan seluruh data user admin
+                                        </p>
+                                    <CTable striped>
+                                      <CTableHead>
+                                              <CTableRow>
+                                                <CTableHeaderCell scope="col">Nama</CTableHeaderCell>
+                                                <CTableHeaderCell scope="col">NIP</CTableHeaderCell>
+                                                <CTableHeaderCell scope="col">Instansi</CTableHeaderCell>
+                                                <CTableHeaderCell scope="col">Email</CTableHeaderCell>
+                                                <CTableHeaderCell scope="col">Role</CTableHeaderCell>
+                                              </CTableRow>
+                                      </CTableHead>
+                                      <CTableBody>
+                                        
+                                        {data_user_admin.map((item) => {
+                                          return(
+                                            <CTableRow>
+                                              <CTableDataCell> {item.nama_user} </CTableDataCell>
+                                              <CTableDataCell> {item.nip} </CTableDataCell>
+                                              <CTableDataCell> {item.instansi} </CTableDataCell>
+                                              <CTableDataCell> {item.email} </CTableDataCell>
+                                              <CTableDataCell> {item.role} </CTableDataCell>
+                                              <CTableDataCell> 
+                                                <BsIcons.BsPencilSquare                       
+                                                  onClick={() => {
+                                                    // handleShow_edit(item.id);
+                                                    SetdataUpdate(item);
+                                                  }}
+                                                />
+                                                <AiIcons.AiFillDelete
+                                                    // onClick={() => {
+                                                    //   HandleDelete(item.user_id);
+                                                    // }}
+                                                />
+                                              </CTableDataCell>
+                                            </CTableRow>
+                                          )
+                                        })}
+                                      </CTableBody>
+                                    </CTable>
+                                      </CCardBody>
+                                    </CCard>
+                            </CCol>
+                            
+                            <CCol xs={12}>
+                                <CCard className="mt-5">
+                                    <CCardHeader>
+                                        <strong>Tabel Data User Pegawai</strong>
+                                      </CCardHeader>
+                                      <CCardBody>
+                                        <p className="text-medium-emphasis small">
+                                          Tabel ini menampilkan seluruh data user pegawai
+                                        </p>
+                                    <CTable striped>
+                                      <CTableHead>
+                                              <CTableRow>
+                                                <CTableHeaderCell scope="col">Nama</CTableHeaderCell>
+                                                <CTableHeaderCell scope="col">NIP</CTableHeaderCell>
+                                                <CTableHeaderCell scope="col">Instansi</CTableHeaderCell>
+                                                <CTableHeaderCell scope="col">Email</CTableHeaderCell>
+                                                <CTableHeaderCell scope="col">Role</CTableHeaderCell>
+                                              </CTableRow>
+                                      </CTableHead>
+                                      <CTableBody>
+                                        
+                                        {data_user_pegawai.map((item) => {
+                                          return(
+                                            <CTableRow>
+                                              <CTableDataCell> {item.nama_user} </CTableDataCell>
+                                              <CTableDataCell> {item.nip} </CTableDataCell>
+                                              <CTableDataCell> {item.instansi} </CTableDataCell>
+                                              <CTableDataCell> {item.email} </CTableDataCell>
+                                              <CTableDataCell> {item.role} </CTableDataCell>
+                                              <CTableDataCell> 
+                                                <BsIcons.BsPencilSquare                       
+                                                  onClick={() => {
+                                                    // handleShow_edit(item.id);
+                                                    SetdataUpdate(item);
+                                                  }}
+                                                />
+                                                <AiIcons.AiFillDelete
+                                                    // onClick={() => {
+                                                    //   HandleDelete(item.user_id);
+                                                    // }}
+                                                />
+                                              </CTableDataCell>
+                                            </CTableRow>
+                                          )
+                                        })}
 
-          <CTableRow>
-                <CTableDataCell> Nurafiif Almas Azhari </CTableDataCell>
-                <CTableDataCell> V3921024 </CTableDataCell>
-                <CTableDataCell> Universitas Sebelas Maret </CTableDataCell>
-                <CTableDataCell> nurafiifalmasazhr@gmail.com </CTableDataCell>
-                <CTableDataCell> Super Admin </CTableDataCell>
-                <CTableDataCell> 
-                    <AiIcons.AiOutlineUser
-                    />
-                    <BsIcons.BsPencilSquare/>
-                    <AiIcons.AiFillDelete
-                        // onClick={() => {
-                        //   HandleDelete(item.user_id);
-                        // }}
-                    />
-                </CTableDataCell>
-              </CTableRow>
-              
-              <CTableRow>
-                <CTableDataCell> Nurafiif Almas Azhari </CTableDataCell>
-                <CTableDataCell> V3921024 </CTableDataCell>
-                <CTableDataCell> Universitas Sebelas Maret </CTableDataCell>
-                <CTableDataCell> nurafiifalmasazhr@gmail.com </CTableDataCell>
-                <CTableDataCell> Super Admin </CTableDataCell>
-                <CTableDataCell> 
-                    <AiIcons.AiOutlineUser
-                    />
-                    <BsIcons.BsPencilSquare/>
-                    <AiIcons.AiFillDelete
-                        // onClick={() => {
-                        //   HandleDelete(item.user_id);
-                        // }}
-                    />
-                </CTableDataCell>
-              </CTableRow>
-              
-              <CTableRow>
-                <CTableDataCell> Nurafiif Almas Azhari </CTableDataCell>
-                <CTableDataCell> V3921024 </CTableDataCell>
-                <CTableDataCell> Universitas Sebelas Maret </CTableDataCell>
-                <CTableDataCell> nurafiifalmasazhr@gmail.com </CTableDataCell>
-                <CTableDataCell> Super Admin </CTableDataCell>
-                <CTableDataCell> 
-                    <AiIcons.AiOutlineUser
-                    />
-                    <BsIcons.BsPencilSquare/>
-                    <AiIcons.AiFillDelete
-                        // onClick={() => {
-                        //   HandleDelete(item.user_id);
-                        // }}
-                    />
-                </CTableDataCell>
-              </CTableRow>
-              
-              <CTableRow>
-                <CTableDataCell> Nurafiif Almas Azhari </CTableDataCell>
-                <CTableDataCell> V3921024 </CTableDataCell>
-                <CTableDataCell> Universitas Sebelas Maret </CTableDataCell>
-                <CTableDataCell> nurafiifalmasazhr@gmail.com </CTableDataCell>
-                <CTableDataCell> Super Admin </CTableDataCell>
-                <CTableDataCell> 
-                    <AiIcons.AiOutlineUser
-                    />
-                    <BsIcons.BsPencilSquare/>
-                    <AiIcons.AiFillDelete
-                        // onClick={() => {
-                        //   HandleDelete(item.user_id);
-                        // }}
-                    />
-                </CTableDataCell>
-              </CTableRow>
-          </CTableBody>
-        </CTable>
-          </CCardBody>
-        </CCard>
-</CCol>
-  
+                                      </CTableBody>
+                                    </CTable>
+                                      </CCardBody>
+                                    </CCard>
+                            </CCol>
+
                         </CContainer>
                     </CCol>
 
@@ -283,4 +424,3 @@ const User_page = () => {
 };
 
 export default User_page;
- 

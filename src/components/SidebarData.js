@@ -20,6 +20,19 @@ export const SidebarData = [
     icon: <AiOutlineLineChart />
   },
   {
+    title: 'Login',
+    path: '/signin',
+    icon: <BiLogInCircle />
+  }
+];
+
+export const SidebarData_Admin = [
+  {
+    title: 'Realtime',
+    path: '/realtime',
+    icon: <AiOutlineLineChart />
+  },
+  {
     title: 'Daftar Data User',
     icon: <AiFillDatabase />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
@@ -33,7 +46,7 @@ export const SidebarData = [
       },
       {
         title: 'Tabel User Nonaktif',
-        path: '/overview/revenue',
+        path: '/overview/usersinvalid',
         icon: <AiFillDatabase />
       }
     ]
@@ -74,9 +87,55 @@ export const SidebarData = [
     path: '/Forum',
     icon: <BiMessageRounded />
   },
+];
+
+export const SidebarData_Dispacher = [
   {
-    title: 'Login',
-    path: '/signin',
-    icon: <BiLogInCircle />
-  }
+    title: 'Realtime',
+    path: '/realtime',
+    icon: <AiOutlineLineChart />
+  },
+  {
+    title: 'Daftar Data Pengolahan',
+    icon: <BsDatabaseFillAdd />,
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
+
+    subNav: [
+      {
+        title: 'Tabel Tegangan',
+        path: '/reports/reports2',
+        icon: <BsDatabaseFillAdd />,
+        cName: 'sub-nav'
+      },
+    ]
+  },
+  {
+    title: 'Dokumentation',
+    path: '/dokumentation',
+    icon: <AiIcons.AiFillFolderOpen />
+  },
+  {
+    title: 'Forum',
+    path: '/Forum',
+    icon: <BiMessageRounded />
+  },
+];
+
+export const SidebarData_Pegawai = [
+  {
+    title: 'Realtime',
+    path: '/realtime',
+    icon: <AiOutlineLineChart />
+  },
+  {
+    title: 'Dokumentation',
+    path: '/dokumentation',
+    icon: <AiIcons.AiFillFolderOpen />
+  },
+  {
+    title: 'Forum',
+    path: '/Forum',
+    icon: <BiMessageRounded />
+  },
 ];

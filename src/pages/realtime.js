@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import {
   CContainer,
   CCard,
@@ -20,11 +21,51 @@ import Sidebar from '../components/Sidebar';
 import { useEffect } from 'react';
 
 const Realtime = () => {
+  const [realtimes, setRealtime] = useState([]);
+  const [realtimes_pltu, setRealtimePLTU] = useState([]);
+  const [realtimes_plant, setRealtimePLANT] = useState([]);
+  const [date_realtimes, setDateRealtime] = useState([]);
+
+  const fetchData = async () => {
+   axios.get(`
+    http://localhost:8000/api/realtimes
+  `).then((response) => {
+      console.log(response.data.data);
+      setRealtime(response.data.data);
+  })
+   
+  axios.get(`
+    http://localhost:8000/api/realtimes/PLTU
+  `).then((response) => {
+      console.log(response.data.data);
+      setRealtimePLTU(response.data.data);
+  })
+
+  axios.get(`
+    http://localhost:8000/api/realtimes/PLANT
+  `).then((response) => {
+      console.log(response.data.data);
+      setRealtimePLANT(response.data.data);
+  })
+
+  axios.get(`
+  http://localhost:8000/api/realtimes/get_date
+  `).then((response) => {
+      console.log(response.data.data);
+      setDateRealtime(response.data.data);
+  })
+  
+  }
+  useEffect(() => {
+      fetchData();
+      setRealtimes_langgam(data);
+      setRealtimes_langgam_prediksi(data_prediksi);
+  }, []);
 
     const [realtimes_langgam, setRealtimes_langgam] = useState([]);
-    const [realtimes_pembangkit, setRealtimes_pembangkit] = useState([]);
-    const [realtimes_pembangkit_PLTU, setRealtimes_pembangkitPLTU] = useState([]);
-    const [realtimes_pembangkit_Plan, setRealtimes_pembangkitPlan] = useState([]);
+    // const [realtimes_pembangkit, setRealtimes_pembangkit] = useState([]);
+    // const [realtimes_pembangkit_PLTU, setRealtimes_pembangkitPLTU] = useState([]);
+    // const [realtimes_pembangkit_Plan, setRealtimes_pembangkitPlan] = useState([]);
     const [realtimes_langgam_prediksi, setRealtimes_langgam_prediksi] = useState([]);
   
       const data = [ 70.00, 69.43, 68.49 , 68.29 , 67.40 , 67.17 , 66.18 , 65.51 , 65.96 , 65.57 , 64.93 , 64.87 , 63.23 , 60.69 , 59.98 , 59.52 ,
@@ -34,81 +75,6 @@ const Realtime = () => {
       const data_prediksi = [ 69.43, 68.49 , 68.29 , 67.40 , 67.17 , 66.18 , 65.51 , 65.96 , 65.57 , 64.93 , 64.87 , 63.23 , 60.69 , 59.98 , 59.52 ,
         59.61 , 57.52 , 55.49 , 55.43 , 55.58 , 55.90 , 55.62 , 55.68 , 55.39 , 55.16 , 55.72 , 56.42 , 55.87 , 55.60 , 55.51 , 55.39 , 54.16 ,
         54.85 , 55.25 , 57.03 , 60.61 , 68.81 , 81.01 , 85.76 , 84.47 , 83.23 , 82.42 , 81.08 , 79.41 , 77.64 , 75.76 , 73.64 , 73.09 ,]
-    
-      const data_pembangkit = [
-        {
-          parameter : 'Beban Pembangkit',
-          value : 144,
-        },
-        {
-          parameter : 'Frequency',
-          value : 34.00,
-        },
-        {
-          parameter : 'Losses',
-          value : 45.00,
-        },
-        {
-          parameter : 'Fuelmix',
-          value : 32.00,
-        },
-      ]
-
-      const data_pembangkit2 = [
-        {
-          parameter : 'PLTU BOLOK UNIT 1',
-          value : 144,
-        },
-        {
-          parameter : 'PLTU BOLOK UNIT 2',
-          value : 34.00,
-        },
-        {
-          parameter : 'PLTU IPP KUPANG BARU UNIT 1',
-          value : 45.00,
-        },
-        {
-          parameter : 'PLTU IPP KUPANG BARU UNIT 2',
-          value : 32.00,
-        },
-      ]
-
-      const data_pembangkit3 = [
-        {
-          parameter : 'PLTD COGINDO (PLANT)',
-          value : 144,
-        },
-        {
-          parameter : 'PLTMG KPG PEAKER (PLANT)',
-          value : 34.00,
-        },
-        {
-          parameter : 'ULPL KUPANG NIGATA (PLANT)',
-          value : 45.00,
-        },
-        {
-          parameter : 'ULPL ATAMBUA SWD (PLANT)',
-          value : 32.00,
-        },
-      ]
-      // setTimeout(() => {
-      //     console.log(data);
-      //     setRealtimes_langgam(data);
-      //     setRealtimes_langgam_prediksi(data_prediksi);
-      //     setRealtimes_pembangkit(data_pembangkit);
-      //     setRealtimes_pembangkitPLTU
-      //   // })
-      // }, 1000);
-
-      
-  useEffect(() => {
-        console.log(data);
-        setRealtimes_langgam(data);
-        setRealtimes_langgam_prediksi(data_prediksi);
-        setRealtimes_pembangkit(data_pembangkit);
-        setRealtimes_pembangkitPLTU(data_pembangkit2);
-        setRealtimes_pembangkitPlan(data_pembangkit3)
-  }, []);
       
   return (
     <>
@@ -130,11 +96,19 @@ const Realtime = () => {
 
   <CCol xs={2}>
     <div className='py-5'>
-            <div className="card-realtime-update">
-                <div className='card-body-realtime'>
-                    <h5 className='text-title-card-realtime'>UPDATE <span className='text-card-realtime'>2 April 2023  pukul 19.40.22</span> </h5>
-                </div>
-            </div>
+
+{date_realtimes.map((item, index) => {
+  return(
+    <div key={index} className="card-realtime-update">
+        <div className='card-body-realtime'>
+            <h5 className='text-title-card-realtime'>
+              UPDATE <br/> 
+              <span className='text-card-realtime'>{item.date}</span> 
+            </h5>
+        </div>
+    </div>
+  )
+})}
     </div> 
   </CCol>
 
@@ -429,13 +403,13 @@ const Realtime = () => {
   <CCol xs={2}>
           <CCol sm={12}>
 
-            {realtimes_pembangkit.map((item, index) => {
+            {realtimes.map((item, index) => {
               return(
                   <div key={index} className='py-2'>
                       <div className="card-realtime-success">
                           <div className='card-body-realtime'>
-                              <h5 className='text-title-card-realtime'> {item.parameter} </h5>
-                              <p className='text-card-realtime'> {item.value} </p>
+                              <h5 className='text-title-card-realtime'> {item[0].parameter} </h5>
+                              <p className='text-card-realtime'> {item[0].value} </p>
                           </div>
                       </div>
                   </div>
@@ -444,13 +418,21 @@ const Realtime = () => {
               
             <div className='py-5'>
 
-            {realtimes_pembangkit_PLTU.map((item, index) => {
+            {realtimes_pltu.map((item, index) => {
               return(
                   <div key={index} className='py-2'>
                     <div className="card-realtime-primary">
                           <div className='card-body-realtime'>
-                              <h5 className='text-title-card-realtime'> {item.parameter} </h5>
-                              <p className='text-card-realtime'> {item.value} </p>
+                              <h5 className='text-title-card-realtime'> {item[0].parameter} </h5>
+                              <p className='text-card-realtime'> {item[0].value} </p>
+                          </div>
+                      </div>
+                      
+                    <div className="py-2"/>
+                    <div className="card-realtime-primary">
+                          <div className='card-body-realtime'>
+                              <h5 className='text-title-card-realtime'> {item[1].parameter} </h5>
+                              <p className='text-card-realtime'> {item[1].value} </p>
                           </div>
                       </div>
                   </div>
@@ -460,7 +442,7 @@ const Realtime = () => {
               
               <div className='py-1'>
   
-              {realtimes_pembangkit_Plan.map((item, index) => {
+              {realtimes_plant.map((item, index) => {
                 return(
                     <div key={index} className='py-2'>
                       <div className="card-realtime-grey">
