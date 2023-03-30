@@ -1,10 +1,14 @@
 import React from 'react';
+import Sidebar from '../components/Sidebar';
 
 const Overview = () => {
   return (
-    <div className='home'>
-      <h1>Overview</h1>
+    <>
+    <Sidebar />
+    <div className='reports'>
+      <h1>Overview User</h1>
     </div>
+    </>
   );
 };
 

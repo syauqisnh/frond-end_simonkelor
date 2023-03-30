@@ -7,6 +7,27 @@
   font-family: 'Lato', sans-serif;
 }
 
+.header{
+  padding-left: 50px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.text-normal-default{
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  color: #04103B;
+}
+
+.header p{
+  font-weight: bold;
+  color: #311E69;
+  font-size: 20pt;
+}
+
+
 .home,
 .reports,
 .products,
@@ -18,6 +39,14 @@
   justify-content: center;
   font-size: 3rem;
 }
+
+.homes{
+  display: block;
+  align-items: center;
+  justify-content: center;
+  margin-left: 250px;
+}
+
 
 .logo{
 	display: block;
@@ -98,6 +127,64 @@
     margin-top: 10px;
   }
   
+  
+
+  /*Card */
+  .card-realtime-update{
+    position: block;
+    width: 200px;
+    height: 70px;
+    background: #311E69;
+    border-radius: 20px 0px 0px 20px;
+  }
+  .card-realtime-success{
+    position: block;
+    width: 200px;
+    height: 70px;
+    background: #2CC285;
+    border-radius: 20px 0px 0px 20px;
+  }
+
+  .card-realtime-primary{
+    position: block;
+    width: 200px;
+    height: 90px;
+    background: #311E69;
+    border-radius: 20px 0px 0px 20px;
+  }
+
+  .card-realtime-grey{
+    position: block;
+    width: 200px;
+    height: 90px;
+    background: #464549;
+    border-radius: 20px 0px 0px 20px;
+  }
+
+  .card-body-realtime{
+    position: relative;
+    width: 143.45px;
+    height: 37.33px;
+    left: 20px;
+    top: 12px
+  }
+
+  .text-title-card-realtime{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 20px;
+    color: #FFFFFF;
+    }
+
+  .text-card-realtime{
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 15px;
+    color: #FFFFFF;
+    }
+
+
   @media (prefers-reduced-motion: no-preference) {
     .App-logo {
       animation: App-logo-spin infinite 20s linear;
