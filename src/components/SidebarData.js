@@ -3,10 +3,22 @@ import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import * as IoIcons from 'react-icons/io';
 import * as RiIcons from 'react-icons/ri';
+import {
+  AiOutlineLineChart,
+  AiFillDatabase,
+} from 'react-icons/ai';
+import {
+  BsDatabaseFillAdd,
+} from 'react-icons/bs';
 
 export const SidebarData = [
   {
-    title: 'Overview',
+    title: 'Realtime',
+    path: '/realtime',
+    icon: <AiOutlineLineChart />
+  },
+  {
+    title: 'Daftar Data User',
     path: '/overview',
     icon: <AiIcons.AiFillHome />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
@@ -14,19 +26,19 @@ export const SidebarData = [
 
     subNav: [
       {
-        title: 'Users',
+        title: 'Tabel User Aktif',
         path: '/overview/users',
-        icon: <IoIcons.IoIosPaper />
+        icon: <AiFillDatabase />
       },
       {
-        title: 'Revenue',
+        title: 'Tabel User Nonaktif',
         path: '/overview/revenue',
-        icon: <IoIcons.IoIosPaper />
+        icon: <AiFillDatabase />
       }
     ]
   },
   {
-    title: 'Reports',
+    title: 'Daftar Data Pengolahan',
     path: '/reports',
     icon: <IoIcons.IoIosPaper />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
@@ -45,11 +57,6 @@ export const SidebarData = [
         icon: <IoIcons.IoIosPaper />,
         cName: 'sub-nav'
       },
-      {
-        title: 'Reports 3',
-        path: '/reports/reports3',
-        icon: <IoIcons.IoIosPaper />
-      }
     ]
   },
   {
