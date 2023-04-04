@@ -5,6 +5,7 @@ import Overview from './pages/Overview';
 import { Reports, ReportsOne, ReportsTwo, ReportsThree } from './pages/Reports';
 import Team from './pages/Team';
 import Signin from './pages/Signin';
+import EditProfile from './components/EditProfile';
 
 function App() {
   return (
