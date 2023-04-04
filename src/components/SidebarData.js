@@ -61,7 +61,7 @@ export const SidebarData = [
   },
   {
     title: 'Login',
-    path: '/support',
+    path: '/signin',
     icon: <BiLogInCircle />
   }
 ];

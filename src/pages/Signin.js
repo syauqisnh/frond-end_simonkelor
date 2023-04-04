@@ -1,6 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import Login from "../component/Login"
+import Login from "../components/Login"
 
 function Signin() {
     return (
