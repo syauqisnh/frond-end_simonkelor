@@ -54,3 +54,111 @@
 .navbar{
 	transform: translateX(-100%);
 }
+
+.App {
+    text-align: left;
+    color: #311E69;
+  }
+  
+  .grid{
+    height: 100vh;
+    background-color: #311E69;
+  }
+  .App-logo {
+    height: 40vmin;
+    pointer-events: none;
+  }
+
+  .gambar{
+    width: 600px;
+    margin-left: 200px;
+    margin-top: 10px;
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  }
+  
+  .App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  
+  :root{
+    --mainDark: #343a34;
+    --mainGrey: rgb(255, 255, 255);
+    --mainLightGrey: rgb(172, 172, 172);
+    --mainWhite: #fff;
+    --mainBlue: #007bff;
+  }
+  
+  .App-link {
+    color: #61dafb;
+  }
+  
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @media only screen and (max-width: 1240px) {
+    .gambar{
+      width: 0px;
+    }
+    .paper{
+      position: relative;
+      padding-left: 250px;
+      justify-content: center;
+    }
+    .grid{
+      height: 500;
+      width: 400;}
+  }
+
+  @media only screen and (max-width: 800px) {
+    .gambar{
+      width: 0px;
+    }
+    .paper{
+      position: relative;
+      padding-left: 50px;
+      justify-content: center;
+      height: 500;
+      width: 400;
+    }
+  }
+
+  @media only screen and (max-width: 420px) {
+    .gambar{
+      width: 0px;
+    }
+    .paper{
+      position: relative;
+      padding-left: 1px;
+      justify-content: center;
+    }
+  }
+ 
+  @media only screen and (max-width: 400px) {
+    .gambar{
+      width: 0px;
+    }
+    .paper{
+      position: relative;
+      padding-left: 2px;
+      justify-content: center;
+    }
+  }
+ 
