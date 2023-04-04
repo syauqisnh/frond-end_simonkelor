@@ -8,8 +8,8 @@ import {
   BsDatabaseFillAdd,
 } from 'react-icons/bs';
 import {
-	FaSignOutAlt,
-} from 'react-icons/fa';
+	BiLogInCircle,
+} from 'react-icons/bi';
 
 export const SidebarData = [
   {
@@ -60,8 +60,8 @@ export const SidebarData = [
     ]
   },
   {
-    title: 'Logout',
+    title: 'Login',
     path: '/support',
-    icon: <FaSignOutAlt />
+    icon: <BiLogInCircle />
   }
 ];

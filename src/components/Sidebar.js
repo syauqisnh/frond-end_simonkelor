@@ -19,7 +19,6 @@ const Nav = styled.div`
   padding: 2rem 1rem 1rem 1rem;
   transition: transform 1s;
 `;
-
 const NavIcon = styled(Link)`
   margin-left: 2rem;
   font-size: 2rem;
@@ -99,6 +98,7 @@ const Sidebar = () => {
             ,
             {SidebarData.map((item, index) => {
               return <SubMenu item={item} key={index} />;
+              
             })}
           </SidebarWrap>
         </SidebarNav>

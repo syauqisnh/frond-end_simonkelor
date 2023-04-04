@@ -49,6 +49,8 @@
 	text-decoration: none;
 	border-radius: 5px;
 	margin-bottom: 5px;
-    font-size: 10pt;
+  font-size: 10pt;
 }
-
+.navbar{
+	transform: translateX(-100%);
+}
