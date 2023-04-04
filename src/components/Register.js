@@ -1,17 +1,14 @@
 import React from "react";
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import TextField from '@mui/material/TextField';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import welcomeimg from './Signin/login.svg';
-import logo from './Signin/logo.png';
+import welcomeimg from './Signup/register.svg';
+import MenuItem from '@mui/material/MenuItem';
 
 function Copyright(props) {
   return (
@@ -43,6 +40,24 @@ const theme = createTheme({
   },
 });
 
+const unit = [
+  {
+    value: 'SA',
+    label: 'Super Admin',
+  },
+  {
+    value: 'AD',
+    label: 'Admin Dispatcher',
+  },
+  {
+    value: 'AP',
+    label: 'Admin Pembangkit',
+  },
+  {
+    value: 'PG',
+    label: 'Pegawai',
+  },
+];
 
 export default function SignInSide() {
   const handleSubmit = (event) => {
@@ -55,19 +70,10 @@ export default function SignInSide() {
   };
 
   return (
-    <ThemeProvider theme={theme} >
+    <ThemeProvider theme={theme}>
       <Grid container component="main" className="grid">
-          <img alt='' src={welcomeimg} 
-          className="gambar"
-        //   style={{height:600, width:600,}}
-        //   sx={{
-        //   height: 233,
-        //   width: 350,
-        //   maxHeight: { xs: 233, md: 167 },
-        //   maxWidth: { xs: 350, md: 250 },
-        // }}
-          />
-        <Grid  className="paper" item mt={3} md={3}>
+          <img alt='' src={welcomeimg} className="gambar"/>
+        <Grid item className="paper" mt={12} md={3}>
         <Paper
             elevation={10}
             sx={{
@@ -78,9 +84,9 @@ export default function SignInSide() {
                 }}
             >
           <Box
-            paddingTop={5}
+            paddingTop={2}
             sx={{
-              my: 10,
+              my: 3,
               mx: 5,
               display: 'flex',
               flexDirection: 'column',
@@ -89,26 +95,76 @@ export default function SignInSide() {
             {/* <div className="img-class">
               <img src={logo} id="img-id" alt="" width={200} />
             </div> */}
-            <Avatar variant="rounded" sx={{ m: 1, bgcolor: '#311E69',  width: 56, height: 56,}}>
+            {/* <Avatar variant="rounded" sx={{ m: 1, bgcolor: '#311E69',  width: 56, height: 56,}}>
             <img src={logo} id="img-id" alt="" width={30} />
-            </Avatar>
+            </Avatar> */}
             <Typography variant="h4" style={{fontWeight: 'bold', color: '#311E69'}}>
-              Welcome Back!
+              Sign Up Here!
             </Typography>
-            <h6 style={{color: '#525252'}}>Please enter your username and password</h6>
+            {/* <h6 style={{color: '#525252'}}>Please enter your username and password</h6> */}
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            <TextField
+                margin="dense"
+                required
+                fullWidth
+                name="name"
+                label="Full Name"
+                type="name"
+                id="name"
+                autoFocus
+                size="small"
+              />
               <TextField
-                margin="normal"
+                margin="dense"
+                required
+                fullWidth
+                name="nip"
+                label="NIP"
+                type="nip"
+                id="nip"
+                autoComplete="nip"
+                size="small"
+              />
+              <TextField
+                margin="dense"
+                id="outlined-select-currency"
+                select
+                fullWidth
+                required
+                size="small"
+                label="Instansi/Unit"
+                defaultValue="PG"
+                // helperText="Please select your role"
+              >
+                {unit.map((option) => (
+                  <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                  </MenuItem>
+                ))}
+              </TextField>
+              <TextField
+                margin="dense"
+                required
+                fullWidth
+                name="phone"
+                label="Phone Number"
+                type="phone"
+                id="phone"
+                autoComplete="phone"
+                size="small"
+              />
+              <TextField
+                margin="dense"
                 required
                 fullWidth
                 id="email"
                 label="Email"
                 name="email"
                 autoComplete="email"
-                autoFocus
+                size="small"
               />
               <TextField
-                margin="normal"
+                margin="dense"
                 required
                 fullWidth
                 name="password"
@@ -116,31 +172,37 @@ export default function SignInSide() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                size="small"
               />
-              <FormControlLabel
-                style={{color: '#525252'}}
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-                margin="left"
+              <TextField
+                margin="dense"
+                required
+                fullWidth
+                name="confirmpassword"
+                label="Confirm Password"
+                type="password"
+                id="confirmpassword"
+                autoComplete="confirm-current-password"
+                size="small"
               />
               <Button
                 href="/"
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 2, mb: 2 }}
+                sx={{ mt: 1, mb: 1 }}
                 Color="primary"
               >
-                Sign In
+                Sign Up
               </Button>
               <Grid container>
                 <Grid item sx={{ mb: 1}}> 
-                  <Link href="Signup" variant="body2" style={{color: '#525252'}}>
-                    {"Don't have an account? Sign Up"}
+                  <Link href="Signin" variant="body2" style={{color: '#525252'}}>
+                    {"Already have an account? Sign In"}
                   </Link>
                 </Grid>
               </Grid>
-              <Copyright sx={{ mt: 2 }} />
+              <Copyright sx={{ mt: 1 }} />
             </Box>
            </Box>
           </Paper>
