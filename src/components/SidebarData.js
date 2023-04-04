@@ -1,7 +1,4 @@
 import React from 'react';
-import * as FaIcons from 'react-icons/fa';
-import * as AiIcons from 'react-icons/ai';
-import * as IoIcons from 'react-icons/io';
 import * as RiIcons from 'react-icons/ri';
 import {
   AiOutlineLineChart,
@@ -10,6 +7,9 @@ import {
 import {
   BsDatabaseFillAdd,
 } from 'react-icons/bs';
+import {
+	FaSignOutAlt,
+} from 'react-icons/fa';
 
 export const SidebarData = [
   {
@@ -20,7 +20,7 @@ export const SidebarData = [
   {
     title: 'Daftar Data User',
     path: '/overview',
-    icon: <AiIcons.AiFillHome />,
+    icon: <AiFillDatabase />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
 
@@ -40,59 +40,28 @@ export const SidebarData = [
   {
     title: 'Daftar Data Pengolahan',
     path: '/reports',
-    icon: <IoIcons.IoIosPaper />,
+    icon: <BsDatabaseFillAdd />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
 
     subNav: [
       {
-        title: 'Reports',
+        title: 'Tabel Pembangkit',
         path: '/reports/reports1',
-        icon: <IoIcons.IoIosPaper />,
+        icon: <BsDatabaseFillAdd />,
         cName: 'sub-nav'
       },
       {
-        title: 'Reports 2',
+        title: 'Tabel Tegangan',
         path: '/reports/reports2',
-        icon: <IoIcons.IoIosPaper />,
+        icon: <BsDatabaseFillAdd />,
         cName: 'sub-nav'
       },
     ]
   },
   {
-    title: 'Products',
-    path: '/products',
-    icon: <FaIcons.FaCartPlus />
-  },
-  {
-    title: 'Team',
-    path: '/team',
-    icon: <IoIcons.IoMdPeople />
-  },
-  {
-    title: 'Messages',
-    path: '/messages',
-    icon: <FaIcons.FaEnvelopeOpenText />,
-
-    iconClosed: <RiIcons.RiArrowDownSFill />,
-    iconOpened: <RiIcons.RiArrowUpSFill />,
-
-    subNav: [
-      {
-        title: 'Message 1',
-        path: '/messages/message1',
-        icon: <IoIcons.IoIosPaper />
-      },
-      {
-        title: 'Message 2',
-        path: '/messages/message2',
-        icon: <IoIcons.IoIosPaper />
-      }
-    ]
-  },
-  {
-    title: 'Support',
+    title: 'Logout',
     path: '/support',
-    icon: <IoIcons.IoMdHelpCircle />
+    icon: <FaSignOutAlt />
   }
 ];

@@ -19,4 +19,36 @@
   font-size: 3rem;
 }
 
+.logo{
+	display: block;
+	width: 100px;
+	margin: auto;
+	color: #fff;
+}
+
+.logo img{
+	display: block;
+	width: 80%;
+	height: 80%;
+    border-radius: 50%;
+}
+.nav-link-user{
+	display: flex;
+	align-items: center;
+	color: #fff;
+	text-decoration: none;
+	border-radius: 5px;
+	margin-top: 10px;
+	margin-bottom: 5px;
+    font-weight: bold;
+}
+.nav-link-jabatan{
+	display: flex;
+	align-items: center;
+	color: #fff;
+	text-decoration: none;
+	border-radius: 5px;
+	margin-bottom: 5px;
+    font-size: 10pt;
+}
 
