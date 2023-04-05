@@ -32,6 +32,22 @@
 	height: 80%;
     border-radius: 50%;
 }
+
+.navbar{
+  background-color: #311e69;
+  width: 250px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  transition: 350ms;
+  z-index: 10;}
+
+.navbar.active {
+  transform: translateX(200px);
+}
+
 .nav-link-user{
 	display: flex;
 	align-items: center;

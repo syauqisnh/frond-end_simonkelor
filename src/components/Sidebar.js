@@ -80,7 +80,7 @@ const Sidebar = () => {
             <FaIcons.FaAngleRight onClick={showSidebar} />
           </NavIconback>
         </Nav>
-        <SidebarNav sidebar={sidebar}>
+        <SidebarNav className={Sidebar ? 'active' : ''}>
           <SidebarWrap>
             <NavIcon to="#">
               <FaIcons.FaAngleLeft onClick={showSidebar} />
