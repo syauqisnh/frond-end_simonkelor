@@ -86,7 +86,7 @@ const Sidebar = () => {
               <FaIcons.FaAngleLeft onClick={showSidebar} />
             </NavIcon>
             <div className="logo">
-              <img src={Logo} alt="Logo" />
+              <img src={Logo} alt="Logo" href = ""/>
             </div>
             <div className="nav-link-user">
               <span>Nama User</span>
