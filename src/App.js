@@ -6,7 +6,6 @@ import { Reports, ReportsOne, ReportsTwo, ReportsThree } from './pages/Reports';
 import Team from './pages/Team';
 import Signin from './pages/Signin';
 import Signup from './pages/Signup';
-import EditProfile from './components/EditProfile';
 import Profile from './pages/Profile';
 
 function App() {
