@@ -20,7 +20,6 @@ export const SidebarData = [
   },
   {
     title: 'Daftar Data User',
-    path: '/overview',
     icon: <AiFillDatabase />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
@@ -40,7 +39,6 @@ export const SidebarData = [
   },
   {
     title: 'Daftar Data Pengolahan',
-    path: '/reports',
     icon: <BsDatabaseFillAdd />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
