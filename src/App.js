@@ -7,6 +7,7 @@ import Team from './pages/Team';
 import Signin from './pages/Signin';
 import Signup from './pages/Signup';
 import EditProfile from './components/EditProfile';
+import Profile from './pages/Profile';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path='/team' exact component={Team} />
         <Route path='/signin' exact component={Signin} />
         <Route path='/signup' exact component={Signup} />
+        <Route path='/profile' exact component={Profile} />
       </Switch>
     </Router>
   );

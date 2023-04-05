@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ProfilePicture from '../pages/ProfiePicture';
+import ProfilePicture from './ProfiePicture';
 
 function EditProfile() {
   const [profileData, setProfileData] = useState({
