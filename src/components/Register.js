@@ -7,7 +7,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import welcomeimg from 'assets/images/logo.svg';
+import welcomeimg from '../assets/images/register.svg';
 import MenuItem from '@mui/material/MenuItem';
 
 function Copyright(props) {
