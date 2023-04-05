@@ -5,7 +5,8 @@ import EditProfile from './../components/EditProfile';
 function Profile() {
     return (
         <div className="App">
-            <div className='EditProfile' >
+            <div className='EditProfile'>
+                <link href='EditProfile.js'></link>
                 <EditProfile />
             </div>
         </div>

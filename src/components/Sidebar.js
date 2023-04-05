@@ -80,26 +80,27 @@ const Sidebar = () => {
             <FaIcons.FaAngleRight onClick={showSidebar} />
           </NavIconback>
         </Nav>
-        <SidebarNav sidebar={sidebar ? 'active' : ''}>
+        <SidebarNav sidebar={sidebar ? "active" : ""}>
           <SidebarWrap>
             <NavIcon to="#">
               <FaIcons.FaAngleLeft onClick={showSidebar} />
             </NavIcon>
-            <div className="logo">
-              <img src={Logo} alt="Logo"/>
-              <link href="/EditProfile"></link>
-            </div>
+            <li>
+              <div className="logo">
+                <Link to="/profile">
+                  <img src={Logo} alt="Logo" />
+                </Link>
+              </div>
+            </li>
             <div className="nav-link-user">
               <span>Nama User</span>
             </div>
             <div className="nav-link-jabatan">
               <p>Nama jabatan</p>
             </div>
-            <hr className="hr"/>
-            ,
+            <hr className="hr" />,
             {SidebarData.map((item, index) => {
               return <SubMenu item={item} key={index} />;
-              
             })}
           </SidebarWrap>
         </SidebarNav>

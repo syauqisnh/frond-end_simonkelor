@@ -5,7 +5,6 @@ import Overview from './pages/Overview';
 import { Reports, ReportsOne, ReportsTwo, ReportsThree } from './pages/Reports';
 import Team from './pages/Team';
 import Signin from './pages/Signin';
-import Signup from './pages/Signup';
 import Profile from './pages/Profile';
 
 function App() {
@@ -21,7 +20,6 @@ function App() {
         <Route path='/reports/reports3' exact component={ReportsThree} />
         <Route path='/team' exact component={Team} />
         <Route path='/signin' exact component={Signin} />
-        <Route path='/signup' exact component={Signup} />
         <Route path='/profile' exact component={Profile} />
       </Switch>
     </Router>
