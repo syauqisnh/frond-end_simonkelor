@@ -94,7 +94,7 @@ const Sidebar = () => {
             <div className="nav-link-jabatan">
               <p>Nama jabatan</p>
             </div>
-            <hr></hr>
+            <hr className="hr"/>
             ,
             {SidebarData.map((item, index) => {
               return <SubMenu item={item} key={index} />;

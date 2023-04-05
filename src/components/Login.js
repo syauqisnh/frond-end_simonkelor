@@ -10,8 +10,8 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-// import welcomeimg from './Signin/login.svg';
-// import logo from './Signin/logo.png';
+import welcomeimg from '../assets/images/login.svg';
+import logo from '../assets/images/logo.png';
 
 function Copyright(props) {
   return (
@@ -57,7 +57,7 @@ export default function SignInSide() {
   return (
     <ThemeProvider theme={theme} >
       <Grid container component="main" className="grid">
-          <img alt='' 
+          <img alt='' src={welcomeimg}
           className="gambar"
         //   style={{height:600, width:600,}}
         //   sx={{
@@ -90,7 +90,7 @@ export default function SignInSide() {
               <img src={logo} id="img-id" alt="" width={200} />
             </div> */}
             <Avatar variant="rounded" sx={{ m: 1, bgcolor: '#311E69',  width: 56, height: 56,}}>
-            <img id="img-id" alt="" width={30} />
+            <img src={logo} id="img-id" alt="" width={30} />
             </Avatar>
             <Typography variant="h4" style={{fontWeight: 'bold', color: '#311E69'}}>
               Welcome Back!
