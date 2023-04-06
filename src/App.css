@@ -7,6 +7,14 @@
   font-family: 'Lato', sans-serif;
 }
 
+/* @media screen and (max-width: 768px) {
+  .sidebar-nav {
+    width: 100%;
+    padding: 2rem 1rem;
+    left: ${({ sidebar }) => (sidebar ? "0" : "-100%")};
+  }
+} */
+
 .header{
   padding-left: 50px;
   padding-top: 50px;
@@ -271,7 +279,7 @@
       justify-content: center;
     }
   }
-
+  
    /* body {
     background-color: #311E69;
     display: flex;
@@ -410,14 +418,28 @@ input[type="submit"]:hover {
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
 } */
 
+.bg-edit-profile {
+  padding-top: 30px;
+  height: 100vh;
+  background-color: #311E69;
+}
 .edit-profile {
   max-width: 500px;
   margin: 0 auto;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.input-text{
+  display: block;
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #d41111;
+  margin-bottom: 10px;
 }
 
 
