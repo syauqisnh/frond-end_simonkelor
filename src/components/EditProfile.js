@@ -46,6 +46,7 @@ function EditProfile() {
           Institution:
         </label>
           <input
+           className='input-text'
             type="text"
             name="institution"
             value={profileData.institution}
@@ -55,6 +56,7 @@ function EditProfile() {
           Phone:
         </label>
           <input
+           className='input-text'
             type="tel"
             name="phone"
             value={profileData.phone}
@@ -64,6 +66,7 @@ function EditProfile() {
           Email:
         </label>
           <input
+           className='input-text'
             type="email"
             name="email"
             value={profileData.email}
@@ -73,6 +76,7 @@ function EditProfile() {
           Password:
         </label>
           <input
+            className='input-text'
             type="password"
             name="password"
             value={profileData.password}
@@ -82,7 +86,7 @@ function EditProfile() {
           profilePicture={profileData.profilePicture}
           setProfileData={setProfileData}
         />
-        <button type="submit" >Update</button>
+        <button type="submit" className='button-edit' >Update</button>
       </form>
     </div>
     </div>
