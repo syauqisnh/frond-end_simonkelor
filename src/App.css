@@ -434,16 +434,49 @@ input[type="submit"]:hover {
 }
 
 .input-text{
-  display: block;
   width: 100%;
-  padding: 5px;
-  border-radius: 5px;
-  border: 1px solid #d41111;
-  margin-bottom: 10px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px
 }
 
 
+<<<<<<< HEAD
  h2 {
+=======
+.label-editprof {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+button[type="submit"] {
+  background-color: #311E69;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+} 
+
+button[type="submit"]:hover {
+  background-color: #311E69;
+}
+
+input[type="file"] {
+  margin-top: 5px;
+}
+
+
+ /* h2 {
+>>>>>>> 5c3f325b292bcbe964addaff719b449ba23d35cb
   margin-top: 0;
 }
 
@@ -455,7 +488,11 @@ input[type="submit"]:hover {
   border-radius: 5px;
 }
 
+<<<<<<< HEAD
 .input-profile-file{
+=======
+/* input[type="file"] {
+>>>>>>> 5c3f325b292bcbe964addaff719b449ba23d35cb
   margin-top: 5px;
 }
 
@@ -469,11 +506,18 @@ input[type="submit"]:hover {
   cursor: pointer;
   font-size: 16px;
   margin-top: 20px;
+<<<<<<< HEAD
   margin-bottom: 10px;
 }
 
 .button-1:hover {
   background-color: #8473ED !important;
+=======
+} */
+
+/* button[type="submit"]:hover {
+  background-color: #311E69;
+>>>>>>> 5c3f325b292bcbe964addaff719b449ba23d35cb
 }
 
 .profile-picture {
@@ -485,4 +529,4 @@ input[type="submit"]:hover {
   max-height: 200px;
   display: block;
   margin: 0 auto;
-}
+}  */

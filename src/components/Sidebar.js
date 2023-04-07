@@ -20,13 +20,24 @@ const Nav = styled.div`
   transition: transform 1s;
 `;
 const NavIcon = styled(Link)`
-  margin-left: 2rem;
-  font-size: 2rem;
-  height: 80px;
+  position: absolute;
+  transform: translateX(38px);
+  top: 20px;
+  right: 0;
+  width: 40px;
+  height: 60px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
-  padding: 10px;
+  background-color: #311e69;
+  outline: none;
+  border: none;
+  font-size: 2rem;
+  padding: 5px 10px;
+  cursor: pointer;
+  color: #fff;
 `;
 
 const NavIconback = styled.div`
@@ -61,6 +72,9 @@ const SidebarNav = styled.nav`
   left: ${({ sidebar }) => (sidebar ? "0" : "-100%")};
   transition: 350ms;
   z-index: 10;
+  @media screen and (max-width: 768px) {
+    width: 80%;
+    left: ${({ sidebar }) => (sidebar ? "0" : "-80%")};
 `;
 
 const SidebarWrap = styled.div`
