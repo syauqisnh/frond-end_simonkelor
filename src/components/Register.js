@@ -59,7 +59,7 @@ const unit = [
   },
 ];
 
-export default function SignInSide() {
+export default function SignUpSide() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -73,11 +73,11 @@ export default function SignInSide() {
     <ThemeProvider theme={theme}>
       <Grid container component="main" className="grid">
           <img alt='' src={welcomeimg} className="gambar"/>
-        <Grid item className="paper" mt={12} md={3}>
+        <Grid item className="paper" mt={9} md={3}>
         <Paper
             elevation={10}
             sx={{
-                  height: 500,
+                  height: 550,
                   width: 400,
                   backgroundColor: (theme) =>
                     theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -127,21 +127,15 @@ export default function SignInSide() {
               />
               <TextField
                 margin="dense"
-                id="outlined-select-currency"
-                select
-                fullWidth
                 required
+                fullWidth
+                name="unit"
+                label="Institution/Unit"
+                type="unit"
+                id="unit"
+                autoComplete="unit"
                 size="small"
-                label="Instansi/Unit"
-                defaultValue="PG"
-                // helperText="Please select your role"
-              >
-                {unit.map((option) => (
-                  <MenuItem key={option.value} value={option.value}>
-                    {option.label}
-                  </MenuItem>
-                ))}
-              </TextField>
+              />
               <TextField
                 margin="dense"
                 required
@@ -165,6 +159,23 @@ export default function SignInSide() {
               />
               <TextField
                 margin="dense"
+                id="outlined-select-currency"
+                select
+                fullWidth
+                required
+                size="small"
+                label="Role"
+                defaultValue="PG"
+                // helperText="Please select your role"
+              >
+                {unit.map((option) => (
+                  <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                  </MenuItem>
+                ))}
+              </TextField>
+              <TextField
+                margin="dense"
                 required
                 fullWidth
                 name="password"
@@ -186,7 +197,7 @@ export default function SignInSide() {
                 size="small"
               />
               <Button
-                href="/"
+                href="/Signin"
                 type="submit"
                 fullWidth
                 variant="contained"
