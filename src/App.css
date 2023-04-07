@@ -449,7 +449,7 @@ input[type="submit"]:hover {
   font-weight: bold;
 }
 
-/* h2 {
+ h2 {
   margin-top: 0;
 }
 
@@ -492,4 +492,4 @@ button[type="submit"]:hover {
   max-height: 200px;
   display: block;
   margin: 0 auto;
-} */
+}
