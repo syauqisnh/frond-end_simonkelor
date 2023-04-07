@@ -8,6 +8,8 @@ import Signin from './pages/Signin';
 import Signup from './pages/Signup';
 import Profile from './pages/Profile';
 import Realtime from './pages/realtime';
+import Dokumentation from './pages/Dokumentation';
+import Dataoperasi from './pages/Dataoperasi';
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
         <Route path='/reports/reports2' exact component={ReportsTwo} />
         <Route path='/reports/reports3' exact component={ReportsThree} />
         <Route path='/overview/users' exact component={User_page} />
+        <Route path='/dataoperasi' exact component={Dataoperasi} />
+        <Route path='/dokumentation' exact component={Dokumentation} />
         <Route path='/forum' exact component={Forum} />
         <Route path='/signin' exact component={Signin} />
         <Route path='/signup' exact component={Signup} />

@@ -8,8 +8,9 @@ import {
   BsDatabaseFillAdd,
 } from 'react-icons/bs';
 import {
-	BiLogInCircle, BiMessageRounded
+	BiLogInCircle, BiMessageRounded,
 } from 'react-icons/bi';
+import * as AiIcons from 'react-icons/ai';
 
 
 export const SidebarData = [
@@ -57,6 +58,16 @@ export const SidebarData = [
         cName: 'sub-nav'
       },
     ]
+  },
+  {
+    title: 'Data Operasi',
+    path: '/dataoperasi',
+    icon: <AiIcons.AiFillFolderOpen />
+  },
+  {
+    title: 'Dokumentation',
+    path: '/dokumentation',
+    icon: <AiIcons.AiFillFolderOpen />
   },
   {
     title: 'Forum',

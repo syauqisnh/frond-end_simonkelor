@@ -28,7 +28,7 @@ function EditProfile() {
     <div className="edit-profile" >
       <form onSubmit={handleSubmit}>
         <h2>Edit Profile</h2>
-        <label>
+        <label className='label-editprof'>
           Name:
           <input
             type="text"
@@ -37,7 +37,7 @@ function EditProfile() {
             onChange={handleChange}
           />
         </label>
-        <label>
+        <label className='label-editprof'>
           Institution:
           <input
             type="text"
@@ -46,7 +46,7 @@ function EditProfile() {
             onChange={handleChange}
           />
         </label>
-        <label>
+        <label className='label-editprof'>
           Phone:
           <input
             type="tel"
@@ -55,7 +55,7 @@ function EditProfile() {
             onChange={handleChange}
           />
         </label>
-        <label>
+        <label className='label-editprof'>
           Email:
           <input
             type="email"
@@ -64,7 +64,7 @@ function EditProfile() {
             onChange={handleChange}
           />
         </label>
-        <label>
+        <label className='label-editprof'>
           Password:
           <input
             type="password"

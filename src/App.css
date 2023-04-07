@@ -421,15 +421,14 @@ input[type="submit"]:hover {
 }
 
 
-
-h2 {
-  margin-top: 0;
-}
-
-label {
+.label-editprof {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
+}
+
+/* h2 {
+  margin-top: 0;
 }
 
 input[type="text"],
@@ -471,4 +470,4 @@ button[type="submit"]:hover {
   max-height: 200px;
   display: block;
   margin: 0 auto;
-}
+} */
