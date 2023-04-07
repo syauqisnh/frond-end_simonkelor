@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ProfilePicture from './ProfiePicture';
-import Sidebar from './Sidebar';
+// import Sidebar from './Sidebar';
+import { Row, Button } from 'react-bootstrap';
 
 function EditProfile() {
   const [profileData, setProfileData] = useState({
@@ -27,52 +28,56 @@ function EditProfile() {
 
   return (
     <>
-    <Sidebar/>
+    {/* <Sidebar/> */}
     <div className='bg-edit-profile'>
     <div className="edit-profile" >
       <form onSubmit={handleSubmit}>
         <h2>Edit Profile</h2>
         <label>
-          Name:
+          Name
         </label>
           <input
-            className='input-text'
+            className='input-profile'
             type="text"
             name="name"
             value={profileData.name}
             onChange={handleChange}
           />
         <label>
-          Institution:
+          Institution/Unit
         </label>
           <input
+            className='input-profile'
             type="text"
             name="institution"
             value={profileData.institution}
             onChange={handleChange}
           />
         <label>
-          Phone:
+          Phone
         </label>
           <input
+            className='input-profile'
             type="tel"
             name="phone"
             value={profileData.phone}
             onChange={handleChange}
           />
         <label>
-          Email:
+          Email
         </label>
           <input
+            className='input-profile'
             type="email"
             name="email"
             value={profileData.email}
             onChange={handleChange}
           />
         <label>
-          Password:
+          Password
         </label>
           <input
+            className='input-profile'
             type="password"
             name="password"
             value={profileData.password}
@@ -82,7 +87,10 @@ function EditProfile() {
           profilePicture={profileData.profilePicture}
           setProfileData={setProfileData}
         />
-        <button type="submit" >Update</button>
+        <Row>
+          <Button className='button-1' type="submit" href="/" >Update</Button>
+          <Button className='button-1' type="submit" href="/" >Back</Button>
+        </Row>
       </form>
     </div>
     </div>

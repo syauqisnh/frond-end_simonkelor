@@ -16,9 +16,9 @@ function ProfilePicture({ profilePicture, setProfileData }) {
   return (
     <div className="profile-picture">
       <label>
-        Profile Picture:
+        Profile Picture
       </label> <br/>
-        <input type="file" accept="image/*" onChange={handleChange} />
+        <input className='input-profile-file' type="file" accept="image/*" onChange={handleChange} />
       {profilePicture && (
         <img src={profilePicture} alt="Profile Picture" />
       )}
