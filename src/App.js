@@ -10,6 +10,7 @@ import Profile from './pages/Profile';
 import Realtime from './pages/realtime';
 import Dokumentation from './pages/Dokumentation';
 import Dataoperasi from './pages/Dataoperasi';
+import C_langgambebanharian from './components/C_langgambebanharian';
 
 function App() {
   return (
@@ -29,6 +30,8 @@ function App() {
         <Route path='/signup' exact component={Signup} />
         <Route path='/profile' exact component={Profile} />
         <Route path='/dokumentation' exact component={Dokumentation} />
+        <Route path='/dataoperasi' exact component={Dataoperasi} />
+        <Route path='/C_langgambebanharian' exact component={C_langgambebanharian} />
       </Switch>
     </Router>
   );
