@@ -4,6 +4,7 @@ import Overview from './pages/Overview';
 import { Reports, ReportsOne, ReportsTwo, ReportsThree } from './pages/Reports';
 import User_page from './pages/user';
 import Forum from './pages/Forum';
+import ForumComment from './pages/ForumComments';
 import Signin from './pages/Signin';
 import Signup from './pages/Signup';
 import Profile from './pages/Profile';
@@ -26,6 +27,7 @@ function App() {
         <Route path='/dataoperasi' exact component={Dataoperasi} />
         <Route path='/dokumentation' exact component={Dokumentation} />
         <Route path='/forum' exact component={Forum} />
+        <Route path='/forumcomment' exact component={ForumComment} />
         <Route path='/signin' exact component={Signin} />
         <Route path='/signup' exact component={Signup} />
         <Route path='/profile' exact component={Profile} />
