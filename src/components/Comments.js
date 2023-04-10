@@ -1,7 +1,7 @@
 import React from "react";
-import { Button, Row, Col, Form } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
-export default function Basic() {
+export default function Comments() {
     return (
         <div className="container">
         <div className="be-comment-block">

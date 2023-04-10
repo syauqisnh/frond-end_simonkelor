@@ -18,96 +18,95 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import * as AiIcons from 'react-icons/ai';
-import * as BsIcons from 'react-icons/bs';
+import * as BsIcons from 'react-icons/bs';  
 
-const UserInvalid_page = () => {
+export const Pembangkit = () => {
 
-    const [data_user, setDataUser] = useState([]);
-    const [id, setId] = useState("");
-    const [nama_users, setNama] = useState("");
-    const [nips, setNip] = useState("");
-    const [instansis, setInstansi] = useState("");
-    const [roles, setRole] = useState("");
-    const [emails, setEmail] = useState("");
-    const [passwords, setPassword] = useState("");
+  const [data_pembangkit, setData] = useState([]);
+  const [id, setId] = useState("");
+  const [nama_users, setNama] = useState("");
+  const [nips, setNip] = useState("");
+  const [instansis, setInstansi] = useState("");
+  const [roles, setRole] = useState("");
+  const [emails, setEmail] = useState("");
+  const [passwords, setPassword] = useState("");
+
+  const [show, setShow] = useState(false);
   
-    const [show, setShow] = useState(false);
-    
-    const handleClose = () => {
-        setId("");
-        setNama("");
-        setNip("");
-        setInstansi("");
-        setRole("");
-        setEmail("");
-        setPassword("");
-        setShow(false);
-    };
-  
-  useEffect(() => {
-    const GetUser = async () =>{
-      const apiGetUser = await axios.get("http://localhost:8000/api/user_registrasi");
-      setDataUser(apiGetUser.data.data);
-    };
-    GetUser();
-  }, []);
-  
-  const Setdata = (data) => {
-    setId(data.id);
-    setNama(data.nama_user);
-    setNip(data.nip);
-    setInstansi(data.instansi);
-    setRole(data.role);
-    setEmail(data.email);
-    setPassword(data.password);
-  
-    setShow(true);
-  }
-  
-  const HandleDelete = (id_delete) => {
-    axios.delete(`
-    http://localhost:8000/api/user_registrasi/${id_delete}
-    `).then(() => {
-      alert("Data Berhasil dihapus")
-      window.location.reload();
-    })
+  const handleClose = () => {
+      setId("");
+      setNama("");
+      setNip("");
+      setInstansi("");
+      setRole("");
+      setEmail("");
+      setPassword("");
+      setShow(false);
   };
-  
-  const save_user = async (event) => {
-    event.preventDefault();
-    try {
-      await axios.post(
-        `http://localhost:8000/api/user/`,
-        {
-          nama_user: nama_users,
-          nip: nips,
-          instansi: instansis,
-          role: roles,
-          email: emails,
-          password: passwords,
-  
-        }).then(() =>{
-          axios.delete(`
-            http://localhost:8000/api/user_registrasi/${id}
-          `).then(() => {
-            setId("");
-            setNama("");
-            setNip("");
-            setInstansi("");
-            setRole("");
-            setEmail("");
-            setPassword("");
-            alert("Akun telah diaktifkan")
-            handleClose();
-            window.location.reload();
-          })
+
+useEffect(() => {
+  const Get = async () =>{
+    const apiGet = await axios.get("http://localhost:8000/api/pembangkit");
+    setData(apiGet.data.data);
+  };
+  Get();
+}, []);
+
+const Setdata = (data) => {
+  setId(data.id);
+  setNama(data.nama_user);
+  setNip(data.nip);
+  setInstansi(data.instansi);
+  setRole(data.role);
+  setEmail(data.email);
+  setPassword(data.password);
+
+  setShow(true);
+}
+
+const HandleDelete = (id_delete) => {
+  axios.delete(`
+  http://localhost:8000/api/user_registrasi/${id_delete}
+  `).then(() => {
+    alert("Data Berhasil dihapus")
+    window.location.reload();
+  })
+};
+
+const save_user = async (event) => {
+  event.preventDefault();
+  try {
+    await axios.post(
+      `http://localhost:8000/api/user/`,
+      {
+        nama_user: nama_users,
+        nip: nips,
+        instansi: instansis,
+        role: roles,
+        email: emails,
+        password: passwords,
+
+      }).then(() =>{
+        axios.delete(`
+          http://localhost:8000/api/user_registrasi/${id}
+        `).then(() => {
+          setId("");
+          setNama("");
+          setNip("");
+          setInstansi("");
+          setRole("");
+          setEmail("");
+          setPassword("");
+          alert("Akun telah diaktifkan")
+          handleClose();
+          window.location.reload();
         })
-  
-    } catch (error) {
-        alert("Data Gagal ditambahkan")
-    }
-  };
-      
+      })
+
+  } catch (error) {
+      alert("Data Gagal ditambahkan")
+  }
+};
   return (
     <>
     <div className='homes'>
@@ -119,7 +118,7 @@ const UserInvalid_page = () => {
         
         <div className='header'>
             <p>
-            User Account
+            Data Pembangkit
             </p>
         </div>
         </CCol>
@@ -135,33 +134,34 @@ const UserInvalid_page = () => {
         <CCol xs={12}>
           <CCard className="mb-4">
             <CCardHeader>
-              <strong>Tabel User Invalid</strong>
+              <strong>Tabel Data Pembangkit</strong>
             </CCardHeader>
             <CCardBody>
               <p className="text-medium-emphasis small">
-                Tabel ini menampilkan seluruh data user yang belum aktif
+                Tabel ini menampilkan seluruh data pembangkit
               </p>
                 <CTable striped>
                   <CTableHead>
                     <CTableRow>
-                      <CTableHeaderCell scope="col">Nama</CTableHeaderCell>
-                      <CTableHeaderCell scope="col">NIP</CTableHeaderCell>
-                      <CTableHeaderCell scope="col">Instansi</CTableHeaderCell>
-                      <CTableHeaderCell scope="col">Email</CTableHeaderCell>
-                      <CTableHeaderCell scope="col">Role</CTableHeaderCell>
-                      <CTableHeaderCell scope="col">Action</CTableHeaderCell>
+                      <CTableHeaderCell scope="col">Nama Pembangkit</CTableHeaderCell>
+                      <CTableHeaderCell scope="col">Jenis Pembangkit</CTableHeaderCell>
+                      <CTableHeaderCell scope="col">Asset</CTableHeaderCell>
+                      <CTableHeaderCell scope="col">Energi Primer</CTableHeaderCell>
+                      <CTableHeaderCell scope="col">Kapasitas</CTableHeaderCell>
+                      <CTableHeaderCell scope="col">DMN</CTableHeaderCell>
                     </CTableRow>
                   </CTableHead>
                   <CTableBody>
                       
-                  {data_user.map((item, index) => {
+                  {data_pembangkit.map((item, index) => {
                     return(
                       <CTableRow key={index}>
-                        <CTableHeaderCell> {item.nama_user} </CTableHeaderCell>
-                        <CTableDataCell> {item.nip} </CTableDataCell>
-                        <CTableDataCell> {item.instansi} </CTableDataCell>
-                        <CTableDataCell> {item.email} </CTableDataCell>
-                        <CTableDataCell> {item.role} </CTableDataCell>
+                        <CTableHeaderCell> {item.nama_pembangkit} </CTableHeaderCell>
+                        <CTableDataCell> {item.jenis_pembangkit} </CTableDataCell>
+                        <CTableDataCell> {item.kepemilikan_aset} </CTableDataCell>
+                        <CTableDataCell> {item.energi_primer} </CTableDataCell>
+                        <CTableDataCell> {item.kapasitas} </CTableDataCell>
+                        <CTableDataCell> {item.DMN} </CTableDataCell>
                         <CTableDataCell> 
                            <BsIcons.BsPencilSquare                        
                           onClick={() => {
@@ -266,6 +266,32 @@ const UserInvalid_page = () => {
     </div>
     </>
   );
-  };
-  
-  export default UserInvalid_page;
+};
+
+export const ReportsOne = () => {
+  return (
+    <>
+    <div className='reports'>
+      <h1>Reports/reports1</h1>
+    </div>
+    </>
+  );
+};
+
+export const ReportsTwo = () => {
+  return (
+    <>
+    <div className='reports'>
+      <h1>Reports/reports2</h1>
+    </div>
+    </>
+  );
+};
+
+export const ReportsThree = () => {
+  return (
+    <div className='reports'>
+      <h1>Reports/reports3</h1>
+    </div>
+  );
+};

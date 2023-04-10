@@ -8,7 +8,7 @@ import {
   BsDatabaseFillAdd,
 } from 'react-icons/bs';
 import {
-	BiLogInCircle, BiMessageRounded,
+	 BiMessageRounded,
 } from 'react-icons/bi';
 import * as AiIcons from 'react-icons/ai';
 
@@ -19,11 +19,6 @@ export const SidebarData = [
     path: '/realtime',
     icon: <AiOutlineLineChart />
   },
-  {
-    title: 'Login',
-    path: '/signin',
-    icon: <BiLogInCircle />
-  }
 ];
 
 export const SidebarData_Admin = [
@@ -60,7 +55,7 @@ export const SidebarData_Admin = [
     subNav: [
       {
         title: 'Tabel Pembangkit',
-        path: '/reports/reports1',
+        path: '/Data_pengolahan/pembangkit',
         icon: <BsDatabaseFillAdd />,
         cName: 'sub-nav'
       },

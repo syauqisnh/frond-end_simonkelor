@@ -1,10 +1,12 @@
 import React from 'react';
-import Comments from "../components/Comments"
+import Comments from '../components/Comments';
 
 function ForumComment() {
     return (
+        <div className="homes">
         <div className="App">
-            <Comments />
+            <Comments/>
+        </div>
         </div>
     );
 }

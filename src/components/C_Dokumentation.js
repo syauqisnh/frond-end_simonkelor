@@ -90,7 +90,6 @@ const Dokumentation = () => {
 
   return (
     <>
-      <Sidebar />
       <div className="homes">
         <div className="wrapper d-flex flex-column">
           <div className="body flex-grow-1 px-3">

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import * as FaIcons from "react-icons/fa";
 // import * as AiIcons from 'react-icons/ai';
 import * as BiIcons from 'react-icons/bi';
@@ -142,6 +142,13 @@ const Sidebar = () => {
   }
 
   const showSidebar = () => setSidebar(!sidebar);
+  
+  const history = useHistory();
+
+  const handleSignIn = () => {
+    history.push('/signin');
+    window.location.reload();
+  };
 
   return (
     <>
@@ -213,7 +220,16 @@ const Sidebar = () => {
 
           {(() => { if(user_guest === "Guest") {
             return(
-              <AppMenu items={SidebarData} />
+              <div>
+                <AppMenu items={SidebarData} />   
+
+                <SidebarLogout onClick={handleSignIn}>
+                  <div>
+                    <BiIcons.BiLogInCircle/>
+                    <SidebarLabel>Login</SidebarLabel>
+                  </div>
+                </SidebarLogout>         
+              </div>
               )
           }})()}
 

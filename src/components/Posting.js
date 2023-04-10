@@ -27,7 +27,7 @@ export default function Basic() {
                   </div>
                   <p>consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
                   <div className="pad-ver">
-                    <Button className="button-comment" href="forumcomment">Comment</Button>
+                    <Button className="button-comment" href="/forumcomment">Comment</Button>
                   </div>
                 </div>
               </div>

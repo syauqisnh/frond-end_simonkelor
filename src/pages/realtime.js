@@ -17,7 +17,6 @@ import {
 import { CChartLine, CChartPie, CChartDoughnut } from "@coreui/react-chartjs";
 import { hexToRgba } from "@coreui/utils";
 
-import Sidebar from "../components/Sidebar";
 import { useEffect } from "react";
 
 const Realtime = () => {
@@ -57,28 +56,26 @@ const Realtime = () => {
   
   }
   useEffect(() => {
+    
+    const data = [ 70.00, 69.43, 68.49 , 68.29 , 67.40 , 67.17 , 66.18 , 65.51 , 65.96 , 65.57 , 64.93 , 64.87 , 63.23 , 60.69 , 59.98 , 59.52 ,
+      59.61 , 57.52 , 55.49 , 55.43 , 55.58 , 55.90 , 55.62 , 55.62, 66.18 , 66.18, 55.62, 55.62 ]
+  
+
+    const data_prediksi = [ 69.43, 68.49 , 68.29 , 67.40 , 67.17 , 66.18 , 65.51 , 65.96 , 65.57 , 64.93 , 64.87 , 63.23 , 60.69 , 59.98 , 59.52 ,
+      59.61 , 57.52 , 55.49 , 55.43 , 55.58 , 55.90 , 55.62 , 55.68 , 55.39 , 55.16 , 55.72 , 56.42 , 55.87 , 55.60 , 55.51 , 55.39 , 54.16 ,
+      54.85 , 55.25 , 57.03 , 60.61 , 68.81 , 81.01 , 85.76 , 84.47 , 83.23 , 82.42 , 81.08 , 79.41 , 77.64 , 75.76 , 73.64 , 73.09 ,]
+
       fetchData();
       setRealtimes_langgam(data);
       setRealtimes_langgam_prediksi(data_prediksi);
   }, []);
 
     const [realtimes_langgam, setRealtimes_langgam] = useState([]);
-    // const [realtimes_pembangkit, setRealtimes_pembangkit] = useState([]);
-    // const [realtimes_pembangkit_PLTU, setRealtimes_pembangkitPLTU] = useState([]);
-    // const [realtimes_pembangkit_Plan, setRealtimes_pembangkitPlan] = useState([]);
     const [realtimes_langgam_prediksi, setRealtimes_langgam_prediksi] = useState([]);
   
-      const data = [ 70.00, 69.43, 68.49 , 68.29 , 67.40 , 67.17 , 66.18 , 65.51 , 65.96 , 65.57 , 64.93 , 64.87 , 63.23 , 60.69 , 59.98 , 59.52 ,
-        59.61 , 57.52 , 55.49 , 55.43 , 55.58 , 55.90 , 55.62 , 55.62, 66.18 , 66.18, 55.62, 55.62 ]
-    
-  
-      const data_prediksi = [ 69.43, 68.49 , 68.29 , 67.40 , 67.17 , 66.18 , 65.51 , 65.96 , 65.57 , 64.93 , 64.87 , 63.23 , 60.69 , 59.98 , 59.52 ,
-        59.61 , 57.52 , 55.49 , 55.43 , 55.58 , 55.90 , 55.62 , 55.68 , 55.39 , 55.16 , 55.72 , 56.42 , 55.87 , 55.60 , 55.51 , 55.39 , 54.16 ,
-        54.85 , 55.25 , 57.03 , 60.61 , 68.81 , 81.01 , 85.76 , 84.47 , 83.23 , 82.42 , 81.08 , 79.41 , 77.64 , 75.76 , 73.64 , 73.09 ,]
       
   return (
     <>
-    <Sidebar />
     <div className='homes'>
       
       <div className="wrapper d-flex flex-column">

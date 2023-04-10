@@ -2,7 +2,7 @@ import React from "react";
 import { BsFillFolderFill } from "react-icons/bs";
 import { useHistory } from "react-router-dom";
 
-const Dataoperasi = () => {
+const C_Dataoperasi = () => {
   const history = useHistory();
 
   const handleClick = (route) => {
@@ -91,6 +91,7 @@ const Dataoperasi = () => {
     fontSize: "15pt",
   };
   return (
+    <>
       <div className="homes">
         <div className="wrapper d-flex flex-column">
           <div className="body flex-grow-1 px-3">
@@ -126,7 +127,8 @@ const Dataoperasi = () => {
           </div>
         </div>
       </div>
+    </>
   );
 };
 
-export default Dataoperasi;
+export default C_Dataoperasi;
