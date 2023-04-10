@@ -72,7 +72,7 @@ const C_Dataoperasi = () => {
     height: "300px",
     backgroundColor: "#D9D9D9",
     borderRadius: "50px",
-    margin: "30px 20px 10px 10px",
+    margin: "30px 20px 10px 50px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -97,7 +97,7 @@ const C_Dataoperasi = () => {
           <div className="body flex-grow-1 px-3">
             <div className="header">
               <p>Operasional Data</p>
-              <div style={{ display: "flex", flexDirection: "column" }}>
+              <div style={{ display: "relative", flexDirection: "column"}}>
                 <div style={{ display: "flex" }}>
                   {kotakList1.map((kotak) => (
                     <div

@@ -8,7 +8,7 @@ const Dokumentation = () => {
     height: "300px",
     backgroundColor: "#D9D9D9",
     borderRadius: "50px",
-    margin: "30px 20px 10px 10px",
+    margin: "30px 20px 10px 50px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -100,16 +100,15 @@ const Dokumentation = () => {
                   {kotakList1.map((kotak) => (
                     <div key={kotak.id} style={kotakStyle}>
                       {React.cloneElement(kotak.icon, { style: imgStyle })}
-                      <p style={textStyle}>{kotak.text}</p>{" "}
+                      <p style={textStyle}>{kotak.text}</p>
                     </div>
                   ))}
                 </div>
                 <div style={{ display: "flex" }}>
                   {kotakList2.map((kotak) => (
-                    <div key={kotak.id} style={kotakStyleMobile}>
-                      {" "}
+                    <div key={kotak.id} style={kotakStyle}>
                       {React.cloneElement(kotak.icon, { style: imgStyle })}
-                      <p style={textStyle}>{kotak.text}</p>{" "}
+                      <p style={textStyle}>{kotak.text}</p>
                     </div>
                   ))}
                 </div>
