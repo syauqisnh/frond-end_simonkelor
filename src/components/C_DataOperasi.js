@@ -28,7 +28,7 @@ const C_Dataoperasi = () => {
           <div>Stacking Energi</div>
         </>
       ),
-      route: "/load",
+      route: "/Energi",
     },
     {
       id: 3,
@@ -39,7 +39,7 @@ const C_Dataoperasi = () => {
           <div>Stacking Pembangkit</div>
         </>
       ),
-      route: "/pembangkit",
+      route: "/S_pembangkit",
     },
   ];
   const kotakList2 = [
@@ -52,7 +52,7 @@ const C_Dataoperasi = () => {
           <div>Pembangkit</div>
         </>
       ),
-      route: "/produksi",
+      route: "/Energi_Pembangkit",
     },
     {
       id: 5,
@@ -62,7 +62,7 @@ const C_Dataoperasi = () => {
           <div>Tabel BPP</div>
         </>
       ),
-      route: "/tabel",
+      route: "/BPP",
     },
   ];
 

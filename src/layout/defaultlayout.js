@@ -11,6 +11,11 @@ import Forum from "../pages/Forum";
 import ForumComment from "../pages/ForumComments";
 import Profile from "../pages/Profile";
 import C_langgambebanharian from "../components/C_langgambebanharian";
+import Energi from "../components/Energi";
+import S_pembangkit from "../components/S_pembangkit";
+import Energi_Pembangkit from "../components/Energi_Pembangkit";
+import BPP from "../components/BPP";
+
 
 const DefaultLayout = () => {
   return (
@@ -31,11 +36,19 @@ const DefaultLayout = () => {
         <Route path="/dokumentation" component={Dokumentation} />
         <Route path="/dataoperasi" component={Dataoperasi} />
         <Route path="/C_langgambebanharian" component={C_langgambebanharian} />
+        <Route path="/Energi" component={Energi} />
+        <Route path="/S_pembangkit" component={S_pembangkit} />
+        <Route path="/Energi_Pembangkit" component={Energi_Pembangkit} />
+        <Route path="/BPP" component={BPP} />
         <Route
           path="/C_langgambebanharian/:pilihan_id"
           exact
           component={C_langgambebanharian}
         />
+        <Route path="/C_Energi/:pilihan_id" exact component={Energi} />
+        <Route path="/S_pembangkit/:pilihan_id" exact component={S_pembangkit} />
+        <Route path="/Energi_Pembangkit/:pilihan_id" exact component={Energi_Pembangkit} />
+        <Route path="/BPP/:pilihan_id" exact component={BPP} />
       </Switch>
     </Router>
   );
