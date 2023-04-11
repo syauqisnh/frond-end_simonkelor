@@ -82,6 +82,34 @@ const User_page = () => {
     GetUserPegawai();
   }, []);
   
+  const save_user = async (event) => {
+    event.preventDefault();
+    try {
+      await axios.post(
+        `http://localhost:8000/api/user/`,
+        {
+          nama_user: nama_users,
+          nip: nips,
+          instansi: instansis,
+          role: roles,
+          email: emails,
+          password: passwords,
+        });
+        alert("Data Berhasil ditambahkan")
+        setNama("");
+        setNip("");
+        setInstansi("");
+        setRole("");
+        setEmail("");
+        setPassword("");
+        handleClose();
+        window.location.href = '/';
+
+    } catch (error) {
+        alert("Data Gagal ditambahkan")
+    }
+  };
+
   const update_user = async (event) => {
     event.preventDefault();
     try {
@@ -103,13 +131,21 @@ const User_page = () => {
         setRole("");
         setEmail("");
         handleClose();
-        window.location.reload();
+        window.location.href = '/';
 
     } catch (error) {
         alert("Data Gagal diubah")
     }
   };
-      
+  
+  const HandleDelete = (id_delete) => {
+    axios.delete(`
+    http://localhost:8000/api/delete_user/${id_delete}
+    `).then(() => {
+      alert("Data Berhasil dihapus")
+      window.location.href = '/';
+    })
+  }; 
   return (
     <>
     <div className='homes'>
@@ -143,7 +179,7 @@ const User_page = () => {
   {/* Modal */}
   {/* Modal Update */}
   
-  <Modal show={show_edit} onHide={handleClose}>
+                <Modal show={show_edit} onHide={handleClose}>
                   <Modal.Header closeButton>
                     <Modal.Title>Form Update Data</Modal.Title>
                     </Modal.Header>
@@ -218,7 +254,7 @@ const User_page = () => {
                                   <Modal.Title>Form Tambah Data</Modal.Title>
                               </Modal.Header>
                               <Modal.Body>
-                              <Form>
+                              <Form onSubmit={save_user}> 
                                   <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                       <Form.Label>Nama User</Form.Label>
                                       <Form.Control
@@ -339,14 +375,13 @@ const User_page = () => {
                                                 <CTableDataCell> 
                                                   <BsIcons.BsPencilSquare                       
                                                     onClick={() => {
-                                                      // handleShow_edit(item.id);
                                                       SetdataUpdate(item);
                                                     }}
                                                   />
                                                   <AiIcons.AiFillDelete
-                                                      // onClick={() => {
-                                                      //   HandleDelete(item.user_id);
-                                                      // }}
+                                                      onClick={() => {
+                                                        HandleDelete(item.user_id);
+                                                      }}
                                                   />
                                                 </CTableDataCell>
                                               </CTableRow>
@@ -395,9 +430,9 @@ const User_page = () => {
                                                     }}
                                                   />
                                                   <AiIcons.AiFillDelete
-                                                      // onClick={() => {
-                                                      //   HandleDelete(item.user_id);
-                                                      // }}
+                                                      onClick={() => {
+                                                        HandleDelete(item.user_id);
+                                                      }}
                                                   />
                                                 </CTableDataCell>
                                               </CTableRow>

@@ -24,24 +24,28 @@ export const Pembangkit = () => {
 
   const [data_pembangkit, setData] = useState([]);
   const [id, setId] = useState("");
-  const [nama_users, setNama] = useState("");
-  const [nips, setNip] = useState("");
-  const [instansis, setInstansi] = useState("");
-  const [roles, setRole] = useState("");
-  const [emails, setEmail] = useState("");
-  const [passwords, setPassword] = useState("");
+  const [nama_pembangkit, setNamaPembangkit] = useState("");
+  const [jenis_pembangkit, setJenisPembangkit] = useState("");
+  const [kepemilikan_aset, setAsset] = useState("");
+  const [energi_primer, setEnergi] = useState("");
+  const [kapasitas, setKapasitas] = useState("");
+  const [DMN, setDMN] = useState("");
 
   const [show, setShow] = useState(false);
+  const [show_edit, setShowEdit] = useState(false);
   
+  const handleShow = () => setShow(true);
+
   const handleClose = () => {
       setId("");
-      setNama("");
-      setNip("");
-      setInstansi("");
-      setRole("");
-      setEmail("");
-      setPassword("");
+      setNamaPembangkit("");
+      setJenisPembangkit("");
+      setAsset("");
+      setEnergi("");
+      setKapasitas("");
+      setDMN("");
       setShow(false);
+      setShowEdit(false);
   };
 
 useEffect(() => {
@@ -53,58 +57,82 @@ useEffect(() => {
 }, []);
 
 const Setdata = (data) => {
-  setId(data.id);
-  setNama(data.nama_user);
-  setNip(data.nip);
-  setInstansi(data.instansi);
-  setRole(data.role);
-  setEmail(data.email);
-  setPassword(data.password);
+  setId(data.id_pembangkit);
+  setNamaPembangkit(data.nama_pembangkit);
+  setJenisPembangkit(data.jenis_pembangkit);
+  setAsset(data.kepemilikan_aset);
+  setEnergi(data.energi_primer);
+  setKapasitas(data.kapasitas);
+  setDMN(data.DMN);
 
-  setShow(true);
+  setShowEdit(true);
 }
 
 const HandleDelete = (id_delete) => {
   axios.delete(`
-  http://localhost:8000/api/user_registrasi/${id_delete}
+  http://localhost:8000/api/delete_pembangkit/${id_delete}
   `).then(() => {
     alert("Data Berhasil dihapus")
-    window.location.reload();
+    window.location.href = '/';
   })
 };
 
-const save_user = async (event) => {
+const save_data = async (event) => {
   event.preventDefault();
   try {
     await axios.post(
-      `http://localhost:8000/api/user/`,
+      `http://localhost:8000/api/pembangkit/`,
       {
-        nama_user: nama_users,
-        nip: nips,
-        instansi: instansis,
-        role: roles,
-        email: emails,
-        password: passwords,
+        nama_pembangkit: nama_pembangkit,
+        jenis_pembangkit: jenis_pembangkit,
+        kepemilikan_aset: kepemilikan_aset,
+        energi_primer: energi_primer,
+        kapasitas: kapasitas,
+        DMN: DMN,
 
-      }).then(() =>{
-        axios.delete(`
-          http://localhost:8000/api/user_registrasi/${id}
-        `).then(() => {
-          setId("");
-          setNama("");
-          setNip("");
-          setInstansi("");
-          setRole("");
-          setEmail("");
-          setPassword("");
-          alert("Akun telah diaktifkan")
-          handleClose();
-          window.location.reload();
-        })
-      })
+      });
+      alert("Data Berhasil ditambahkan");
+      setNamaPembangkit("");
+      setJenisPembangkit("");
+      setAsset("");
+      setEnergi("");
+      setKapasitas("");
+      setDMN("");
+      handleClose();
+      window.location.href = '/';
 
   } catch (error) {
       alert("Data Gagal ditambahkan")
+  }
+};
+
+const update_data = async (event) => {
+  event.preventDefault();
+  try {
+    await axios.put(
+      `http://localhost:8000/api/update_pembangkit/${id}`,
+      {
+        nama_pembangkit: nama_pembangkit,
+        jenis_pembangkit: jenis_pembangkit,
+        kepemilikan_aset: kepemilikan_aset,
+        energi_primer: energi_primer,
+        kapasitas: kapasitas,
+        DMN: DMN,
+
+      });
+      alert("Data Berhasil diubah")
+      setId("");
+      setNamaPembangkit("");
+      setJenisPembangkit("");
+      setAsset("");
+      setEnergi("");
+      setKapasitas("");
+      setDMN("");
+      handleClose();
+      window.location.href = '/';
+
+  } catch (error) {
+      alert("Data Gagal diubah")
   }
 };
   return (
@@ -131,8 +159,15 @@ const save_user = async (event) => {
                 <CRow>
                     <CCol xs={12}>
                         <CContainer>
+                <Button 
+                  className='btn btn-success text-white me-2'                        
+                  onClick={handleShow}
+                >
+                  Tambah Data 
+                </Button>
+
         <CCol xs={12}>
-          <CCard className="mb-4">
+          <CCard className="mt-4">
             <CCardHeader>
               <strong>Tabel Data Pembangkit</strong>
             </CCardHeader>
@@ -170,7 +205,7 @@ const save_user = async (event) => {
                             />
                             <AiIcons.AiFillDelete
                           onClick={() => {
-                            HandleDelete(item.id);
+                            HandleDelete(item.id_pembangkit);
                           }}
                             />
                             </CTableDataCell>
@@ -185,65 +220,70 @@ const save_user = async (event) => {
   {/* Modal */}
   {/* Modal Update */}
   
-                <Modal show={show} onHide={handleClose}>
+                <Modal show={show_edit} onHide={handleClose}>
                   <Modal.Header closeButton>
                     <Modal.Title>Form Update Data</Modal.Title>
                     </Modal.Header>
                       <Modal.Body>
-                        <Form onSubmit={save_user}>
+                        <Form onSubmit={update_data}>
                           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                               </Form.Group>
                                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                  <Form.Label>Nama User</Form.Label>
+                                  <Form.Label>Nama Pembangkit</Form.Label>
                                   <Form.Control
                                     type="text"
                                     autoFocus
-                                    onChange={(e) => setNama(e.target.value)}
-                                    value={nama_users}
+                                    onChange={(e) => setNamaPembangkit(e.target.value)}
+                                    value={nama_pembangkit}
                                   />
                                   </Form.Group>
                                   <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                      <Form.Label>NIP User</Form.Label>
+                                      <Form.Label>Jenis Pembangkit</Form.Label>
                                       <Form.Control
                                           type="text"
                                           autoFocus
-                                          onChange={(e) => setNip(e.target.value)}
-                                          value={nips}
+                                          onChange={(e) => setJenisPembangkit(e.target.value)}
+                                          value={jenis_pembangkit}
                                       />
                                   </Form.Group>
                                   <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                      <Form.Label>Instansi User</Form.Label>
+                                      <Form.Label>Kepemilikan Asset</Form.Label>
                                       <Form.Control
                                           type="text"
                                           autoFocus
-                                          onChange={(e) => setInstansi(e.target.value)}
-                                          value={instansis}
+                                          onChange={(e) => setAsset(e.target.value)}
+                                          value={kepemilikan_aset}
                                       />
                                   </Form.Group>
                                   <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                      <Form.Label>Role User</Form.Label>
-                                      <Form.Select
+                                      <Form.Label>Energi Primer</Form.Label>
+                                      <Form.Control
                                           type="text"
                                           autoFocus
-                                          onChange={(e) => setRole(e.target.value)}
-                                      >
-                                      <option value={roles} selected>{roles}</option>
-                                      <option value="Super Admin">Super Admin</option>
-                                      <option value="Admin Dispacher" >Admin Dispacher</option>
-                                      <option value="Admin Pembangkit">Admin Pembangkit</option>
-                                      </Form.Select>
+                                          onChange={(e) => setEnergi(e.target.value)}
+                                          value={energi_primer}
+                                      />
                                   </Form.Group>
                                   <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                      <Form.Label>Email User</Form.Label>
+                                      <Form.Label>Kapasitas</Form.Label>
                                       <Form.Control
-                                          type="email"
+                                          type="number"
                                           autoFocus
-                                          onChange={(e) => setEmail(e.target.value)}
-                                          value={emails}
+                                          onChange={(e) => setKapasitas(e.target.value)}
+                                          value={kapasitas}
+                                      />
+                                  </Form.Group>
+                                  <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                      <Form.Label>DMN</Form.Label>
+                                      <Form.Control
+                                          type="number"
+                                          autoFocus
+                                          onChange={(e) => setDMN(e.target.value)}
+                                          value={DMN}
                                       />
                                   </Form.Group>
                                   <Button type='submit' color="success">
-                                    Aktifkan
+                                    Update
                                   </Button>
                               </Form>
                               </Modal.Body>
@@ -253,6 +293,81 @@ const save_user = async (event) => {
                                   </Button>
                               </Modal.Footer>
                           </Modal>
+  
+{/* Modal Add */}
+                <Modal show={show} onHide={handleClose}>
+                            <Modal.Header closeButton>
+                                <Modal.Title>Form Tambah Data</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                            <Form onSubmit={save_data}>
+                          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                              </Form.Group>
+                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                  <Form.Label>Nama Pembangkit</Form.Label>
+                                  <Form.Control
+                                    type="text"
+                                    autoFocus
+                                    onChange={(e) => setNamaPembangkit(e.target.value)}
+                                    value={nama_pembangkit}
+                                  />
+                                  </Form.Group>
+                                  <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                      <Form.Label>Jenis Pembangkit</Form.Label>
+                                      <Form.Control
+                                          type="text"
+                                          autoFocus
+                                          onChange={(e) => setJenisPembangkit(e.target.value)}
+                                          value={jenis_pembangkit}
+                                      />
+                                  </Form.Group>
+                                  <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                      <Form.Label>Kepemilikan Asset</Form.Label>
+                                      <Form.Control
+                                          type="text"
+                                          autoFocus
+                                          onChange={(e) => setAsset(e.target.value)}
+                                          value={kepemilikan_aset}
+                                      />
+                                  </Form.Group>
+                                  <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                      <Form.Label>Energi Primer</Form.Label>
+                                      <Form.Control
+                                          type="text"
+                                          autoFocus
+                                          onChange={(e) => setEnergi(e.target.value)}
+                                          value={energi_primer}
+                                      />
+                                  </Form.Group>
+                                  <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                      <Form.Label>Kapasitas</Form.Label>
+                                      <Form.Control
+                                          type="number"
+                                          autoFocus
+                                          onChange={(e) => setKapasitas(e.target.value)}
+                                          value={kapasitas}
+                                      />
+                                  </Form.Group>
+                                  <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                      <Form.Label>DMN</Form.Label>
+                                      <Form.Control
+                                          type="number"
+                                          autoFocus
+                                          onChange={(e) => setDMN(e.target.value)}
+                                          value={DMN}
+                                      />
+                                  </Form.Group>
+                                <Button type='submit' color="success" className="px-4">
+                                  Submit
+                                </Button>
+                            </Form>
+                            </Modal.Body>
+                            <Modal.Footer>
+                                <Button variant="secondary" onClick={handleClose}>
+                                    Close
+                                </Button> 
+                            </Modal.Footer>
+                        </Modal>
             </CCardBody>
           </CCard>
         </CCol>

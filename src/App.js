@@ -41,7 +41,7 @@
 // export default App;
 
 import './App.css';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import DefaultLayout from './layout/defaultlayout';
 import Signin from './pages/Signin';
 import Signup from './pages/Signup';
@@ -55,6 +55,7 @@ function App() {
             <Route path="/signin" name="Login Page" component={Signin} />
             <Route path="/signup" name="Register Page" component={Signup} />
             <Route path='/forumcomment' component={ForumComment} />
+      
       </Switch>
     </Router>
   );

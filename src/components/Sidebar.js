@@ -221,14 +221,14 @@ const Sidebar = () => {
           {(() => { if(user_guest === "Guest") {
             return(
               <div>
-                <AppMenu items={SidebarData} />   
-
+                <AppMenu items={SidebarData} />  
+                
                 <SidebarLogout onClick={handleSignIn}>
                   <div>
                     <BiIcons.BiLogInCircle/>
                     <SidebarLabel>Login</SidebarLabel>
                   </div>
-                </SidebarLogout>         
+                </SidebarLogout>      
               </div>
               )
           }})()}

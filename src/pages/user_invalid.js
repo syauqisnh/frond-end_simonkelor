@@ -69,7 +69,7 @@ const UserInvalid_page = () => {
     http://localhost:8000/api/user_registrasi/${id_delete}
     `).then(() => {
       alert("Data Berhasil dihapus")
-      window.location.reload();
+      window.location.href = '/';
     })
   };
   
@@ -99,7 +99,7 @@ const UserInvalid_page = () => {
             setPassword("");
             alert("Akun telah diaktifkan")
             handleClose();
-            window.location.reload();
+            window.location.href = '/';
           })
         })
   
