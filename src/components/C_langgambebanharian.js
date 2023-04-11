@@ -9,7 +9,7 @@ import {
   CTableHeaderCell,
   CTableRow,
 } from "@coreui/react";
-import * as AiIcons from "react-icons/ai";
+import * as AiIcons from "react-icons/ai"; 
 
 const C_langgambebanharian = () => {
   const opsi = [
