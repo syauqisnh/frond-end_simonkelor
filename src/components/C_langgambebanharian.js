@@ -15,28 +15,20 @@ import * as AiIcons from "react-icons/ai";
 const C_langgambebanharian = () => {
   const opsi = [
     {
-      juduls: "Langgam Beban Harian - Januari 2023",
-      creates: "Diupload Oleh User",
+      Dokumen: "Langgam Beban Bulanan - Januari 2023",
+      waktu: "Bulanan",
     },
     {
-      juduls: "Langgam Beban Harian - Januari 2023",
-      creates: "Diupload Oleh User",
+      Dokumen: "Langgam Beban Harian - Januari 2023",
+      waktu: "Harian",
     },
     {
-      juduls: "Langgam Beban Harian - Januari 2023",
-      creates: "Diupload Oleh User",
+      Dokumen: "Langgam Beban Mingguan - Januari 2023",
+      waktu: "Mingguan",
     },
     {
-      juduls: "Langgam Beban Harian - Januari 2023",
-      creates: "Diupload Oleh User",
-    },
-    {
-      juduls: "Langgam Beban Harian - Januari 2023",
-      creates: "Diupload Oleh User",
-    },
-    {
-      juduls: "Langgam Beban Harian - Januari 2023",
-      creates: "Diupload Oleh User",
+      Dokumen: "Langgam Beban Tahunan - Januari 2023",
+      waktu: "Tahunan",
     },
   ];
 
@@ -53,7 +45,7 @@ const C_langgambebanharian = () => {
             </div>
             <CCol xs={12}>
               <CCardBody>
-                      <hr/>
+                <hr />
                 <CTable striped>
                   <CTableHead>
                     <CTableRow>
@@ -65,7 +57,7 @@ const C_langgambebanharian = () => {
                         }}
                         scope="col"
                       >
-                        Data Pekerjaan
+                        Nama Dokumen
                       </CTableHeaderCell>
                       <CTableHeaderCell
                         style={{
@@ -74,72 +66,110 @@ const C_langgambebanharian = () => {
                         }}
                         scope="col"
                       >
-                        Create By
+                        Jenis Waktu
                       </CTableHeaderCell>
-
                       <CTableHeaderCell
                         style={{
                           verticalAlign: "baseline",
                           textAlign: "center",
                         }}
                         scope="col"
-                      ></CTableHeaderCell>
-
+                      >
+                        Tanggal
+                      </CTableHeaderCell>
+                      <CTableHeaderCell
+                        style={{
+                          verticalAlign: "baseline",
+                          textAlign: "center",
+                        }}
+                        scope="col"
+                      >
+                        Jenis Dokumen
+                      </CTableHeaderCell>
+                      <CTableHeaderCell
+                        style={{
+                          verticalAlign: "baseline",
+                          textAlign: "center",
+                        }}
+                        scope="col"
+                      >
+                        Aksi
+                      </CTableHeaderCell>
                     </CTableRow>
                   </CTableHead>
                   <CTableBody>
                     {opsi.map((kotak) => (
-
-<CTableRow>
-
-  <CTableDataCell>
-    <AiIcons.AiFillDatabase
-      style={{
-        fontSize: "40px",
-        Align: "middle",
-        verticalAlign: "baseline",
-        textAlign: "center",
-      }}
-    />
-  </CTableDataCell>
-
-  <CTableDataCell
-    style={{
-      verticalAlign: "baseline",
-      textAlign: "center",
-    }}
-  >
-    {kotak.juduls}
-  </CTableDataCell>
-
-  <CTableDataCell
-    style={{
-      verticalAlign: "baseline",
-      textAlign: "center",
-    }}
-  >
-    {kotak.creates}
-  </CTableDataCell>
-
-  <CTableDataCell
-    style={{
-      verticalAlign: "baseline",
-      textAlign: "center",
-    }}
-  >
-    <button
-      style={{
-        backgroundColor: "#8573e9",
-        borderRadius: "30px",
-      }}
-      type="submit"
-    >
-      Download
-    </button>
-  </CTableDataCell>
-
-</CTableRow>
-                  ))}
+                      <CTableRow>
+                        <CTableDataCell>
+                          <AiIcons.AiFillDatabase
+                            style={{
+                              fontSize: "40px",
+                              Align: "middle",
+                              verticalAlign: "baseline",
+                              textAlign: "center",
+                            }}
+                          />
+                        </CTableDataCell>
+                        <CTableDataCell
+                          style={{
+                            verticalAlign: "baseline",
+                            textAlign: "center",
+                          }}
+                        >
+                          {kotak.Dokumen}
+                        </CTableDataCell>
+                        <CTableDataCell
+                          style={{
+                            verticalAlign: "baseline",
+                            textAlign: "center",
+                          }}
+                        >
+                          {kotak.waktu}
+                        </CTableDataCell>
+                        <CTableDataCell
+                          style={{
+                            verticalAlign: "baseline",
+                            textAlign: "center",
+                          }}
+                        >
+                          {kotak.tanggal}
+                        </CTableDataCell>
+                        <CTableDataCell
+                          style={{
+                            verticalAlign: "baseline",
+                            textAlign: "center",
+                          }}
+                        >
+                          {kotak.jenis}
+                        </CTableDataCell>
+                        <CTableDataCell
+                          style={{
+                            verticalAlign: "baseline",
+                            textAlign: "center",
+                          }}
+                        >
+                          <button
+                            style={{
+                              backgroundColor: "#8573e9",
+                              borderRadius: "30px",
+                            }}
+                            type="submit"
+                          >
+                            Download
+                          </button>
+                          <button
+                            style={{
+                              backgroundColor: "#e98277",
+                              borderRadius: "30px",
+                              marginLeft: "10px",
+                            }}
+                            type="submit"
+                          >
+                            Hapus
+                          </button>
+                        </CTableDataCell>
+                      </CTableRow>
+                    ))}
                   </CTableBody>
                 </CTable>
               </CCardBody>
