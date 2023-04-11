@@ -1,7 +1,6 @@
 import React from "react";
-import { BsFillFolderFill } from "react-icons/bs";
+import { AiFillFolderOpen } from "react-icons/ai";
 import { useHistory } from "react-router-dom";
-
 const C_Dataoperasi = () => {
   const history = useHistory();
 
@@ -11,7 +10,7 @@ const C_Dataoperasi = () => {
   const kotakList1 = [
     {
       id: 1,
-      icon: <BsFillFolderFill />,
+      icon: <AiFillFolderOpen />,
       text: (
         <>
           <div>Langgam</div>
@@ -22,7 +21,7 @@ const C_Dataoperasi = () => {
     },
     {
       id: 2,
-      icon: <BsFillFolderFill />,
+      icon: <AiFillFolderOpen />,
       text: (
         <>
           <div>Load</div>
@@ -33,7 +32,7 @@ const C_Dataoperasi = () => {
     },
     {
       id: 3,
-      icon: <BsFillFolderFill />,
+      icon: <AiFillFolderOpen />,
       text: (
         <>
           <div>Load</div>
@@ -46,7 +45,7 @@ const C_Dataoperasi = () => {
   const kotakList2 = [
     {
       id: 4,
-      icon: <BsFillFolderFill />,
+      icon: <AiFillFolderOpen />,
       text: (
         <>
           <div>Produksi Energi</div>
@@ -57,7 +56,7 @@ const C_Dataoperasi = () => {
     },
     {
       id: 5,
-      icon: <BsFillFolderFill />,
+      icon: <AiFillFolderOpen />,
       text: (
         <>
           <div>Tabel BPP</div>
@@ -97,7 +96,7 @@ const C_Dataoperasi = () => {
           <div className="body flex-grow-1 px-3">
             <div className="header">
               <p>Operasional Data</p>
-              <div style={{ display: "relative", flexDirection: "column"}}>
+              <div style={{ display: "relative", flexDirection: "column" }}>
                 <div style={{ display: "flex" }}>
                   {kotakList1.map((kotak) => (
                     <div

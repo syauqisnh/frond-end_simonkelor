@@ -1,6 +1,5 @@
 import React from "react";
 import { BsFillFolderFill } from "react-icons/bs";
-import Sidebar from "../components/Sidebar";
 
 const Dokumentation = () => {
   const kotakStyle = {
