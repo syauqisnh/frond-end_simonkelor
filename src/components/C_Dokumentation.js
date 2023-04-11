@@ -1,9 +1,76 @@
 import React from "react";
-import { BsFillFolderFill } from "react-icons/bs";
+import { AiFillFolderOpen } from "react-icons/ai";
+import { useHistory } from "react-router-dom";
 
-const Dokumentation = () => {
+
+const C_Dokumentation = () => {
+  const history = useHistory();
+
+  const handleClick = (route) => {
+    history.push(route);
+  };
+  const kotakList1 = [
+    {
+      id: 1,
+      icon: <AiFillFolderOpen />,
+      text: (
+        <>
+          <div>Dokumen</div>
+          <div>Perencanaan</div>
+        </>
+      ),
+      route: "/C_langgambebanharian",
+    },
+    {
+      id: 2,
+      icon: <AiFillFolderOpen />,
+      text: (
+        <>
+          <div>Dokumen</div>
+          <div>Evaluasi Operasi</div>
+        </>
+      ),
+      route: "/Energi",
+    },
+    {
+      id: 3,
+      icon: <AiFillFolderOpen />,
+      text: (
+        <>
+          <div>Dokumen</div>
+          <div>Profil Kelistrikkan</div>
+        </>
+      ),
+      route: "/S_pembangkit",
+    },
+  ];
+  const kotakList2 = [
+    {
+      id: 4,
+      icon: <AiFillFolderOpen />,
+      text: (
+        <>
+          <div>Dokumen</div>
+          <div>SOP Pengoprasian</div>
+        </>
+      ),
+      route: "/Energi_Pembangkit",
+    },
+    {
+      id: 5,
+      icon: <AiFillFolderOpen />,
+      text: (
+        <>
+          <div>Dokumen</div>
+          <div>Single Line Diagram</div>
+        </>
+      ),
+      route: "/BPP",
+    },
+  ];
+
   const kotakStyle = {
-    width: "300px", 
+    width: "300px",
     height: "300px",
     backgroundColor: "#D9D9D9",
     borderRadius: "50px",
@@ -12,13 +79,7 @@ const Dokumentation = () => {
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "column",
-  };
-
-  const kotakStyleMobile = {
-    ...kotakStyle,
-    width: "300px", 
-    margin: "30px 20px 10px 10px",
-    marginTop: "30px",
+    cursor: "pointer",
   };
 
   const imgStyle = {
@@ -31,83 +92,35 @@ const Dokumentation = () => {
     textAlign: "center",
     fontSize: "15pt",
   };
-  const kotakList1 = [
-    {
-      id: 1,
-      icon: <BsFillFolderFill />,
-      text: (
-        <>
-          <div>Dokumen</div>
-          <div>Perencanaan</div>
-        </>
-      ),
-    },
-    {
-      id: 2,
-      icon: <BsFillFolderFill />,
-      text: (
-        <>
-          <div>Dokumen</div>
-          <div>Evaluasi Operasi</div>
-        </>
-      ),
-    },
-    {
-      id: 3,
-      icon: <BsFillFolderFill />,
-      text: (
-        <>
-          <div>Dokumen</div>
-          <div>Profil Kelistrikkan</div>
-        </>
-      ),
-    },
-  ];
-
-  const kotakList2 = [
-    {
-      id: 4,
-      icon: <BsFillFolderFill />,
-      text: (
-        <>
-          <div>Dokumen</div>
-          <div>SOP Pengoprasian</div>
-        </>
-      ),
-    },
-    {
-      id: 5,
-      icon: <BsFillFolderFill />,
-      text: (
-        <>
-          <div>Dokumen</div>
-          <div>Single Line Diagram</div>
-        </>
-      ),
-    },
-  ];
-
   return (
     <>
       <div className="homes">
         <div className="wrapper d-flex flex-column">
           <div className="body flex-grow-1 px-3">
             <div className="header">
-              <p>Documentation</p>
-              <div style={{ display: "flex", flexDirection: "column" }}>
+              <p>Operasional Data</p>
+              <div style={{ display: "relative", flexDirection: "column" }}>
                 <div style={{ display: "flex" }}>
                   {kotakList1.map((kotak) => (
-                    <div key={kotak.id} style={kotakStyle}>
+                    <div
+                      key={kotak.id}
+                      style={kotakStyle}
+                      onClick={() => handleClick(kotak.route)}
+                    >
                       {React.cloneElement(kotak.icon, { style: imgStyle })}
-                      <p style={textStyle}>{kotak.text}</p>
+                      <p style={textStyle}>{kotak.text}</p>{" "}
                     </div>
                   ))}
                 </div>
                 <div style={{ display: "flex" }}>
                   {kotakList2.map((kotak) => (
-                    <div key={kotak.id} style={kotakStyle}>
+                    <div
+                      key={kotak.id}
+                      style={kotakStyle}
+                      onClick={() => handleClick(kotak.route)}
+                    >
                       {React.cloneElement(kotak.icon, { style: imgStyle })}
-                      <p style={textStyle}>{kotak.text}</p>
+                      <p style={textStyle}>{kotak.text}</p>{" "}
                     </div>
                   ))}
                 </div>
@@ -120,4 +133,4 @@ const Dokumentation = () => {
   );
 };
 
-export default Dokumentation;
+export default C_Dokumentation ;

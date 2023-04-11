@@ -643,3 +643,14 @@ input[type="submit"]:hover {
   resize: none
 }
 
+.download {
+  background-color: #8573e9;
+  color: white;
+  margin-left: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+}

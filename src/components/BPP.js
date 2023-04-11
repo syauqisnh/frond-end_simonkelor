@@ -11,7 +11,7 @@ import {
 } from "@coreui/react";
 import * as AiIcons from "react-icons/ai";
 
-const C_langgambebanharian = () => {
+const BPP= () => {
   const opsi = [
     {
       Dokumen: "Langgam Beban Bulanan - Januari 2023",
@@ -48,7 +48,7 @@ const C_langgambebanharian = () => {
             className="innercontainer"
           >
             <div className="header">
-              <p>Langgam Beban Harian</p>
+              <p>Tabel BPP</p>
             </div>
             <CCol xs={12}>
               <CCardBody>
@@ -186,4 +186,4 @@ const C_langgambebanharian = () => {
   );
 };
 
-export default C_langgambebanharian;
+export default BPP;
