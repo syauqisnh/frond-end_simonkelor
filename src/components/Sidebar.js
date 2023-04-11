@@ -5,12 +5,12 @@ import styled from "styled-components";
 import { Link, useHistory } from "react-router-dom";
 import * as FaIcons from "react-icons/fa";
 // import * as AiIcons from 'react-icons/ai';
-import * as BiIcons from 'react-icons/bi';
-import { 
-  SidebarData, 
+import * as BiIcons from "react-icons/bi";
+import {
+  SidebarData,
   SidebarData_Admin,
   SidebarData_Dispacher,
-  SidebarData_Pegawai, 
+  SidebarData_Pegawai,
 } from "./SidebarData";
 
 import Logo from "../assets/images/1.png";
@@ -51,9 +51,8 @@ const NavIcon = styled(Link)`
 
 const NavIconback = styled.div`
   position: absolute;
-  transform: translateX(0px);
   top: 10px;
-  right: 0;
+  left: 0;
   width: 40px;
   height: 60px;
   border-top-right-radius: 5px;
@@ -88,6 +87,7 @@ const SidebarNav = styled.nav`
 
 const SidebarWrap = styled.div`
   width: 100%;
+  overflow-y: auto;
 `;
 
 const SidebarLogout = styled(Link)`
@@ -116,37 +116,33 @@ const Sidebar = () => {
   const [sidebar, setSidebar] = useState(true);
   const [user, setUser] = useState({});
   const [user_guest, setUser_guest] = useState("Guest");
-  
+
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
-    axios.get('http://localhost:8000/api/datauser').then((response) => {
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    axios.get("http://localhost:8000/api/datauser").then((response) => {
       setUser(response.data);
-      setUser_guest("-"); 
-    })
-
+      setUser_guest("-");
+    });
   }, [user, user_guest]);
-  
 
-  const LogoutHandler = async => {
+  const LogoutHandler = (async) => {
     const token = localStorage.getItem("token");
 
-    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
-    axios.post('http://localhost:8000/api/logout').then(() => {
-
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    axios.post("http://localhost:8000/api/logout").then(() => {
       localStorage.removeItem("token");
-      window.location.href = "/"; 
-    })
-
-  }
+      window.location.href = "/";
+    });
+  };
 
   const showSidebar = () => setSidebar(!sidebar);
-  
+
   const history = useHistory();
 
   const handleSignIn = () => {
-    history.push('/signin');
+    history.push("/signin");
     window.location.reload();
   };
 
@@ -170,124 +166,140 @@ const Sidebar = () => {
                 </Link>
               </div>
             </li>
-            {(() => { if(user_guest === "Guest") {
-            return(
-              <div className="nav-link-user">
-                <span>Guest</span>
-              </div>
-              )
-          }})()}
-            
-          {(() => { if(user.role === "Super Admin") {
-            return(
-              <div>
-                <div className="nav-link-user">
-                  <span> {user.nama_user} </span>
-                </div>
-                <div className="nav-link-jabatan">
-                  <p> {user.role} </p>
-                </div>
-              </div>
-              )
-          }})()}
-            
-          {(() => { if(user.role === "Admin Dispacher") {
-            return(
-              <div>
-                <div className="nav-link-user">
-                  <span> {user.nama_user} </span>
-                </div>
-                <div className="nav-link-jabatan">
-                  <p> {user.role} </p>
-                </div>
-              </div>
-              )
-          }})()}
-            
-          {(() => { if(user.role === "Pegawai") {
-            return(
-              <div>
-                <div className="nav-link-user">
-                  <span> {user.nama_user} </span>
-                </div>
-                <div className="nav-link-jabatan">
-                  <p> {user.role} </p>
-                </div>
-              </div>
-              )
-          }})()}
+            {(() => {
+              if (user_guest === "Guest") {
+                return (
+                  <div className="nav-link-user">
+                    <span>Guest</span>
+                  </div>
+                );
+              }
+            })()}
+
+            {(() => {
+              if (user.role === "Super Admin") {
+                return (
+                  <div>
+                    <div className="nav-link-user">
+                      <span> {user.nama_user} </span>
+                    </div>
+                    <div className="nav-link-jabatan">
+                      <p> {user.role} </p>
+                    </div>
+                  </div>
+                );
+              }
+            })()}
+
+            {(() => {
+              if (user.role === "Admin Dispacher") {
+                return (
+                  <div>
+                    <div className="nav-link-user">
+                      <span> {user.nama_user} </span>
+                    </div>
+                    <div className="nav-link-jabatan">
+                      <p> {user.role} </p>
+                    </div>
+                  </div>
+                );
+              }
+            })()}
+
+            {(() => {
+              if (user.role === "Pegawai") {
+                return (
+                  <div>
+                    <div className="nav-link-user">
+                      <span> {user.nama_user} </span>
+                    </div>
+                    <div className="nav-link-jabatan">
+                      <p> {user.role} </p>
+                    </div>
+                  </div>
+                );
+              }
+            })()}
             <hr className="hr" />
 
-          {(() => { if(user_guest === "Guest") {
-            return(
-              <div>
-                <AppMenu items={SidebarData} />   
-
-                <SidebarLogout onClick={handleSignIn}>
+            {(() => {
+              if (user_guest === "Guest") {
+                return (
                   <div>
-                    <BiIcons.BiLogInCircle/>
-                    <SidebarLabel>Login</SidebarLabel>
+                    <AppMenu items={SidebarData} />
+
+                    <SidebarLogout onClick={handleSignIn}>
+                      <div>
+                        <BiIcons.BiLogInCircle />
+                        <SidebarLabel>Login</SidebarLabel>
+                      </div>
+                    </SidebarLogout>
                   </div>
-                </SidebarLogout>         
-              </div>
-              )
-          }})()}
+                );
+              }
+            })()}
 
-          {(() => { if(user.role === "Super Admin") {
-            return(
-              <div>
-                <AppMenu items={SidebarData_Admin} />
-
-                <hr className="hr"></hr>
-              
-                <SidebarLogout onClick={LogoutHandler}>
+            {(() => {
+              if (user.role === "Super Admin") {
+                return (
                   <div>
-                    <BiIcons.BiLogOutCircle/>
-                    <SidebarLabel>Logout</SidebarLabel>
+                    <AppMenu items={SidebarData_Admin} />
+
+                    <hr className="hr"></hr>
+
+                    <SidebarLogout onClick={LogoutHandler}>
+                      <div>
+                        <BiIcons.BiLogOutCircle />
+                        <SidebarLabel>Logout</SidebarLabel>
+                      </div>
+                    </SidebarLogout>
                   </div>
-                </SidebarLogout>
-              </div>
-              )
-          }})()}
+                );
+              }
+            })()}
 
-          {(() => { if(user.role === "Admin Dispacher") {
-            return(
-              <div>
-                <AppMenu items={SidebarData_Dispacher} />
-
-                <hr className="hr"></hr>
-              
-                <SidebarLogout onClick={LogoutHandler}>
+            {(() => {
+              if (user.role === "Admin Dispacher") {
+                return (
                   <div>
-                    <BiIcons.BiLogOutCircle/>
-                    <SidebarLabel>Logout</SidebarLabel>
-                  </div>
-                </SidebarLogout>
-              </div>
-              )
-          }})()}
-          
-          {(() => { if(user.role === "Pegawai") {
-            return(
-              <div>
-                <AppMenu items={SidebarData_Pegawai} />
+                    <AppMenu items={SidebarData_Dispacher} />
 
-                <hr className="hr"></hr>
-              
-                <SidebarLogout onClick={LogoutHandler}>
-                  <div>
-                    <BiIcons.BiLogOutCircle/>
-                    <SidebarLabel>Logout</SidebarLabel>
+                    <hr className="hr"></hr>
+
+                    <SidebarLogout onClick={LogoutHandler}>
+                      <div>
+                        <BiIcons.BiLogOutCircle />
+                        <SidebarLabel>Logout</SidebarLabel>
+                      </div>
+                    </SidebarLogout>
                   </div>
-                </SidebarLogout>
-              </div>
-              )
-          }})()}
+                );
+              }
+            })()}
+
+            {(() => {
+              if (user.role === "Pegawai") {
+                return (
+                  <div>
+                    <AppMenu items={SidebarData_Pegawai} />
+
+                    <hr className="hr"></hr>
+
+                    <SidebarLogout onClick={LogoutHandler}>
+                      <div>
+                        <BiIcons.BiLogOutCircle />
+                        <SidebarLabel>Logout</SidebarLabel>
+                      </div>
+                    </SidebarLogout>
+                  </div>
+                );
+              }
+            })()}
           </SidebarWrap>
         </SidebarNav>
       </IconContext.Provider>
     </>
   );
-}; 
+};
 
 export default Sidebar;
