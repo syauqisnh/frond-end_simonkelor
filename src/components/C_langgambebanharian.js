@@ -9,7 +9,6 @@ import {
   CTableHeaderCell,
   CTableRow,
 } from "@coreui/react";
-import Sidebar from "../components/Sidebar";
 import * as AiIcons from "react-icons/ai";
 
 const C_langgambebanharian = () => {
