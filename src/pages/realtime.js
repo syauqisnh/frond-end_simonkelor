@@ -268,6 +268,12 @@ const Realtime = () => {
                     <CCard className="mb-4">
                       <CCardBody>
                         <CRow>
+                        <CCol sm={8}>
+                          <h4 id="traffic" className="text-normal-default">
+                            Bauran Energi Sistem Timor
+                          </h4>
+                        </CCol>
+                        <hr/>
                           <CCol xs={6}>
                             <CChartDoughnut
                               data={{
@@ -407,6 +413,12 @@ const Realtime = () => {
                     <CCard className="mb-4">
                       <CCardBody>
                         <CRow>
+                        <CCol sm={8}>
+                          <h4 id="traffic" className="text-normal-default">
+                            Biaya Energi Sistem Timor
+                          </h4>
+                        </CCol>
+                        <hr/>
                           <CCol xs={6}>
                             <CChartPie
                               data={{

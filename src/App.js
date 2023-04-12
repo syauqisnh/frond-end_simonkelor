@@ -41,7 +41,7 @@
 // export default App;
 
 import './App.css';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import DefaultLayout from './layout/defaultlayout';
 import Signin from './pages/Signin';
 import Signup from './pages/Signup';
