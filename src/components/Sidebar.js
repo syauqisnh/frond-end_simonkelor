@@ -102,6 +102,7 @@ const SidebarLogout = styled(Link)`
   font-size: 10pt;
 
   &:hover {
+    color: #e1e9fc;
     background: #632ce4;
     border-left: 4px solid #632ce4;
     cursor: pointer;
