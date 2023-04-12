@@ -19,7 +19,7 @@ const C_Dokumentation = () => {
           <div>Perencanaan</div>
         </>
       ),
-      route: "/C_langgambebanharian",
+      route: "/Perencanaan",
     },
     {
       id: 2,
@@ -30,7 +30,7 @@ const C_Dokumentation = () => {
           <div>Evaluasi Operasi</div>
         </>
       ),
-      route: "/Energi",
+      route: "/Evaluasi",
     },
     {
       id: 3,
@@ -41,7 +41,7 @@ const C_Dokumentation = () => {
           <div>Profil Kelistrikkan</div>
         </>
       ),
-      route: "/S_pembangkit",
+      route: "/Kelistrikkan",
     },
   ];
   const kotakList2 = [
@@ -54,7 +54,7 @@ const C_Dokumentation = () => {
           <div>SOP Pengoprasian</div>
         </>
       ),
-      route: "/Energi_Pembangkit",
+      route: "/SOP",
     },
     {
       id: 5,
@@ -65,7 +65,7 @@ const C_Dokumentation = () => {
           <div>Single Line Diagram</div>
         </>
       ),
-      route: "/BPP",
+      route: "/LineDiagram",
     },
   ];
 

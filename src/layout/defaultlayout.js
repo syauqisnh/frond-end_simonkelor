@@ -15,6 +15,11 @@ import Energi from "../components/Energi";
 import S_pembangkit from "../components/S_pembangkit";
 import Energi_Pembangkit from "../components/Energi_Pembangkit";
 import BPP from "../components/BPP";
+import Perencanaan from "../components/Perencanaan";
+import Evaluasi from "../components/Evaluasi";
+import Kelistrikkan from "../components/Kelistrikkan";
+import SOP from "../components/SOP";
+import LineDiagram from "../components/LineDiagram";
 
 
 const DefaultLayout = () => {
@@ -39,7 +44,12 @@ const DefaultLayout = () => {
         <Route path="/Energi" component={Energi} />
         <Route path="/S_pembangkit" component={S_pembangkit} />
         <Route path="/Energi_Pembangkit" component={Energi_Pembangkit} />
+        <Route path="/Perencanaan" component={Perencanaan} />
         <Route path="/BPP" component={BPP} />
+        <Route path="/Evaluasi" component={Evaluasi} />
+        <Route path="/Kelistrikkan" component={Kelistrikkan} />
+        <Route path="/SOP" component={SOP} />
+        <Route path="/LineDiagram" component={LineDiagram} />
         <Route
           path="/C_langgambebanharian/:pilihan_id"
           exact
@@ -49,6 +59,11 @@ const DefaultLayout = () => {
         <Route path="/S_pembangkit/:pilihan_id" exact component={S_pembangkit} />
         <Route path="/Energi_Pembangkit/:pilihan_id" exact component={Energi_Pembangkit} />
         <Route path="/BPP/:pilihan_id" exact component={BPP} />
+        <Route path="/Perencanaan/:pilihan_id" exact component={Perencanaan} />
+        <Route path="/Evaluasi/:pilihan_id" exact component={Evaluasi} />
+        <Route path="/Kelistrikkan/:pilihan_id" exact component={Kelistrikkan} />
+        <Route path="/SOP/:pilihan_id" exact component={SOP} />
+        <Route path="/LineDiagram/:pilihan_id" exact component={LineDiagram} />
       </Switch>
     </Router>
   );
