@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import axios from "axios";
 import {
   CCardBody,
   CCol,
@@ -9,32 +10,45 @@ import {
   CTableHeaderCell,
   CTableRow,
 } from "@coreui/react";
-import * as AiIcons from "react-icons/ai";
+import * as AiIcons from "react-icons/ai"; 
+import { Button } from "react-bootstrap";
+import * as BsIcons from 'react-icons/bs';
 
 const LineDiagram = () => {
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    axios.get("http://localhost:8000/api/datauser").then((response) => {
+      setUser(response.data);
+    });
+  }, [user]);
+
   const opsi = [
     {
-      Dokumen: "Langgam Beban Bulanan - Januari 2023",
+      Dokumen: "Single Line PT PLN UPK Timor 2019",
       waktu: "Bulanan",
-      tanggal: "19 Desember 2022",
+      tanggal: "19 April 2018",
       jenis: "PDF",
     },
     {
-      Dokumen: "Langgam Beban Harian - Januari 2023",
+      Dokumen: "Single Line PT PLN UPK Timor 2020",
       waktu: "Harian",
-      tanggal: "19 Desember 2022",
+      tanggal: "7 Juni 2019",
       jenis: "PDF",
     },
     {
-      Dokumen: "Langgam Beban Mingguan - Januari 2023",
+      Dokumen: "Single Line PT PLN UPK Timor 2021",
       waktu: "Mingguan",
-      tanggal: "19 Desember 2022",
+      tanggal: "27 Febuari 2020",
       jenis: "PDF",
     },
     {
-      Dokumen: "Langgam Beban Tahunan - Januari 2023",
+      Dokumen: "Single Line PT PLN UPK Timor 2022",
       waktu: "Tahunan",
-      tanggal: "19 Desember 2022",
+      tanggal: "29 Desember 2022",
       jenis: "PDF",
     },
   ];
@@ -50,8 +64,23 @@ const LineDiagram = () => {
             <div className="header">
               <p>Dokumen Single Line Diagram</p>
             </div>
+            
             <CCol xs={12}>
               <CCardBody>
+                
+
+            {(() => {
+              if (user.role === "Super Admin") {
+                return (
+                  <Button 
+                    className='btn btn-success text-white me-2'                        
+                    // onClick={handleShow}
+                  >
+                    Tambah Data 
+                  </Button>
+                );
+              }
+            })()}
                 <hr />
                 <CTable striped>
                   <CTableHead>
@@ -92,15 +121,6 @@ const LineDiagram = () => {
                         scope="col"
                       >
                         Jenis Dokumen
-                      </CTableHeaderCell>
-                      <CTableHeaderCell
-                        style={{
-                          verticalAlign: "baseline",
-                          textAlign: "center",
-                        }}
-                        scope="col"
-                      >
-                        File
                       </CTableHeaderCell>
                     </CTableRow>
                   </CTableHead>
@@ -149,30 +169,52 @@ const LineDiagram = () => {
                         >
                           {kotak.jenis}
                         </CTableDataCell>
-                        <CTableDataCell
-                          style={{
-                            verticalAlign: "baseline",
-                            textAlign: "center",
-                          }}
-                        >
-                          <button
-                            style={{
-                              backgroundColor: "#8573e9",
-                              borderRadius: "30px",
-                              color: "white",
-                              marginleft: "20px",
-                              padding: "10px 20px",
-                              border: "none",
-                              borderradius: "30px",
-                              cursor: "pointer",
-                              fontsize: "16px",
-                              margintop: "20px",
-                            }}
-                            type="submit"
-                          >
-                            Download
-                          </button>
-                        </CTableDataCell>
+            {(() => {
+              if (user.role === "Super Admin") {
+                return (
+                <CTableDataCell> 
+                  <BsIcons.BsPencilSquare      
+                  />
+                  <AiIcons.AiFillDelete
+                  />
+                </CTableDataCell>
+                );
+              }
+            })()}
+
+            
+            {(() => {
+              if (user.role === "Pegawai") {
+                return (
+                  <CTableDataCell
+                  style={{
+                    verticalAlign: "baseline",
+                    textAlign: "center",
+                  }}
+                >
+                  <button
+                    style={{
+                      backgroundColor: "#8573e9",
+                      borderRadius: "30px",
+                      color: "white",
+                      marginleft: "20px",
+                      padding: "10px 20px",
+                      border: "none",
+                      borderradius: "30px",
+                      cursor: "pointer",
+                      fontsize: "16px",
+                      margintop: "20px",
+                    }}
+                    type="submit"
+                  >
+                    Download
+                  </button>
+                </CTableDataCell>
+                );
+              }
+            })()}
+                                                
+                        
                       </CTableRow>
                     ))}
                   </CTableBody>

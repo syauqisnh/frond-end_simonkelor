@@ -14,25 +14,25 @@ import * as AiIcons from "react-icons/ai";
 const BPP= () => {
   const opsi = [
     {
-      Dokumen: "Langgam Beban Bulanan - Januari 2023",
+      Dokumen: "BPP - Januari 2023",
       waktu: "Bulanan",
       tanggal: "19 Desember 2022",
       jenis: "PDF",
     },
     {
-      Dokumen: "Langgam Beban Harian - Januari 2023",
+      Dokumen: "BPP - Januari 2023",
       waktu: "Harian",
       tanggal: "19 Desember 2022",
       jenis: "PDF",
     },
     {
-      Dokumen: "Langgam Beban Mingguan - Januari 2023",
+      Dokumen: "BPP - Januari 2023",
       waktu: "Mingguan",
       tanggal: "19 Desember 2022",
       jenis: "PDF",
     },
     {
-      Dokumen: "Langgam Beban Tahunan - Januari 2023",
+      Dokumen: "BPP - Januari 2023",
       waktu: "Tahunan",
       tanggal: "19 Desember 2022",
       jenis: "PDF",

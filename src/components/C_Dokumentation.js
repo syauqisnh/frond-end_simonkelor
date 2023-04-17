@@ -98,7 +98,7 @@ const C_Dokumentation = () => {
         <div className="wrapper d-flex flex-column">
           <div className="body flex-grow-1 px-3">
             <div className="header">
-              <p>Operasional Data</p>
+              <p>Documentation</p>
               <div style={{ display: "relative", flexDirection: "column" }}>
                 <div style={{ display: "flex" }}>
                   {kotakList1.map((kotak) => (
