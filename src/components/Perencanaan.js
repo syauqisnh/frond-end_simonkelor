@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {
   CCardBody,
@@ -10,9 +10,9 @@ import {
   CTableHeaderCell,
   CTableRow,
 } from "@coreui/react";
-import * as AiIcons from "react-icons/ai"; 
+import * as AiIcons from "react-icons/ai";
 import { Button } from "react-bootstrap";
-import * as BsIcons from 'react-icons/bs';
+import * as BsIcons from "react-icons/bs";
 
 const Perencanaan = () => {
   const [user, setUser] = useState({});
@@ -64,23 +64,21 @@ const Perencanaan = () => {
             <div className="header">
               <p>Dokumen Perencanaan</p>
             </div>
-            
+
             <CCol xs={12}>
               <CCardBody>
-                
-
-            {(() => {
-              if (user.role === "Super Admin") {
-                return (
-                  <Button 
-                    className='btn btn-success text-white me-2'                        
-                    // onClick={handleShow}
-                  >
-                    Tambah Data 
-                  </Button>
-                );
-              }
-            })()}
+                {(() => {
+                  if (user.role === "Super Admin") {
+                    return (
+                      <Button
+                        className="btn btn-success text-white me-2"
+                        // onClick={handleShow}
+                      >
+                        Tambah Data
+                      </Button>
+                    );
+                  }
+                })()}
                 <hr />
                 <CTable striped>
                   <CTableHead>
@@ -169,52 +167,47 @@ const Perencanaan = () => {
                         >
                           {kotak.jenis}
                         </CTableDataCell>
-            {(() => {
-              if (user.role === "Super Admin") {
-                return (
-                <CTableDataCell> 
-                  <BsIcons.BsPencilSquare      
-                  />
-                  <AiIcons.AiFillDelete
-                  />
-                </CTableDataCell>
-                );
-              }
-            })()}
+                        {(() => {
+                          if (user.role === "Super Admin") {
+                            return (
+                              <CTableDataCell>
+                                <BsIcons.BsPencilSquare />
+                                <AiIcons.AiFillDelete />
+                              </CTableDataCell>
+                            );
+                          }
+                        })()}
 
-            
-            {(() => {
-              if (user.role === "Pegawai") {
-                return (
-                  <CTableDataCell
-                  style={{
-                    verticalAlign: "baseline",
-                    textAlign: "center",
-                  }}
-                >
-                  <button
-                    style={{
-                      backgroundColor: "#8573e9",
-                      borderRadius: "30px",
-                      color: "white",
-                      marginleft: "20px",
-                      padding: "10px 20px",
-                      border: "none",
-                      borderradius: "30px",
-                      cursor: "pointer",
-                      fontsize: "16px",
-                      margintop: "20px",
-                    }}
-                    type="submit"
-                  >
-                    Download
-                  </button>
-                </CTableDataCell>
-                );
-              }
-            })()}
-                                                
-                        
+                        {(() => {
+                          if (user.role === "Pegawai") {
+                            return (
+                              <CTableDataCell
+                                style={{
+                                  verticalAlign: "baseline",
+                                  textAlign: "center",
+                                }}
+                              >
+                                <button
+                                  style={{
+                                    backgroundColor: "#8573e9",
+                                    borderRadius: "30px",
+                                    color: "white",
+                                    marginleft: "20px",
+                                    padding: "10px 20px",
+                                    border: "none",
+                                    borderradius: "30px",
+                                    cursor: "pointer",
+                                    fontsize: "16px",
+                                    margintop: "20px",
+                                  }}
+                                  type="submit"
+                                >
+                                  Download
+                                </button>
+                              </CTableDataCell>
+                            );
+                          }
+                        })()}
                       </CTableRow>
                     ))}
                   </CTableBody>

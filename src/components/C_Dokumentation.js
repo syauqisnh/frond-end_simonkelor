@@ -2,7 +2,6 @@ import React from "react";
 import { AiFillFolderOpen } from "react-icons/ai";
 import { useHistory } from "react-router-dom";
 
-
 const C_Dokumentation = () => {
   const history = useHistory();
 
@@ -133,4 +132,4 @@ const C_Dokumentation = () => {
   );
 };
 
-export default C_Dokumentation ;
+export default C_Dokumentation;

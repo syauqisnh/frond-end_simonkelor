@@ -11,7 +11,7 @@ import {
 } from "@coreui/react";
 import * as AiIcons from "react-icons/ai";
 
-const BPP= () => {
+const BPP = () => {
   const opsi = [
     {
       Dokumen: "BPP - Januari 2023",
