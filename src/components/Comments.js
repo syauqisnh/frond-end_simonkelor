@@ -1,24 +1,17 @@
 import React from "react";
 import { Button } from "react-bootstrap";
+import avatar from '../assets/images/1.png'
 
 export default function Comments() {
     return (
-        <div className="container">
-        <div className="be-comment-block">
-          <h1 className="comments-title">Comments</h1>
-          <div className="panel-forum">
-            <div className="panel-body">
-              <textarea className="form-control" rows={2} placeholder="Type something here" defaultValue={""} />
-              <div className="mar-top">
-                <Button className="button-sub-forum" >Submit</Button>
-                <Button className="button-sub-forum" href="forum">Cancel</Button>
-              </div>
-            </div>
-          </div>
+
+        <div>
+
+          <div style={{ maxHeight: 'calc(80vh - 210px)', overflowY: 'auto', padding: '20px' }}>
           <div className="be-comment">
             <div className="be-img-comment">	
               <a href="blog-detail-2.html">
-                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" className="be-ava-comment" />
+                <img src={avatar} alt="" className="be-ava-comment" />
               </a>
             </div>
             <div className="be-comment-content">
@@ -36,10 +29,11 @@ export default function Comments() {
               </p>
             </div>
           </div>
+
           <div className="be-comment">
             <div className="be-img-comment">	
               <a href="blog-detail-2.html">
-                <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="" className="be-ava-comment" />
+                <img src={avatar} alt="" className="be-ava-comment" />
               </a>
             </div>
             <div className="be-comment-content">
@@ -55,10 +49,11 @@ export default function Comments() {
               </p>
             </div>
           </div>
+
           <div className="be-comment">
             <div className="be-img-comment">	
               <a href="blog-detail-2.html">
-                <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="" className="be-ava-comment" />
+                <img src={avatar} alt="" className="be-ava-comment" />
               </a>
             </div>
             <div className="be-comment-content">
@@ -74,7 +69,14 @@ export default function Comments() {
               </p>
             </div>
           </div>
+          </div>
+            <div className="panel-body">
+              <textarea className="form-control" rows={2} placeholder="Ketik komentar" defaultValue={""} />
+              <div className="mar-top">
+                <Button className="button-sub-forum" >Submit</Button>
+              </div>
+            </div>
+
         </div>
-      </div>
     );
 }
