@@ -28,7 +28,7 @@ export default function Comments() {
                 Curabitur rutrum dolor gravida turpis tristique efficitur.
               </p>
             </div>
-          </div>
+          </div> 
 
           <div className="be-comment">
             <div className="be-img-comment">	

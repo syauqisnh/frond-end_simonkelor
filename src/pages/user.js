@@ -238,7 +238,7 @@ const User_page = () => {
                                       />
                                   </Form.Group>
                                   <Button type='submit' color="primary" className="px-4">
-                                    Update
+                                    Update 
                                   </Button>
                               </Form>
                               </Modal.Body>
