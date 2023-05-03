@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 // import axios from "axios";
 // import {
 //   CCardBody,
@@ -10,7 +10,7 @@ import React, {useState, useEffect} from "react";
 //   CTableHeaderCell,
 //   CTableRow,
 // } from "@coreui/react";
-// import * as AiIcons from "react-icons/ai"; 
+// import * as AiIcons from "react-icons/ai";
 // import { Button } from "react-bootstrap";
 // import * as BsIcons from 'react-icons/bs';
 import {
@@ -23,7 +23,6 @@ import {
 } from "@coreui/react";
 import { CChartLine } from "@coreui/react-chartjs";
 import { hexToRgba } from "@coreui/utils";
-
 
 const Energi_Pembangkit = () => {
   // const [user, setUser] = useState({});
@@ -65,21 +64,28 @@ const Energi_Pembangkit = () => {
   // ];
 
   useEffect(() => {
-    
-    const data = [ 70.00, 69.43, 68.49 , 68.29 , 67.40 , 67.17 , 66.18 , 65.51 , 65.96 , 65.57 , 64.93 , 64.87 , 63.23 , 60.69 , 59.98 , 59.52 ,
-      59.61 , 57.52 , 55.49 , 55.43 , 55.58 , 55.90 , 55.62 , 55.62, 66.18 , 66.18, 55.62, 55.62 ]
-  
+    const data = [
+      70.0, 69.43, 68.49, 68.29, 67.4, 67.17, 66.18, 65.51, 65.96, 65.57, 64.93,
+      64.87, 63.23, 60.69, 59.98, 59.52, 59.61, 57.52, 55.49, 55.43, 55.58,
+      55.9, 55.62, 55.62, 66.18, 66.18, 55.62, 55.62,
+    ];
 
-    const data_prediksi = [ 69.43, 68.49 , 68.29 , 67.40 , 67.17 , 66.18 , 65.51 , 65.96 , 65.57 , 64.93 , 64.87 , 63.23 , 60.69 , 59.98 , 59.52 ,
-      59.61 , 57.52 , 55.49 , 55.43 , 55.58 , 55.90 , 55.62 , 55.68 , 55.39 , 55.16 , 55.72 , 56.42 , 55.87 , 55.60 , 55.51 , 55.39 , 54.16 ,
-      54.85 , 55.25 , 57.03 , 60.61 , 68.81 , 81.01 , 85.76 , 84.47 , 83.23 , 82.42 , 81.08 , 79.41 , 77.64 , 75.76 , 73.64 , 73.09 ,]
+    const data_prediksi = [
+      69.43, 68.49, 68.29, 67.4, 67.17, 66.18, 65.51, 65.96, 65.57, 64.93,
+      64.87, 63.23, 60.69, 59.98, 59.52, 59.61, 57.52, 55.49, 55.43, 55.58,
+      55.9, 55.62, 55.68, 55.39, 55.16, 55.72, 56.42, 55.87, 55.6, 55.51, 55.39,
+      54.16, 54.85, 55.25, 57.03, 60.61, 68.81, 81.01, 85.76, 84.47, 83.23,
+      82.42, 81.08, 79.41, 77.64, 75.76, 73.64, 73.09,
+    ];
 
-      setRealtimes_Energi(data);
-      setRealtimes_Energi_prediksi(data_prediksi);
+    setRealtimes_Energi(data);
+    setRealtimes_Energi_prediksi(data_prediksi);
   }, []);
 
-    const [realtimes_langgam, setRealtimes_Energi] = useState([]);
-    const [realtimes_langgam_prediksi, setRealtimes_Energi_prediksi] = useState([]);
+  const [realtimes_langgam, setRealtimes_Energi] = useState([]);
+  const [realtimes_langgam_prediksi, setRealtimes_Energi_prediksi] = useState(
+    []
+  );
 
   return (
     // <>
@@ -92,19 +98,18 @@ const Energi_Pembangkit = () => {
     //         <div className="header">
     //           <p>Langgam Beban Harian</p>
     //         </div>
-            
+
     //         <CCol xs={12}>
     //           <CCardBody>
-                
 
     //         {(() => {
     //           if (user.role === "Super Admin") {
     //             return (
-    //               <Button 
-    //                 className='btn btn-success text-white me-2'                        
+    //               <Button
+    //                 className='btn btn-success text-white me-2'
     //                 // onClick={handleShow}
     //               >
-    //                 Tambah Data 
+    //                 Tambah Data
     //               </Button>
     //             );
     //           }
@@ -200,8 +205,8 @@ const Energi_Pembangkit = () => {
     //         {(() => {
     //           if (user.role === "Super Admin") {
     //             return (
-    //             <CTableDataCell> 
-    //               <BsIcons.BsPencilSquare      
+    //             <CTableDataCell>
+    //               <BsIcons.BsPencilSquare
     //               />
     //               <AiIcons.AiFillDelete
     //               />
@@ -210,7 +215,6 @@ const Energi_Pembangkit = () => {
     //           }
     //         })()}
 
-            
     //         {(() => {
     //           if (user.role === "Pegawai") {
     //             return (
@@ -241,8 +245,7 @@ const Energi_Pembangkit = () => {
     //             );
     //           }
     //         })()}
-                                                
-                        
+
     //                   </CTableRow>
     //                 ))}
     //               </CTableBody>
@@ -255,19 +258,15 @@ const Energi_Pembangkit = () => {
     // </>
 
     <>
-    <div className='homes'>
-      
-      <div className="wrapper d-flex flex-column">
-        <div className="body flex-grow-1 px-3">
-    <CRow>
-        <CCol xs={12}>
-        
-        <div className='header'>
-            <p>
-            Produksi Energi Pembangkit
-            </p>
-        </div>
-        </CCol>
+      <div className="homes">
+        <div className="wrapper d-flex flex-column">
+          <div className="body flex-grow-1 px-3">
+            <CRow>
+              <CCol xs={12}>
+                <div className="header">
+                  <p>Produksi Energi Pembangkit</p>
+                </div>
+              </CCol>
             </CRow>
           </div>
         </div>
@@ -282,7 +281,7 @@ const Energi_Pembangkit = () => {
                       <CRow>
                         <CCol sm={8}>
                           <h4 id="traffic" className="text-normal-default">
-                          Produksi Energi Pembangkit Sistem Timor
+                            Produksi Energi Pembangkit Sistem Timor
                           </h4>
                         </CCol>
                         <CCol sm={4} className="d-none d-md-block">
@@ -425,7 +424,6 @@ const Energi_Pembangkit = () => {
                   </CCard>
                 </CContainer>
               </CCol>
-
             </CRow>
           </div>
         </div>
