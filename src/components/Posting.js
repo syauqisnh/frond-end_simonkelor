@@ -47,6 +47,7 @@ export default function Basic() {
           nama_user: user.nama_user,
           pesan: pesan,
         });
+        setPesan("");
         window.location.href = '/';
 
     } catch (error) {
@@ -94,6 +95,10 @@ export default function Basic() {
                 <div className="media-body">
                   <div className="mar-btm">
                     <h5 href="#">{item.nama_user}</h5>
+              <span className="be-comment-time">
+                <i className="fa fa-clock-o" />
+                {item.created_at}
+              </span>
                   </div>
                   <p>
                     {item.pesan}
