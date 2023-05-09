@@ -4,9 +4,11 @@ import Modal from 'react-bootstrap/Modal';
 import Comments from "./Comments";
 import avatar from '../assets/images/1.png'
 import axios from "axios";
+import Form from 'react-bootstrap/Form';
 
 export default function Basic() {
   const [data_forum, setDataForum] = useState([]);
+  const [pesan, setPesan] = useState("");
 
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
@@ -24,19 +26,48 @@ export default function Basic() {
     GetData();
   }, []);
 
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    axios.get("http://localhost:8000/api/datauser").then((response) => {
+      setUser(response.data.sort((a, b) => b.created_at.localeCompare(a.created_at)));
+      console.log(user); 
+    });
+  }, [user]);
+
+  const save_data = async (event) => {
+    event.preventDefault();
+    try {
+      await axios.post(
+        `http://localhost:8000/api/forum/`,
+        {
+          nama_user: user.nama_user,
+          pesan: pesan,
+        });
+        window.location.href = '/';
+
+    } catch (error) {
+        alert("Data Gagal ditambahkan")
+    }
+  };
   return (
     <>
     <div className="container">
       <div className="be-comment-block">
         <h1 className="judul-forum">Forum</h1>
         <div className="col-md-12 bootstrap snippets">
-          <div className="panel-forum">
+        <Form onSubmit={save_data}>
+                          
             <div className="panel-body">
               <textarea
                 className="form-control"
                 rows={4}
-                placeholder="Type something here"
-                defaultValue={""}
+                placeholder="Tambahkan Pesan Forum"
+                onChange={(e) => setPesan(e.target.value)}
+                value={pesan}
               />
               <div className="mar-top">
                 <Button className="button-sub-forum" type="submit">
@@ -44,12 +75,14 @@ export default function Basic() {
                 </Button>
               </div>
             </div>
-          </div>
+        </Form>
+
+
           <div className="panel-forum">
 
-          {data_forum.map((item) => {
+          {data_forum.map((item, index) => {
             return(
-            <div className="panel-body">
+            <div className="panel-body" key={index}>
               <div className="media-block">
                 <a className="media-left" href="#">
                   <img
