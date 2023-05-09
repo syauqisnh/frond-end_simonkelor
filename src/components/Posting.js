@@ -1,8 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
+import Modal from 'react-bootstrap/Modal';
+import Comments from "./Comments";
+import avatar from '../assets/images/1.png'
+import axios from "axios";
 
 export default function Basic() {
+  const [data_forum, setDataForum] = useState([]);
+
+  const [show, setShow] = useState(false);
+  const handleShow = () => setShow(true);
+  const handleClose = () => {
+    setShow(false);
+  }
+
+  useEffect(() => {
+    const GetData = async () =>{
+      const api_get = await axios.get(`
+      http://localhost:8000/api/forum/`
+      );
+      setDataForum(api_get.data.data);
+    };
+    GetData();
+  }, []);
+
   return (
+    <>
     <div className="container">
       <div className="be-comment-block">
         <h1 className="judul-forum">Forum</h1>
@@ -11,7 +34,7 @@ export default function Basic() {
             <div className="panel-body">
               <textarea
                 className="form-control"
-                rows={2}
+                rows={4}
                 placeholder="Type something here"
                 defaultValue={""}
               />
@@ -23,130 +46,58 @@ export default function Basic() {
             </div>
           </div>
           <div className="panel-forum">
-            <div className="panel-body">
-              <div className="media-block">
-                <a className="media-left" href="#">
-                  <img
-                    className="img-circle img-sm"
-                    alt="Profile Picture"
-                    src="https://bootdey.com/img/Content/avatar/avatar1.png"
-                  />
-                </a>
-                <div className="media-body">
-                  <div className="mar-btm">
-                    <h5 href="#">Admin-1</h5>
-                  </div>
-                  <p>
-                    consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                    tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut
-                    wisi enim ad minim veniam, quis nostrud exerci tation
-                    ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
-                    consequat.
-                  </p>
-                  <div className="pad-ver">
-                    <Button className="button-comment" href="/forumcomment">
-                      Comment
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <div className="panel-forum">
+          {data_forum.map((item) => {
+            return(
             <div className="panel-body">
               <div className="media-block">
                 <a className="media-left" href="#">
                   <img
                     className="img-circle img-sm"
                     alt="Profile Picture"
-                    src="https://bootdey.com/img/Content/avatar/avatar1.png"
+                    src={avatar}
                   />
                 </a>
                 <div className="media-body">
                   <div className="mar-btm">
-                    <h5 href="#">Admin-2</h5>
+                    <h5 href="#">{item.nama_user}</h5>
                   </div>
                   <p>
-                    consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                    tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut
-                    wisi enim ad minim veniam, quis nostrud exerci tation
-                    ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
-                    consequat.
+                    {item.pesan}
                   </p>
                   <div className="pad-ver">
-                    <Button className="button-comment" href="forumcomment">
+                    <Button className="button-comment" onClick={handleShow}>
                       Comment
                     </Button>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+              )
+            })}
 
-          <div className="panel-forum">
-            <div className="panel-body">
-              <div className="media-block">
-                <a className="media-left" href="#">
-                  <img
-                    className="img-circle img-sm"
-                    alt="Profile Picture"
-                    src="https://bootdey.com/img/Content/avatar/avatar1.png"
-                  />
-                </a>
-                <div className="media-body">
-                  <div className="mar-btm">
-                    <h5 href="#">Admin-3</h5>
-                  </div>
-                  <p>
-                    consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                    tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut
-                    wisi enim ad minim veniam, quis nostrud exerci tation
-                    ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
-                    consequat.
-                  </p>
-                  <div className="pad-ver">
-                    <Button className="button-comment" href="forumcomment">
-                      Comment
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="panel-forum">
-            <div className="panel-body">
-              <div className="media-block">
-                <a className="media-left" href="#">
-                  <img
-                    className="img-circle img-sm"
-                    alt="Profile Picture"
-                    src="https://bootdey.com/img/Content/avatar/avatar1.png"
-                  />
-                </a>
-                <div className="media-body">
-                  <div className="mar-btm">
-                    <h5 href="#">Admin-4</h5>
-                  </div>
-                  <p>
-                    consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                    tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut
-                    wisi enim ad minim veniam, quis nostrud exerci tation
-                    ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
-                    consequat.
-                  </p>
-                  <div className="pad-ver">
-                    <Button className="button-comment" href="page3">
-                      Comment
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
     </div>
+
+
+                                          
+                
+                <Modal show={show} onHide={handleClose}>
+                  <Modal.Header closeButton style={{ maxWidth: "1000px" }}>
+                    <Modal.Title className="comments-title">Comments</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                      <Comments/>
+                    </Modal.Body>
+                    <Modal.Footer>
+                      <Button variant="secondary" onClick={handleClose}>
+                        Close
+                      </Button>
+                    </Modal.Footer>
+                </Modal>
+
+    </>
   );
 }
