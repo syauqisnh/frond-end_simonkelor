@@ -33,7 +33,7 @@ export default function Basic() {
 
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     axios.get("http://localhost:8000/api/datauser").then((response) => {
-      setUser(response.data.sort((a, b) => b.created_at.localeCompare(a.created_at)));
+      setUser(response.data);
       console.log(user); 
     });
   }, [user]);
