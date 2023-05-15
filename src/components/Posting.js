@@ -8,12 +8,41 @@ import Form from 'react-bootstrap/Form';
 
 export default function Basic() {
   const [data_forum, setDataForum] = useState([]);
+  const [data_Komentar, setDataKomentar] = useState([]);
+  const [id, setId] = useState("");
   const [pesan, setPesan] = useState("");
-
+  
   const [show, setShow] = useState(false);
-  const handleShow = () => setShow(true);
+
+  // const SetdataUpdate = (data) => {
+  //   setId(data.id_pembangkit);
+  //   setNamaPembangkit(data.nama_pembangkit);
+  //   setJenisPembangkit(data.jenis_pembangkit);
+  //   setAsset(data.kepemilikan_aset);
+  //   setEnergi(data.energi_prime);
+  //   setKapasitas(data.kapasitas);
+  //   setDMN(data.DMN);
+
+  //   setShow_edit(true);
+  // };
+  
+  const GetDataById = async (id_forum) =>{
+    const api_get = await axios.get(`
+    http://localhost:8000/api/komentar/${id_forum}`
+    );
+    setDataKomentar(api_get.data.data);
+  };
+
+  const handleShow = (data) => {
+    setId(data.id_pesan);
+    console.log(id);
+    GetDataById(id);
+    setShow(true);
+  }
   const handleClose = () => {
     setShow(false);
+    setId("");
+    setDataKomentar([]);
   }
 
   useEffect(() => {
@@ -104,7 +133,12 @@ export default function Basic() {
                     {item.pesan}
                   </p>
                   <div className="pad-ver">
-                    <Button className="button-comment" onClick={handleShow}>
+                    <Button 
+                      className="button-comment"
+                      onClick={() => {
+                        handleShow(item.id_pesan);
+                      }}
+                      >
                       Comment
                     </Button>
                   </div>
@@ -127,7 +161,46 @@ export default function Basic() {
                     <Modal.Title className="comments-title">Comments</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                      <Comments/>
+
+                    <div>
+
+<div style={{ maxHeight: 'calc(80vh - 210px)', overflowY: 'auto', padding: '20px' }}>
+
+{data_Komentar.map((item, index) => {
+  return(
+<div className="be-comment" key={index}>
+  <div className="be-img-comment">
+    <a href="blog-detail-2.html">
+      <img src={avatar} alt="" className="be-ava-comment" />
+    </a>
+  </div>
+  <div className="be-comment-content">
+    <span className="be-comment-name">
+      <h5 href="#">{item.nama_user}</h5>
+    </span>
+    <span className="be-comment-time">
+      <i className="fa fa-clock-o" />
+      {item.created_at}
+    </span>
+    <p className="be-comment-text">
+    {item.komentar}
+    </p>
+  </div>
+</div> 
+)
+})}
+
+</div>
+  <div className="panel-body">
+    <textarea className="form-control" rows={2} placeholder="Ketik komentar" defaultValue={""} />
+    <div className="mar-top">
+      <Button className="button-sub-forum" >Submit</Button>
+    </div>
+  </div>
+
+ </div>
+
+
                     </Modal.Body>
                     <Modal.Footer>
                       <Button variant="secondary" onClick={handleClose}>
