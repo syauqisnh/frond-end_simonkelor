@@ -24,14 +24,27 @@ const Realtime = () => {
   const [realtimes_pltu, setRealtimePLTU] = useState([]);
   const [realtimes_plant, setRealtimePLANT] = useState([]);
   const [date_realtimes, setDateRealtime] = useState([]);
-
+  const [loading, setLoading] = useState(true);
+  
   const fetchData = async () => {
+    axios.get(`
+    http://localhost:8000/api/realtimes/get_date
+    `).then((response) => {
+        console.log(response.data.data);
+        setDateRealtime(response.data.data);
+    })
    axios.get(`
     http://localhost:8000/api/realtimes
   `).then((response) => {
-      console.log(response.data.data);
+      // console.log(response.data.data);
       setRealtime(response.data.data);
-  })
+      console.log("Berhasil mengambil data");
+      
+      setLoading(false);
+    })
+    .catch((error) => {
+      console.log("Gagal mengambil data:", error);
+    });
    
   axios.get(`
     http://localhost:8000/api/realtimes/PLTU
@@ -46,13 +59,6 @@ const Realtime = () => {
       console.log(response.data.data);
       setRealtimePLANT(response.data.data);
   })
-
-  axios.get(`
-  http://localhost:8000/api/realtimes/get_date
-  `).then((response) => {
-      console.log(response.data.data);
-      setDateRealtime(response.data.data);
-  })
   
   }
   useEffect(() => {
@@ -64,10 +70,12 @@ const Realtime = () => {
     const data_prediksi = [ 69.43, 68.49 , 68.29 , 67.40 , 67.17 , 66.18 , 65.51 , 65.96 , 65.57 , 64.93 , 64.87 , 63.23 , 60.69 , 59.98 , 59.52 ,
       59.61 , 57.52 , 55.49 , 55.43 , 55.58 , 55.90 , 55.62 , 55.68 , 55.39 , 55.16 , 55.72 , 56.42 , 55.87 , 55.60 , 55.51 , 55.39 , 54.16 ,
       54.85 , 55.25 , 57.03 , 60.61 , 68.81 , 81.01 , 85.76 , 84.47 , 83.23 , 82.42 , 81.08 , 79.41 , 77.64 , 75.76 , 73.64 , 73.09 ,]
-
+      
+      setTimeout(() => {
       fetchData();
       setRealtimes_langgam(data);
       setRealtimes_langgam_prediksi(data_prediksi);
+    }, 2000);
   }, []);
 
     const [realtimes_langgam, setRealtimes_langgam] = useState([]);
@@ -112,8 +120,14 @@ const Realtime = () => {
           </div>
         </div>
 
-        <div className="wrapper d-flex flex-column min-vh-100">
+        <div className="wrapper d-flex flex-column min-vh-80">
           <div className="body flex-grow-1 px-3">
+              
+              {loading ? (
+                <div className=' d-flex justify-content-center align-items-center' style={{height: '70vh'}}>
+                <div class="spinner"></div>
+                </div>
+              ) : (
             <CRow>
               <CCol xs={10}>
                 <CContainer>
@@ -590,8 +604,10 @@ const Realtime = () => {
                 </CCol>
               </CCol>
             </CRow>
+            )}
           </div>
         </div>
+
       </div>
     </>
   );
