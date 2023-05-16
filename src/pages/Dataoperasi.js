@@ -14,4 +14,4 @@ function Dataoperasi() {
     );
 }
 
-export default Dataoperasi;
+export default Dataoperasi;   
