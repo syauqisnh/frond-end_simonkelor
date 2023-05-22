@@ -171,7 +171,7 @@ const Perencanaan = () => {
                           if (user.role === "Super Admin") {
                             return (
                               <CTableDataCell style={{ cursor: "pointer" }}>
-                                <BsIcons.BsPencilSquare />
+                                <BsIcons.BsPencilSquare title="Edit" className="delete-icon" />
                                 <AiIcons.AiFillDelete title="Delete" className="delete-icon"/>
                               </CTableDataCell>
                             );

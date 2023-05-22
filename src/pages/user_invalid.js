@@ -163,12 +163,12 @@ const UserInvalid_page = () => {
                         <CTableDataCell> {item.email} </CTableDataCell>
                         <CTableDataCell> {item.role} </CTableDataCell>
                         <CTableDataCell> 
-                           <BsIcons.BsPencilSquare                        
+                           <BsIcons.BsPencilSquare title='Edit'                       
                           onClick={() => {
                             Setdata(item);
                           }}
                             />
-                            <AiIcons.AiFillDelete
+                            <AiIcons.AiFillDelete title='Delete'
                           onClick={() => {
                             HandleDelete(item.id);
                           }}

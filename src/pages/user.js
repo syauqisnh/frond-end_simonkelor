@@ -373,12 +373,12 @@ const User_page = () => {
                                                 <CTableDataCell> {item.email} </CTableDataCell>
                                                 <CTableDataCell> {item.role} </CTableDataCell>
                                                 <CTableDataCell> 
-                                                  <BsIcons.BsPencilSquare                       
+                                                  <BsIcons.BsPencilSquare title='Edit'                       
                                                     onClick={() => {
                                                       SetdataUpdate(item);
                                                     }}
                                                   />
-                                                  <AiIcons.AiFillDelete
+                                                  <AiIcons.AiFillDelete title='Delete'
                                                       onClick={() => {
                                                         HandleDelete(item.user_id);
                                                       }}
@@ -423,13 +423,13 @@ const User_page = () => {
                                                 <CTableDataCell> {item.email} </CTableDataCell>
                                                 <CTableDataCell> {item.role} </CTableDataCell>
                                                 <CTableDataCell> 
-                                                  <BsIcons.BsPencilSquare                       
+                                                  <BsIcons.BsPencilSquare title='Edit'                    
                                                     onClick={() => {
                                                       // handleShow_edit(item.id);
                                                       SetdataUpdate(item);
                                                     }}
                                                   />
-                                                  <AiIcons.AiFillDelete
+                                                  <AiIcons.AiFillDelete title='Delete'
                                                       onClick={() => {
                                                         HandleDelete(item.user_id);
                                                       }}

@@ -198,12 +198,12 @@ const update_data = async (event) => {
                         <CTableDataCell> {item.kapasitas} </CTableDataCell>
                         <CTableDataCell> {item.DMN} </CTableDataCell>
                         <CTableDataCell> 
-                           <BsIcons.BsPencilSquare                        
+                           <BsIcons.BsPencilSquare title='Edit'                   
                           onClick={() => {
                             Setdata(item);
                           }}
                             />
-                            <AiIcons.AiFillDelete
+                            <AiIcons.AiFillDelete title='Delete'
                           onClick={() => {
                             HandleDelete(item.id_pembangkit);
                           }}
