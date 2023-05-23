@@ -416,9 +416,9 @@ input[type="submit"]:hover {
 } */
 
 .bg-edit-profile {
-  padding-top: 30px;
-  height: 100vh;
-  background-color: #311E69;
+  /* padding-top: 30px; */
+  /* height: 100vh; */
+  background-color: #fff;
 }
 .edit-profile {
   max-width: 500px;
@@ -440,13 +440,13 @@ input[type="submit"]:hover {
 }
 
 
- h2 {
+ /* h2 {
   margin-top: 0;
-}
+} */
 
 .input-profile{
   width: 100%;
-  padding: 10px;
+  padding: 5px;
   margin-bottom: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;

@@ -32,7 +32,6 @@ function EditProfile() {
     <div className='bg-edit-profile'>
     <div className="edit-profile" >
       <form onSubmit={handleSubmit}>
-        <h2>Edit Profile</h2>
         <label>
           Name
         </label>
