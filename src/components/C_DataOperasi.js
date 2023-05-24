@@ -140,7 +140,23 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Line, Bar } from "react-chartjs-2";
+import {
+  CContainer,
+  CCard,
+  CCardBody,
+  CCol,
+  CRow,
+  CBadge,
+  CTable,
+  CTableBody,
+  CTableDataCell,
+  CTableHead,
+  CTableHeaderCell,
+  CTableRow,
+} from "@coreui/react";
+import {
+  CChart
+} from "@coreui/react-chartjs";
 
 const C_DataOperasi = () => {
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -177,32 +193,436 @@ const rows = [
 
 
   return (
-    <TableContainer component={Paper}>
+    <>
+    <CCol xs={12}>
+        <CCard className="mb-4">
+          <CRow>
+     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>Dessert (100g serving)</StyledTableCell>
-            <StyledTableCell align="right">Calories</StyledTableCell>
-            <StyledTableCell align="right">Fat&nbsp;(g)</StyledTableCell>
-            <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell>
-            <StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell>
+              <StyledTableCell>Dessert (100g serving)</StyledTableCell>
+              <StyledTableCell align="right">Calories</StyledTableCell>
+              <StyledTableCell align="right">Fat&nbsp;(g)</StyledTableCell>
+              <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell>
+              <StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <StyledTableRow key={row.name}>
-              <StyledTableCell component="th" scope="row">
-                {row.name}
-              </StyledTableCell>
-              <StyledTableCell align="right">{row.calories}</StyledTableCell>
-              <StyledTableCell align="right">{row.fat}</StyledTableCell>
-              <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-              <StyledTableCell align="right">{row.protein}</StyledTableCell>
+           {rows.map((row) => (
+           <StyledTableRow key={row.name}>
+                <StyledTableCell component="th" scope="row">
+                  {row.name}
+                </StyledTableCell>
+                <StyledTableCell align="right">{row.calories}</StyledTableCell>
+                <StyledTableCell align="right">{row.fat}</StyledTableCell>
+                <StyledTableCell align="right">{row.carbs}</StyledTableCell>
+                <StyledTableCell align="right">{row.protein}</StyledTableCell>
             </StyledTableRow>
-          ))}
+           ))}
         </TableBody>
       </Table>
-    </TableContainer>
+     </TableContainer>
+     </CRow>
+     </CCard>
+     </CCol>
+     <CCol xs={12}>
+                    <CCard className="mb-4">
+                      <CCardBody>
+                        <CRow>
+                          <CCol xs={6}>
+                          <CChart
+                              type="bar"
+                              data={{
+                                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                                datasets: [
+                                  {
+                                    label: 'GitHub Commits',
+                                    backgroundColor: '#f87979',
+                                    data: [40, 20, 12, 39, 10, 40, 39, 80, 40],
+                                  },
+                                ],
+                              }}
+                              labels="months"
+                            />
+                          </CCol>
+                          <CCol xs={6}>
+                            <CCardBody>
+                            <CChart
+                              type="bar"
+                              data={{
+                                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                                datasets: [
+                                  {
+                                    label: 'GitHub Commits',
+                                    backgroundColor: '#f87979',
+                                    data: [40, 20, 12, 39, 10, 40, 39, 80, 40],
+                                  },
+                                ],
+                              }}
+                              labels="months"
+                            />
+                            </CCardBody>
+                          </CCol>
+                        </CRow>
+                      </CCardBody>
+                    </CCard>
+                  </CCol>
+                  <CCol xs={12}>
+                    <CCard className="mb-4">
+                      <CCardBody>
+                        <CRow>
+                          <CCol xs={6}>
+                          <CChart
+                            type="line" 
+                            data={{
+                              labels: ["January", "February", "March", "April", "May", "June", "July"],
+                              datasets: [
+                                {
+                                  label: "My First dataset",
+                                  backgroundColor: "rgba(220, 220, 220, 0.2)",
+                                  borderColor: "rgba(220, 220, 220, 1)",
+                                  pointBackgroundColor: "rgba(220, 220, 220, 1)",
+                                  pointBorderColor: "#fff",
+                                  data: [40, 20, 12, 39, 10, 40, 39, 80, 40]
+                                },
+                                {
+                                  label: "My Second dataset",
+                                  backgroundColor: "rgba(151, 187, 205, 0.2)",
+                                  borderColor: "rgba(151, 187, 205, 1)",
+                                  pointBackgroundColor: "rgba(151, 187, 205, 1)",
+                                  pointBorderColor: "#fff",
+                                  data: [50, 12, 28, 29, 7, 25, 12, 70, 60]
+                                },
+                              ],
+                            }}
+                          />
+                          </CCol>
+                          <CCol xs={6}>
+                            <CCardBody>
+                              <CTable striped>
+                                <CTableHead>
+                                  <CTableRow>
+                                    <CTableHeaderCell scope="col">
+                                      Biaya
+                                    </CTableHeaderCell>
+                                    <CTableHeaderCell scope="col">
+                                      Nilai
+                                    </CTableHeaderCell>
+                                  </CTableRow>
+                                </CTableHead>
+                                <CTableBody>
+                                  <CTableRow>
+                                    <CTableDataCell>
+                                      Total Kapital Cost
+                                    </CTableDataCell>
+                                    <CTableDataCell> 15.37 </CTableDataCell>
+                                  </CTableRow>
+
+                                  <CTableRow>
+                                    <CTableDataCell>
+                                      Total Kapital Cost
+                                    </CTableDataCell>
+                                    <CTableDataCell> 15.37 </CTableDataCell>
+                                  </CTableRow>
+
+                                  <CTableRow>
+                                    <CTableDataCell>
+                                      Total Kapital Cost
+                                    </CTableDataCell>
+                                    <CTableDataCell> 15.37 </CTableDataCell>
+                                  </CTableRow>
+
+                                  <CTableRow>
+                                    <CTableDataCell>
+                                      Total Kapital Cost
+                                    </CTableDataCell>
+                                    <CTableDataCell> 15.37 </CTableDataCell>
+                                  </CTableRow>
+                                  <CTableRow>
+                                    <CTableDataCell>
+                                      Total Kapital Cost
+                                    </CTableDataCell>
+                                    <CTableDataCell> 15.37 </CTableDataCell>
+                                  </CTableRow>
+
+                                  <CTableRow>
+                                    <CTableDataCell>
+                                      Total Kapital Cost
+                                    </CTableDataCell>
+                                    <CTableDataCell> 15.37 </CTableDataCell>
+                                  </CTableRow>
+                                  <CTableRow>
+                                    <CTableDataCell>
+                                      Total Kapital Cost
+                                    </CTableDataCell>
+                                    <CTableDataCell> 15.37 </CTableDataCell>
+                                  </CTableRow>
+
+                                  <CTableRow>
+                                    <CTableDataCell>
+                                      Total Kapital Cost
+                                    </CTableDataCell>
+                                    <CTableDataCell> 15.37 </CTableDataCell>
+                                  </CTableRow>
+                                </CTableBody>
+                              </CTable>
+                            </CCardBody>
+                          </CCol>
+                        </CRow>
+                      </CCardBody>
+                    </CCard>
+                  </CCol>
+                  <CCol xs={12}>
+                    <CCard className="mb-4">
+                      <CCardBody>
+                        <CRow>
+                          <CCol xs={6}>
+                          <CChart
+                            type="line" 
+                            data={{
+                              labels: ["January", "February", "March", "April", "May", "June", "July"],
+                              datasets: [
+                                {
+                                  label: "My First dataset",
+                                  backgroundColor: "rgba(220, 220, 220, 0.2)",
+                                  borderColor: "rgba(220, 220, 220, 1)",
+                                  pointBackgroundColor: "rgba(220, 220, 220, 1)",
+                                  pointBorderColor: "#fff",
+                                  data: [40, 20, 12, 39, 10, 40, 39, 80, 40]
+                                },
+                                {
+                                  label: "My Second dataset",
+                                  backgroundColor: "rgba(151, 187, 205, 0.2)",
+                                  borderColor: "rgba(151, 187, 205, 1)",
+                                  pointBackgroundColor: "rgba(151, 187, 205, 1)",
+                                  pointBorderColor: "#fff",
+                                  data: [50, 12, 28, 29, 7, 25, 12, 70, 60]
+                                },
+                              ],
+                            }}
+                          />
+                          </CCol>
+                          <CCol xs={6}>
+                            <CCardBody>
+                            <CChart
+                              type="line" 
+                              data={{
+                                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                                datasets: [
+                                  {
+                                    label: "My First dataset",
+                                    backgroundColor: "rgba(220, 220, 220, 0.2)",
+                                    borderColor: "rgba(220, 220, 220, 1)",
+                                    pointBackgroundColor: "rgba(220, 220, 220, 1)",
+                                    pointBorderColor: "#fff",
+                                    data: [40, 20, 12, 39, 10, 40, 39, 80, 40]
+                                  },
+                                  {
+                                    label: "My Second dataset",
+                                    backgroundColor: "rgba(151, 187, 205, 0.2)",
+                                    borderColor: "rgba(151, 187, 205, 1)",
+                                    pointBackgroundColor: "rgba(151, 187, 205, 1)",
+                                    pointBorderColor: "#fff",
+                                    data: [50, 12, 28, 29, 7, 25, 12, 70, 60]
+                                  },
+                                ],
+                              }}
+                            />
+                            </CCardBody>
+                          </CCol>
+                        </CRow>
+                      </CCardBody>
+                    </CCard>
+                  </CCol>
+                  <CCol xs={12}>
+                    <CCard className="mb-4">
+                      <CCardBody>
+                        <CRow>
+                          <CCol xs={6}>
+                          <CChart
+                            type="line" 
+                            data={{
+                              labels: ["January", "February", "March", "April", "May", "June", "July"],
+                              datasets: [
+                                {
+                                  label: "My First dataset",
+                                  backgroundColor: "rgba(220, 220, 220, 0.2)",
+                                  borderColor: "rgba(220, 220, 220, 1)",
+                                  pointBackgroundColor: "rgba(220, 220, 220, 1)",
+                                  pointBorderColor: "#fff",
+                                  data: [40, 20, 12, 39, 10, 40, 39, 80, 40]
+                                },
+                                {
+                                  label: "My Second dataset",
+                                  backgroundColor: "rgba(151, 187, 205, 0.2)",
+                                  borderColor: "rgba(151, 187, 205, 1)",
+                                  pointBackgroundColor: "rgba(151, 187, 205, 1)",
+                                  pointBorderColor: "#fff",
+                                  data: [50, 12, 28, 29, 7, 25, 12, 70, 60]
+                                },
+                              ],
+                            }}
+                          />
+                          </CCol>
+                          <CCol xs={6}>
+                            <CCardBody>
+                            <CChart
+                              type="line" 
+                              data={{
+                                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                                datasets: [
+                                  {
+                                    label: "My First dataset",
+                                    backgroundColor: "rgba(220, 220, 220, 0.2)",
+                                    borderColor: "rgba(220, 220, 220, 1)",
+                                    pointBackgroundColor: "rgba(220, 220, 220, 1)",
+                                    pointBorderColor: "#fff",
+                                    data: [40, 20, 12, 39, 10, 40, 39, 80, 40]
+                                  },
+                                  {
+                                    label: "My Second dataset",
+                                    backgroundColor: "rgba(151, 187, 205, 0.2)",
+                                    borderColor: "rgba(151, 187, 205, 1)",
+                                    pointBackgroundColor: "rgba(151, 187, 205, 1)",
+                                    pointBorderColor: "#fff",
+                                    data: [50, 12, 28, 29, 7, 25, 12, 70, 60]
+                                  },
+                                ],
+                              }}
+                            />
+                            </CCardBody>
+                          </CCol>
+                        </CRow>
+                      </CCardBody>
+                    </CCard>
+                  </CCol>
+                  <CCol xs={12}>
+                    <CCard className="mb-4">
+                      <CCardBody>
+                        <CRow>
+                          <CCol xs={6}>
+                          <CChart
+                            type="line" 
+                            data={{
+                              labels: ["January", "February", "March", "April", "May", "June", "July"],
+                              datasets: [
+                                {
+                                  label: "My First dataset",
+                                  backgroundColor: "rgba(220, 220, 220, 0.2)",
+                                  borderColor: "rgba(220, 220, 220, 1)",
+                                  pointBackgroundColor: "rgba(220, 220, 220, 1)",
+                                  pointBorderColor: "#fff",
+                                  data: [40, 20, 12, 39, 10, 40, 39, 80, 40]
+                                },
+                                {
+                                  label: "My Second dataset",
+                                  backgroundColor: "rgba(151, 187, 205, 0.2)",
+                                  borderColor: "rgba(151, 187, 205, 1)",
+                                  pointBackgroundColor: "rgba(151, 187, 205, 1)",
+                                  pointBorderColor: "#fff",
+                                  data: [50, 12, 28, 29, 7, 25, 12, 70, 60]
+                                },
+                              ],
+                            }}
+                          />
+                          </CCol>
+                          <CCol xs={6}>
+                            <CCardBody>
+                            <CChart
+                              type="line" 
+                              data={{
+                                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                                datasets: [
+                                  {
+                                    label: "My First dataset",
+                                    backgroundColor: "rgba(220, 220, 220, 0.2)",
+                                    borderColor: "rgba(220, 220, 220, 1)",
+                                    pointBackgroundColor: "rgba(220, 220, 220, 1)",
+                                    pointBorderColor: "#fff",
+                                    data: [40, 20, 12, 39, 10, 40, 39, 80, 40]
+                                  },
+                                  {
+                                    label: "My Second dataset",
+                                    backgroundColor: "rgba(151, 187, 205, 0.2)",
+                                    borderColor: "rgba(151, 187, 205, 1)",
+                                    pointBackgroundColor: "rgba(151, 187, 205, 1)",
+                                    pointBorderColor: "#fff",
+                                    data: [50, 12, 28, 29, 7, 25, 12, 70, 60]
+                                  },
+                                ],
+                              }}
+                            />
+                            </CCardBody>
+                          </CCol>
+                        </CRow>
+                      </CCardBody>
+                    </CCard>
+                  </CCol>
+                  <CCol xs={12}>
+                    <CCard className="mb-4">
+                      <CCardBody>
+                        <CRow>
+                          <CCol xs={6}>
+                          <CChart
+                            type="line" 
+                            data={{
+                              labels: ["January", "February", "March", "April", "May", "June", "July"],
+                              datasets: [
+                                {
+                                  label: "My First dataset",
+                                  backgroundColor: "rgba(220, 220, 220, 0.2)",
+                                  borderColor: "rgba(220, 220, 220, 1)",
+                                  pointBackgroundColor: "rgba(220, 220, 220, 1)",
+                                  pointBorderColor: "#fff",
+                                  data: [40, 20, 12, 39, 10, 40, 39, 80, 40]
+                                },
+                                {
+                                  label: "My Second dataset",
+                                  backgroundColor: "rgba(151, 187, 205, 0.2)",
+                                  borderColor: "rgba(151, 187, 205, 1)",
+                                  pointBackgroundColor: "rgba(151, 187, 205, 1)",
+                                  pointBorderColor: "#fff",
+                                  data: [50, 12, 28, 29, 7, 25, 12, 70, 60]
+                                },
+                              ],
+                            }}
+                          />
+                          </CCol>
+                          <CCol xs={6}>
+                            <CCardBody>
+                            <CChart
+                              type="line" 
+                              data={{
+                                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                                datasets: [
+                                  {
+                                    label: "My First dataset",
+                                    backgroundColor: "rgba(220, 220, 220, 0.2)",
+                                    borderColor: "rgba(220, 220, 220, 1)",
+                                    pointBackgroundColor: "rgba(220, 220, 220, 1)",
+                                    pointBorderColor: "#fff",
+                                    data: [40, 20, 12, 39, 10, 40, 39, 80, 40]
+                                  },
+                                  {
+                                    label: "My Second dataset",
+                                    backgroundColor: "rgba(151, 187, 205, 0.2)",
+                                    borderColor: "rgba(151, 187, 205, 1)",
+                                    pointBackgroundColor: "rgba(151, 187, 205, 1)",
+                                    pointBorderColor: "#fff",
+                                    data: [50, 12, 28, 29, 7, 25, 12, 70, 60]
+                                  },
+                                ],
+                              }}
+                            />
+                            </CCardBody>
+                          </CCol>
+                        </CRow>
+                      </CCardBody>
+                    </CCard>
+                  </CCol>
+                  
+    </>
   );
 };
 
