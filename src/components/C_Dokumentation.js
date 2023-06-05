@@ -69,11 +69,11 @@ const C_Dokumentation = () => {
   ];
 
   const kotakStyle = {
-    width: "300px",
-    height: "300px",
+    width: "250px",
+    height: "250px",
     backgroundColor: "#D9D9D9",
     borderRadius: "50px",
-    margin: "30px 20px 10px 50px",
+    margin: "30px 50px 10px 50px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",

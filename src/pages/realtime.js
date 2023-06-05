@@ -16,7 +16,7 @@ import {
 } from "@coreui/react";
 import { CChartLine, CChartPie, CChartDoughnut } from "@coreui/react-chartjs";
 import { hexToRgba } from "@coreui/utils";
-
+import {CChart} from "@coreui/react-chartjs";
 import { useEffect } from "react";
 
 const Realtime = () => {
@@ -277,6 +277,93 @@ const Realtime = () => {
                       />
                     </CCardBody>
                   </CCard>
+
+                  <CCol xs={12}>
+                    <CCard className="mb-4">
+                      <CCardBody>
+                      <CCol sm={8}>
+                          <h4 id="traffic" className="text-normal-default">
+                            Frequency Sistem Timor
+                          </h4>
+                        </CCol>
+                          <CCol>
+                          <CChart
+                            type="line"
+                            options= {{     
+                              plugins: {   
+                              legend: {
+                                display: false,
+                                labels: false,
+                              }
+                            }
+                            }}
+                            data={{
+                              labels: ["00:00",
+                              "00:30",
+                              "01:00",
+                              "01:30",
+                              "02:00",
+                              "02:30",
+                              "03:00",
+                              "03:30",
+                              "04:00",
+                              "04:30",
+                              "05:00",
+                              "05:30",
+                              "06:00",
+                              "06:30",
+                              "07:00",
+                              "07:30",
+                              "08:00",
+                              "08:30",
+                              "09:00",
+                              "09:30",
+                              "10:00",
+                              "10:30",
+                              "11:00",
+                              "11:30",
+                              "12:00",
+                              "12:30",
+                              "13:00",
+                              "13:30",
+                              "14:00",
+                              "14:30",
+                              "15:00",
+                              "15:30",
+                              "16:00",
+                              "16:30",
+                              "17:00",
+                              "17:30",
+                              "18:00",
+                              "18:30",
+                              "19:00",
+                              "19:30",
+                              "20:00",
+                              "20:30",
+                              "21:00",
+                              "21:30",
+                              "22:00",
+                              "22:30",
+                              "23:00",
+                              "23:30",],
+                              datasets: [
+                                {
+                                  // label: "Frequncy",
+                                  backgroundColor: hexToRgba("#0f0f0f", 20),
+                                  borderColor: "#fa1302",
+                                  // pointHoverBackgroundColor: "#0000FF",
+                                  pointRadius: false,
+                                  borderWidth: 2,
+                                  data: [17, 17, 17, 17, 17, 17, 17, 18, 19, 20, 20, 21, 22, 23, 24, 24, 23, 21, 20, 18, 15, 15, 12, 11, 16, 22, 23, 24, 25, 23, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17],
+                                  fill: true,
+                                },
+                              ],
+                            }}
+                          />
+                          </CCol>
+                      </CCardBody>
+                    </CCard>
+                  </CCol>
 
                   <CCol xs={12}>
                     <CCard className="mb-4">

@@ -138,84 +138,78 @@ const update_data = async (event) => {
   return (
     <>
     <div className='homes'>
-      
-    <div className="wrapper d-flex flex-column">
-            <div className="body flex-grow-1 px-3">
-    <CRow>
-        <CCol xs={12}>
-        
-        <div className='header'>
-            <p>
-            Data Pembangkit
-            </p>
+      <div className="wrapper d-flex flex-column">
+        <div className="body flex-grow-1 px-3">
+          <CRow>
+            <CCol xs={12}>
+              <div className='header'>
+                <p> Data Pembangkit </p>
+              </div>
+            </CCol>
+          </CRow>
         </div>
-        </CCol>
-  </CRow>
       </div>
-    </div>
 
-        <div className="wrapper d-flex flex-column min-vh-100">
-            <div className="body flex-grow-1 px-3">
-                <CRow>
-                    <CCol xs={12}>
-                        <CContainer>
+      <div className="wrapper d-flex flex-column min-vh-100">
+        <div className="body flex-grow-1 px-3">
+          <CRow>
+            <CCol xs={12}>
+              <CContainer>
                 <Button 
                   className='btn btn-success text-white me-2'                        
                   onClick={handleShow}
                 >
                   Tambah Data 
                 </Button>
-
-        <CCol xs={12}>
-          <CCard className="mt-4">
-            <CCardHeader>
-              <strong>Tabel Data Pembangkit</strong>
-            </CCardHeader>
-            <CCardBody>
-              <p className="text-medium-emphasis small">
-                Tabel ini menampilkan seluruh data pembangkit
-              </p>
-                <CTable striped>
-                  <CTableHead>
-                    <CTableRow>
-                      <CTableHeaderCell scope="col">Nama Pembangkit</CTableHeaderCell>
-                      <CTableHeaderCell scope="col">Jenis Pembangkit</CTableHeaderCell>
-                      <CTableHeaderCell scope="col">Asset</CTableHeaderCell>
-                      <CTableHeaderCell scope="col">Energi Primer</CTableHeaderCell>
-                      <CTableHeaderCell scope="col">Kapasitas</CTableHeaderCell>
-                      <CTableHeaderCell scope="col">DMN</CTableHeaderCell>
-                    </CTableRow>
-                  </CTableHead>
-                  <CTableBody>
-                      
-                  {data_pembangkit.map((item, index) => {
-                    return(
-                      <CTableRow key={index}>
-                        <CTableHeaderCell> {item.nama_pembangkit} </CTableHeaderCell>
-                        <CTableDataCell> {item.jenis_pembangkit} </CTableDataCell>
-                        <CTableDataCell> {item.kepemilikan_aset} </CTableDataCell>
-                        <CTableDataCell> {item.energi_primer} </CTableDataCell>
-                        <CTableDataCell> {item.kapasitas} </CTableDataCell>
-                        <CTableDataCell> {item.DMN} </CTableDataCell>
-                        <CTableDataCell> 
-                           <BsIcons.BsPencilSquare title='Edit'                   
-                          onClick={() => {
-                            Setdata(item);
-                          }}
-                            />
-                            <AiIcons.AiFillDelete title='Delete'
-                          onClick={() => {
-                            HandleDelete(item.id_pembangkit);
-                          }}
-                            />
+                <CCol xs={12}>
+                  <CCard className="mt-4">
+                    <CCardHeader>
+                      <strong>Tabel Data Pembangkit</strong>
+                    </CCardHeader>
+                    <CCardBody>
+                      <p className="text-medium-emphasis small">
+                        Tabel ini menampilkan seluruh data pembangkit
+                      </p>
+                    <CTable striped>
+                      <CTableHead>
+                        <CTableRow>
+                          <CTableHeaderCell scope="col">Nama Pembangkit</CTableHeaderCell>
+                          <CTableHeaderCell scope="col">Jenis Pembangkit</CTableHeaderCell>
+                          <CTableHeaderCell scope="col">Asset</CTableHeaderCell>
+                          <CTableHeaderCell scope="col">Energi Primer</CTableHeaderCell>
+                          <CTableHeaderCell scope="col">Kapasitas</CTableHeaderCell>
+                          <CTableHeaderCell scope="col">DMN</CTableHeaderCell>
+                        </CTableRow>
+                      </CTableHead>
+                      <CTableBody>
+                        {data_pembangkit.map((item, index) => {
+                        return(
+                          <CTableRow key={index}>
+                            <CTableHeaderCell> {item.nama_pembangkit} </CTableHeaderCell>
+                            <CTableDataCell> {item.jenis_pembangkit} </CTableDataCell>
+                            <CTableDataCell> {item.kepemilikan_aset} </CTableDataCell>
+                            <CTableDataCell> {item.energi_primer} </CTableDataCell>
+                            <CTableDataCell> {item.kapasitas} </CTableDataCell>
+                            <CTableDataCell> {item.DMN} </CTableDataCell>
+                            <CTableDataCell> 
+                              <BsIcons.BsPencilSquare title='Edit'                   
+                              onClick={() => {
+                                Setdata(item);
+                              }}
+                                />
+                                <AiIcons.AiFillDelete title='Delete'
+                              onClick={() => {
+                                HandleDelete(item.id_pembangkit);
+                              }}
+                                />
+                                </CTableDataCell>
+                            <CTableDataCell> 
                             </CTableDataCell>
-                        <CTableDataCell> 
-                        </CTableDataCell>
-                      </CTableRow>
-                    )
-                  })}
-                  </CTableBody>
-                </CTable>
+                          </CTableRow>
+                          )
+                        })}
+                      </CTableBody>
+                    </CTable>
   
   {/* Modal */}
   {/* Modal Update */}
@@ -368,17 +362,15 @@ const update_data = async (event) => {
                                 </Button> 
                             </Modal.Footer>
                         </Modal>
-            </CCardBody>
-          </CCard>
-        </CCol>
-
-                        </CContainer>
-                    </CCol>
-
-                </CRow>
+                      </CCardBody>
+                    </CCard>
+                  </CCol>
+                </CContainer>
+              </CCol>
+            </CRow>
+          </div>
+        </div>
       </div>
-    </div>
-    </div>
     </>
   );
 };
@@ -396,8 +388,58 @@ export const ReportsOne = () => {
 export const ReportsTwo = () => {
   return (
     <>
-    <div className='reports'>
-      <h1>Reports/reports2</h1>
+    <div className='homes'>
+      <div className="wrapper d-flex flex-column">
+        <div className="body flex-grow-1 px-3">
+          <CRow>
+            <CCol xs={12}>
+              <div className='header'>
+                <p> Data Tegangan </p>
+              </div>
+            </CCol>
+          </CRow>
+        </div>
+      </div>
+      <div className="wrapper d-flex flex-column min-vh-100">
+        <div className="body flex-grow-1 px-3">
+          <CRow>
+            <CCol xs={12}>
+              <CContainer>
+                <Button 
+                  className='btn btn-success text-white me-2'                        
+                  // onClick={handleShow}
+                >
+                  Tambah Data 
+                </Button>
+                <CCol xs={12}>
+                  <CCard className="mt-4">
+                    <CCardHeader>
+                      <strong>Tabel Data Tegangan</strong>
+                    </CCardHeader>
+                    <CCardBody>
+                      <p className="text-medium-emphasis small">
+                        Tabel ini menampilkan seluruh data tegangan
+                      </p>
+                      <CTable striped>
+                      <CTableHead>
+                        <CTableRow>
+                          <CTableHeaderCell scope="col">Nama Pembangkit</CTableHeaderCell>
+                          <CTableHeaderCell scope="col">Jenis Pembangkit</CTableHeaderCell>
+                          <CTableHeaderCell scope="col">Asset</CTableHeaderCell>
+                          <CTableHeaderCell scope="col">Energi Primer</CTableHeaderCell>
+                          <CTableHeaderCell scope="col">Kapasitas</CTableHeaderCell>
+                          <CTableHeaderCell scope="col">DMN</CTableHeaderCell>
+                        </CTableRow>
+                      </CTableHead>
+                      </CTable>
+                    </CCardBody>
+                  </CCard>
+                </CCol>
+              </CContainer>
+            </CCol>
+          </CRow>
+        </div>
+      </div>
     </div>
     </>
   );

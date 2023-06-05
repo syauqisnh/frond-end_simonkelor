@@ -43,6 +43,16 @@ function EditProfile() {
             onChange={handleChange}
           />
         <label>
+          NIP
+        </label>
+          <input
+            className='input-profile'
+            type="text"
+            name="nip"
+            value={profileData.nips}
+            onChange={handleChange}
+          />
+        <label>
           Institution/Unit
         </label>
           <input
