@@ -405,33 +405,13 @@ export const ReportsTwo = () => {
           <CRow>
             <CCol xs={12}>
               <CContainer>
-                <Button 
-                  className='btn btn-success text-white me-2'                        
-                  // onClick={handleShow}
-                >
-                  Tambah Data 
-                </Button>
                 <CCol xs={12}>
                   <CCard className="mt-4">
                     <CCardHeader>
                       <strong>Tabel Data Tegangan</strong>
                     </CCardHeader>
                     <CCardBody>
-                      <p className="text-medium-emphasis small">
-                        Tabel ini menampilkan seluruh data tegangan
-                      </p>
-                      <CTable striped>
-                      <CTableHead>
-                        <CTableRow>
-                          <CTableHeaderCell scope="col">Nama Pembangkit</CTableHeaderCell>
-                          <CTableHeaderCell scope="col">Jenis Pembangkit</CTableHeaderCell>
-                          <CTableHeaderCell scope="col">Asset</CTableHeaderCell>
-                          <CTableHeaderCell scope="col">Energi Primer</CTableHeaderCell>
-                          <CTableHeaderCell scope="col">Kapasitas</CTableHeaderCell>
-                          <CTableHeaderCell scope="col">DMN</CTableHeaderCell>
-                        </CTableRow>
-                      </CTableHead>
-                      </CTable>
+                      
                     </CCardBody>
                   </CCard>
                 </CCol>

@@ -46,27 +46,27 @@ export const SidebarData_Admin = [
       }
     ]
   },
-  {
-    title: 'Daftar Data Pengolahan',
-    icon: <BsDatabaseFillAdd />,
-    iconClosed: <RiIcons.RiArrowDownSFill />,
-    iconOpened: <RiIcons.RiArrowUpSFill />,
+  // {
+  //   title: 'Daftar Data Pengolahan',
+  //   icon: <BsDatabaseFillAdd />,
+  //   iconClosed: <RiIcons.RiArrowDownSFill />,
+  //   iconOpened: <RiIcons.RiArrowUpSFill />,
 
-    subNav: [
-      {
-        title: 'Tabel Pembangkit',
-        path: '/Data_pengolahan/pembangkit',
-        icon: <BsDatabaseFillAdd />,
-        cName: 'sub-nav'
-      },
-      {
-        title: 'Tabel Tegangan',
-        path: '/reports/reports2',
-        icon: <BsDatabaseFillAdd />,
-        cName: 'sub-nav'
-      },
-    ]
-  },
+  //   subNav: [
+  //     {
+  //       title: 'Tabel Pembangkit',
+  //       path: '/Data_pengolahan/pembangkit',
+  //       icon: <BsDatabaseFillAdd />,
+  //       cName: 'sub-nav'
+  //     },
+  //     {
+  //       title: 'Tabel Tegangan',
+  //       path: '/reports/reports2',
+  //       icon: <BsDatabaseFillAdd />,
+  //       cName: 'sub-nav'
+  //     },
+  //   ]
+  // },
   {
     title: 'Data Operasi',
     path: '/dataoperasi',
